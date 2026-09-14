@@ -1491,6 +1491,18 @@ footer#sharedFooter {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 10px rgba(250, 204, 21, 0.12);
 }
 
+.profile-tag-pink {
+  display: inline-block;
+  background: rgb(249, 170, 255);
+  color: #6200b2;
+  backdrop-filter: blur(8px);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(168, 36, 251, 0.6);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 @media (max-width: 640px) {
   .profile-hero-inner {
     flex-direction: column;
