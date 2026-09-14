@@ -1993,6 +1993,7 @@ a.achievement-card p {
 .lightbox-close,
 .lightbox-nav {
   position: absolute;
+  z-index: 1;
   border: none;
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
