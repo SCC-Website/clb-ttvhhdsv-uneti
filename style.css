@@ -2524,6 +2524,33 @@ a.achievement-card p {
   }
 }
 
+/* Trạng thái khi đóng đơn đăng ký */
+.reg-closed-badge {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.3px;
+}
+
+body.registration-closed .reg-closed-badge {
+  display: inline-flex;
+}
+
+body.registration-closed .floating-register-btn,
+body.registration-closed [data-register-btn],
+body.registration-closed a[href*="forms.gle"] {
+  display: none !important;
+}
+
 /* --- Signup Page: Main Poster (centered showcase) --- */
 .main-poster-wrapper {
   display: flex;

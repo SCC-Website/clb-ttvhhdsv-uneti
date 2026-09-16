@@ -480,7 +480,61 @@ function initCountdowns() {
   });
 }
 
+// Mốc thời gian đóng đơn đăng ký tuyển thành viên Gen 5
+const REGISTRATION_DEADLINE = new Date('2026-09-16T23:59:59+07:00');
+
+function initRegistrationStatus() {
+  function applyStatus() {
+    const now = new Date();
+    const isClosed = now.getTime() >= REGISTRATION_DEADLINE.getTime();
+
+    if (isClosed) {
+      document.body.classList.add('registration-closed');
+
+      // Ẩn tất cả các nút mở form đăng ký
+      document.querySelectorAll('[data-register-btn], .floating-register-btn, a[href*="forms.gle"]').forEach(btn => {
+        btn.style.display = 'none';
+      });
+
+      // Hiện badge thông báo đóng đơn (nếu có)
+      const closedBadge = document.getElementById('regClosedNotice');
+      if (closedBadge) {
+        closedBadge.style.display = 'inline-flex';
+      }
+
+      // Cập nhật card CTA cuối trang SignUpToSCC
+      const signupCtaCard = document.querySelector('.avatar-cta-card--signup');
+      if (signupCtaCard) {
+        const titleEl = signupCtaCard.querySelector('h3');
+        const descEl = signupCtaCard.querySelector('p');
+        if (titleEl) {
+          titleEl.innerHTML = '🔒 Vòng Đăng Ký Đã Khép Lại!';
+        }
+        if (descEl) {
+          descEl.textContent = 'CLB Tuyên truyền Văn hóa học đường Sinh viên UNETI đã chính thức ngừng nhận đơn tuyển thành viên Gen 5. Hẹn gặp các bạn tại buổi phỏng vấn trực tiếp lúc 18h00 ngày 20/09/2026!';
+        }
+      }
+
+      // Cập nhật nút đăng ký trong overlay Gen 5 trên trang chủ
+      const overlayRegisterBtn = document.querySelector('.gen5-overlay-actions a[data-register-btn], .gen5-overlay-actions a[href*="forms.gle"]');
+      if (overlayRegisterBtn) {
+        overlayRegisterBtn.remove();
+      }
+    } else {
+      document.body.classList.remove('registration-closed');
+      const closedBadge = document.getElementById('regClosedNotice');
+      if (closedBadge) {
+        closedBadge.style.display = 'none';
+      }
+    }
+  }
+
+  applyStatus();
+  window.setInterval(applyStatus, 1000);
+}
+
 initCountdowns();
+initRegistrationStatus();
 
 function toggleHonor() {
   const box = document.getElementById("honorContent");
