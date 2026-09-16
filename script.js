@@ -105,6 +105,11 @@ function renderFooter() {
     return;
   }
 
+  // Icon MXH lấy từ file ảnh thật trong thư mục Image/, resolve qua BASE_URL
+  // (giống cách favicon đang làm) để chạy đúng dù trang nằm ở sub-path nào.
+  const facebookIconUrl = new URL('Image/Facebook.png', BASE_URL).href;
+  const tiktokIconUrl = new URL('Image/Tiktok.png', BASE_URL).href;
+
   const footer = document.createElement('footer');
   footer.id = 'sharedFooter';
   footer.innerHTML = `
@@ -126,22 +131,22 @@ function renderFooter() {
         <ul class="footer-links">
           <li>
             <a href="https://www.facebook.com/VHHDSVUNETI" target="_blank" rel="noopener noreferrer">
-              <span>🔵</span> Fanpage CLB SCC UNETI
+              <img src="${facebookIconUrl}" alt="Facebook" class="footer-icon" width="18" height="18" loading="lazy"> Fanpage CLB SCC UNETI
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/DoanTN.HoiSV.Uneti" target="_blank" rel="noopener noreferrer">
-              <span>🔵</span> Fanpage Đoàn Thanh Niên UNETI
+              <img src="${facebookIconUrl}" alt="Facebook" class="footer-icon" width="18" height="18" loading="lazy"> Fanpage Đoàn Thanh Niên UNETI
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/PhongCTvaCTSV.Uneti" target="_blank" rel="noopener noreferrer">
-              <span>🔵</span> Phòng CT & CTSV UNETI
+              <img src="${facebookIconUrl}" alt="Facebook" class="footer-icon" width="18" height="18" loading="lazy"> Fanpage Phòng CT & CTSV UNETI
             </a>
           </li>
           <li>
             <a href="https://tiktok.com/@uneti.clb.scc" target="_blank" rel="noopener noreferrer">
-              <span>🎵</span> TikTok: @uneti.clb.scc
+              <img src="${tiktokIconUrl}" alt="TikTok" class="footer-icon" width="18" height="18" loading="lazy"> TikTok CLB SCC UNETI
             </a>
           </li>
         </ul>
