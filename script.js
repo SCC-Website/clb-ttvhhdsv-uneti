@@ -516,7 +516,7 @@ function initRegistrationStatus() {
           titleEl.innerHTML = '🔒 Vòng Đăng Ký Đã Khép Lại!';
         }
         if (descEl) {
-          descEl.textContent = 'CLB Tuyên truyền Văn hóa học đường Sinh viên UNETI đã chính thức ngừng nhận đơn tuyển thành viên Gen 5. Hẹn gặp các bạn tại buổi phỏng vấn trực tiếp lúc 18h00 ngày 22/09/2026!';
+          descEl.textContent = 'CLB Tuyên truyền Văn hóa học đường Sinh viên UNETI đã chính thức ngừng nhận đơn tuyển thành viên Gen 5. Hẹn gặp các bạn tại buổi phỏng vấn trực tiếp lúc 18h00 ngày 24/09/2026!';
         }
       }
 
