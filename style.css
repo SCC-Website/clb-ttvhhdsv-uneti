@@ -1343,7 +1343,7 @@ footer#sharedFooter {
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 .principle-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
-.principle-card > span { color: var(--primary); font-weight: 800; font-size: .85rem; }
+.principle-card > span { color: var(--primary); font-weight: 800; font-size: 24px; }
 .principle-card h3 { margin: 8px 0; font-size: 1.05rem; }
 .principle-card p { color: var(--text-secondary); font-size: .9rem; line-height: 1.55; }
 
