@@ -2337,7 +2337,7 @@ a.achievement-card p {
 
 /* --- Signup Page: Avatar Frame CTA Card --- */
 .avatar-cta-card {
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--border-accent);
@@ -2563,7 +2563,7 @@ body.registration-closed a[href*="forms.gle"] {
 .main-poster-img {
   width: 100%;
   height: auto;
-  max-width: 640px;
+  max-width: 750px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-accent);

@@ -501,11 +501,11 @@ function initRegistrationStatus() {
         btn.style.display = 'none';
       });
 
-      // Hiện badge thông báo phỏng vấn hoàn tất (nếu có)
+      // Hiện badge thông báo kết quả đã được gửi (nếu có)
       const closedBadge = document.getElementById('regClosedNotice');
       if (closedBadge) {
         closedBadge.style.display = 'inline-flex';
-        closedBadge.innerHTML = '✨ Phỏng vấn hoàn tất &bull; Hãy đón chờ kết quả phỏng vấn trong thời gian tới';
+        closedBadge.textContent = '💌 Kết quả phỏng vấn đã được gửi qua email';
       }
 
       // Cập nhật card CTA cuối trang SignUpToSCC
@@ -514,12 +514,10 @@ function initRegistrationStatus() {
         const titleEl = signupCtaCard.querySelector('h3');
         const descEl = signupCtaCard.querySelector('p');
         if (titleEl) {
-          titleEl.innerHTML = '🔒 Vòng Đăng Ký Đã Khép Lại!';
-          titleEl.innerHTML = '✨ Phỏng Vấn Hoàn Tất!';
+          titleEl.textContent = '📩 Chưa nhận được email kết quả?';
         }
         if (descEl) {
-          descEl.textContent = 'CLB Tuyên truyền Văn hóa học đường Sinh viên UNETI đã chính thức ngừng nhận đơn tuyển thành viên Gen 5. Hẹn gặp các bạn tại buổi phỏng vấn trực tiếp lúc 18h00 ngày 24/09/2026!';
-          descEl.textContent = 'Phỏng vấn hoàn tất, hãy đón chờ kết quả phỏng vấn trong thời gian tới!';
+          descEl.textContent = 'Nếu đã kiểm tra cả mục Spam và Quảng cáo nhưng vẫn chưa thấy thư, hãy nhắn tin cho Fanpage CLB để được hỗ trợ.';
         }
       }
 
