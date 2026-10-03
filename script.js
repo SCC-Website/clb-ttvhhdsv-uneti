@@ -13,6 +13,54 @@ document.addEventListener('selectstart', event => {
 
 const BASE_URL = new URL('.', document.baseURI);
 
+// ----- SVG ICONS (thay thế toàn bộ emoji) -----
+// Icon dạng vector, dùng stroke="currentColor" nên tự đổi theo màu chữ xung quanh.
+const SVG_ICON_PATHS = {
+  // 🌐
+  globe:
+    '<circle cx="12" cy="12" r="10"/>' +
+    '<path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>' +
+    '<path d="M2 12h20"/>',
+  // ✉️
+  mail:
+    '<rect width="20" height="16" x="2" y="4" rx="2"/>' +
+    '<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+  // 📞
+  phone:
+    '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  // 📍
+  mapPin:
+    '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>' +
+    '<circle cx="12" cy="10" r="3"/>',
+  // 💌 (thư đã gửi)
+  mailCheck:
+    '<path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/>' +
+    '<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>' +
+    '<path d="m16 19 2 2 4-4"/>',
+  // 📩 (thư đến)
+  mailDown:
+    '<path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/>' +
+    '<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>' +
+    '<path d="M19 16v6"/>' +
+    '<path d="m16 19 3 3 3-3"/>'
+};
+
+function icon(name, size = 18) {
+  const paths = SVG_ICON_PATHS[name];
+  if (!paths) {
+    return '';
+  }
+
+  return (
+    `<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" ` +
+    'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" ' +
+    'style="display:inline-block;vertical-align:-0.2em;flex-shrink:0;">' +
+    paths +
+    '</svg>'
+  );
+}
+
 const navigationItems = [
   { path: 'index.html', label: 'Trang chủ' },
   { path: 'VHHD.html', label: 'Văn hoá học đường sinh viên' },
@@ -120,7 +168,7 @@ function renderFooter() {
           <p><b>CLB Tuyên truyền Văn hóa học đường Sinh viên</b> trực thuộc Đoàn TNCS Hồ Chí Minh & Phòng CT&CTSV - Trường Đại học Kinh tế - Kỹ thuật Công Nghiệp.</p>
           <p>Slogan: <i>"Thân thiện - Chuyên nghiệp - Đồng hành và Chia sẻ"</i></p>
           <div class="footer-info-item">
-            <span>🌐 Website Nhà trường:</span>
+            <span>${icon('globe')} Website Nhà trường:</span>
             <a href="https://uneti.edu.vn" target="_blank" rel="noopener noreferrer">https://uneti.edu.vn</a>
           </div>
         </div>
@@ -156,19 +204,19 @@ function renderFooter() {
         <h3>Thông Tin Liên Hệ</h3>
         <div class="footer-info">
           <div class="footer-info-item">
-            <span>✉️ Email:</span>
+            <span>${icon('mail')} Email:</span>
             <button class="copy-value" type="button" data-copy="clb.tuyentruyenvhhd@gmail.com" aria-label="Sao chép email CLB">
               clb.tuyentruyenvhhd@gmail.com
             </button>
           </div>
           <div class="footer-info-item">
-            <span>📞 Hotline:</span>
+            <span>${icon('phone')} Hotline:</span>
             <button class="copy-value" type="button" data-copy="024 3233 6137" aria-label="Sao chép hotline CLB">
               024 3233 6137
             </button>
           </div>
           <div class="footer-info-item">
-            <span>📍 Địa chỉ:</span>
+            <span>${icon('mapPin')} Địa chỉ:</span>
             <span>Trường ĐH Kinh tế - Kỹ thuật Công nghiệp (UNETI)</span>
           </div>
         </div>
@@ -505,7 +553,13 @@ function initRegistrationStatus() {
       const closedBadge = document.getElementById('regClosedNotice');
       if (closedBadge) {
         closedBadge.style.display = 'inline-flex';
-        closedBadge.textContent = '💌 Kết quả phỏng vấn đã được gửi qua email';
+        closedBadge.style.alignItems = 'center';
+        closedBadge.style.gap = '6px';
+        // Dùng innerHTML vì có chứa icon SVG; nội dung là chuỗi cố định nên an toàn.
+        const closedBadgeHtml = icon('mailCheck') + '<span>Kết quả phỏng vấn đã được gửi qua email</span>';
+        if (closedBadge.innerHTML !== closedBadgeHtml) {
+          closedBadge.innerHTML = closedBadgeHtml;
+        }
       }
 
       // Cập nhật card CTA cuối trang SignUpToSCC
@@ -514,7 +568,10 @@ function initRegistrationStatus() {
         const titleEl = signupCtaCard.querySelector('h3');
         const descEl = signupCtaCard.querySelector('p');
         if (titleEl) {
-          titleEl.textContent = '📩 Chưa nhận được email kết quả?';
+          const titleHtml = icon('mailDown', 22) + ' Chưa nhận được email kết quả?';
+          if (titleEl.innerHTML !== titleHtml) {
+            titleEl.innerHTML = titleHtml;
+          }
         }
         if (descEl) {
           descEl.textContent = 'Nếu đã kiểm tra cả mục Spam và Quảng cáo nhưng vẫn chưa thấy thư, hãy nhắn tin cho Fanpage CLB để được hỗ trợ.';
