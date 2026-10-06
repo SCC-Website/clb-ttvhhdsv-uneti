@@ -645,3 +645,107 @@ function initVisitCounter() {
 
   counterEl.appendChild(img);
 }
+
+// ----- 5. Nâng cấp trải nghiệm cuộn: nav, hiện dần nội dung, nút lên đầu trang -----
+function initScrollEnhancements() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 5a. Thanh điều hướng đổi bóng khi cuộn
+  const nav = document.getElementById('mainNav') || document.querySelector('.main-nav');
+  const backToTop = document.createElement('button');
+  backToTop.type = 'button';
+  backToTop.className = 'back-to-top';
+  backToTop.setAttribute('aria-label', 'Lên đầu trang');
+  backToTop.innerHTML =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="m18 15-6-6-6 6"/></svg>';
+  document.body.appendChild(backToTop);
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) {
+      return;
+    }
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if (nav) {
+        nav.classList.toggle('is-scrolled', y > 24);
+      }
+      backToTop.classList.toggle('is-shown', y > 600);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // 5b. Hiện dần nội dung khi cuộn tới (bỏ qua nếu giảm chuyển động / trình duyệt cũ)
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    return;
+  }
+
+  const selector = [
+    '.section-header', '.overview-card', '.activites-card', '.role-card', '.member-card',
+    '.board-card', '.event-card', '.principle-card', '.activity-card', '.contact-tile',
+    '.faq-item', '.achievement-card', '.timeline-item', '.info-grid', '.profile-bio-card',
+    '.slogan-banner', '.advisor-card', '.culture-panel', '.culture-quote',
+    '.avatar-cta-card', '.main-poster-wrapper', '.gallery-item'
+  ].join(',');
+
+  const targets = Array.from(document.querySelectorAll(selector))
+    .filter(el => !el.closest('.gen5-overlay, .lightbox'));
+  if (!targets.length) {
+    return;
+  }
+
+  document.documentElement.classList.add('js-reveal');
+
+  // Xếp so le theo thứ tự trong cùng một hàng cha (tối đa 4 bước) để chuyển động nhịp nhàng
+  const siblingCount = new WeakMap();
+  targets.forEach(el => {
+    const parent = el.parentElement;
+    const index = siblingCount.get(parent) || 0;
+    siblingCount.set(parent, index + 1);
+    el.classList.add('reveal');
+    el.style.setProperty('--reveal-delay', Math.min(index, 3) * 70 + 'ms');
+  });
+
+  // Sau khi hiện xong thì gỡ class để hiệu ứng hover của thẻ hoạt động bình thường
+  function release(el) {
+    el.classList.remove('reveal', 'is-visible');
+    el.style.removeProperty('--reveal-delay');
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      const el = entry.target;
+      obs.unobserve(el);
+      el.classList.add('is-visible');
+      let done = false;
+      const finish = () => {
+        if (!done) {
+          done = true;
+          release(el);
+        }
+      };
+      el.addEventListener('transitionend', event => {
+        if (event.target === el && event.propertyName === 'opacity') {
+          finish();
+        }
+      });
+      window.setTimeout(finish, 1400);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+  targets.forEach(el => observer.observe(el));
+}
+
+initScrollEnhancements();
