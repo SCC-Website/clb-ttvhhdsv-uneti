@@ -748,4 +748,20 @@ function initScrollEnhancements() {
   targets.forEach(el => observer.observe(el));
 }
 
+function initRecognitionTableDetails() {
+  const toggle = document.querySelector('.recognition-detail-toggle');
+  const tableWrapper = document.getElementById('recognition-table-wrapper');
+  if (!toggle || !tableWrapper) {
+    return;
+  }
+
+  toggle.addEventListener('click', () => {
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isExpanded));
+    toggle.textContent = isExpanded ? '[xem chi tiết]' : '[ẩn chi tiết]';
+    tableWrapper.hidden = isExpanded;
+  });
+}
+
+initRecognitionTableDetails();
 initScrollEnhancements();

@@ -113,6 +113,85 @@ a:hover {
   padding: 60px 0;
 }
 
+.recognition-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.recognition-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.recognition-table th,
+.recognition-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.recognition-table th {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.recognition-table th:last-child,
+.recognition-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.recognition-profile-link {
+  display: inline-block;
+  padding: 6px 8px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.recognition-profile-link:hover,
+.recognition-profile-link:focus-visible {
+  background: var(--primary-light);
+}
+
+.recognition-table-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.recognition-detail-toggle {
+  padding: 7px 11px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--primary);
+  font: inherit;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.recognition-detail-toggle:hover,
+.recognition-detail-toggle:focus-visible {
+  background: var(--primary-light);
+}
+
+.recognition-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.recognition-table tbody tr:nth-child(even) {
+  background: var(--primary-light);
+}
+
 .page-header {
   max-width: 1200px;
   margin: 0 auto;
