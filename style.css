@@ -113,12 +113,99 @@ a:hover {
   padding: 60px 0;
 }
 
+/* --- Góc vinh danh: bảng thành viên xuất sắc --- */
+#vinh-danh-thang-9-2026 {
+  background: radial-gradient(640px 320px at 50% 0%, rgba(255, 193, 94, 0.14), transparent 70%);
+}
+
+#vinh-danh-thang-9-2026 .section-desc {
+  max-width: 720px;
+  margin: 18px auto 0;
+  text-align: center;
+}
+
+.recognition-table-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.recognition-detail-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 26px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.recognition-detail-toggle::before {
+  content: "▾";
+  font-size: 0.8em;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.recognition-detail-toggle[aria-expanded="true"]::before {
+  transform: rotate(180deg);
+}
+
+.recognition-detail-toggle:hover,
+.recognition-detail-toggle:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  filter: brightness(1.06);
+}
+
+.recognition-detail-toggle:focus-visible {
+  outline: 3px solid var(--border-accent);
+  outline-offset: 3px;
+}
+
+@keyframes recognition-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .recognition-table-wrapper {
   overflow-x: auto;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--surface);
   box-shadow: var(--shadow-md);
+  animation: recognition-reveal var(--transition-normal) both;
+}
+
+.recognition-table-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.recognition-table-wrapper::-webkit-scrollbar-track {
+  background: var(--surface-alt);
+}
+
+.recognition-table-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ffb48f, var(--primary));
+  border-radius: var(--radius-full);
+  border: 2px solid var(--surface-alt);
 }
 
 .recognition-table {
@@ -130,14 +217,27 @@ a:hover {
 
 .recognition-table th,
 .recognition-table td {
-  padding: 14px 18px;
+  padding: 13px 18px;
   border-bottom: 1px solid var(--border-color);
 }
 
-.recognition-table th {
-  background: var(--primary-light);
-  color: var(--primary);
+.recognition-table thead {
+  background: var(--primary-gradient);
+}
+
+.recognition-table thead th {
+  background: transparent;
+  color: var(--text-light);
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.recognition-table th:first-child,
+.recognition-table tbody td:first-child {
+  text-align: center;
 }
 
 .recognition-table th:last-child,
@@ -146,50 +246,88 @@ a:hover {
   white-space: nowrap;
 }
 
-.recognition-profile-link {
+.recognition-table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.recognition-table tbody td {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.recognition-table tbody tr:hover {
+  background: var(--primary-light);
+}
+
+/* Huy hiệu chức vụ trong bảng vinh danh */
+.role-badge {
   display: inline-block;
-  padding: 6px 8px;
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-sm);
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.role-tnv {
+  background: var(--primary-light);
   color: var(--primary);
-  font-size: 0.85rem;
+}
+
+.role-cbl {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.role-dangvien {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.recognition-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 600;
   text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.recognition-profile-link::after {
+  content: "→";
+  font-size: 0.9em;
+  transition: transform var(--transition-fast);
 }
 
 .recognition-profile-link:hover,
 .recognition-profile-link:focus-visible {
-  background: var(--primary-light);
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(242, 81, 31, 0.35);
 }
 
-.recognition-table-controls {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 18px;
+.recognition-profile-link:hover::after,
+.recognition-profile-link:focus-visible::after {
+  transform: translateX(3px);
 }
 
-.recognition-detail-toggle {
-  padding: 7px 11px;
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--primary);
-  font: inherit;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.recognition-detail-toggle:hover,
-.recognition-detail-toggle:focus-visible {
-  background: var(--primary-light);
-}
-
-.recognition-table tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-.recognition-table tbody tr:nth-child(even) {
-  background: var(--primary-light);
+@media (max-width: 640px) {
+  .recognition-table th,
+  .recognition-table td {
+    padding: 10px 12px;
+  }
 }
 
 .page-header {

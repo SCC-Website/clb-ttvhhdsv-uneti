@@ -758,7 +758,7 @@ function initRecognitionTableDetails() {
   toggle.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!isExpanded));
-    toggle.textContent = isExpanded ? '[xem chi tiết]' : '[ẩn chi tiết]';
+    toggle.textContent = isExpanded ? 'Xem chi tiết' : 'Ẩn chi tiết';
     tableWrapper.hidden = isExpanded;
   });
 }
