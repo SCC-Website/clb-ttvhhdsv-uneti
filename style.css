@@ -152,9 +152,15 @@ a:hover {
 }
 
 .recognition-detail-toggle::before {
-  content: "▾";
-  font-size: 0.8em;
-  line-height: 1;
+  content: "";
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 6px;
+  vertical-align: 0;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain;
   transition: transform var(--transition-fast);
 }
 
@@ -305,8 +311,15 @@ a:hover {
 }
 
 .recognition-profile-link::after {
-  content: "→";
-  font-size: 0.9em;
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 4px;
+  vertical-align: -0.12em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") no-repeat center / contain;
   transition: transform var(--transition-fast);
 }
 
@@ -1266,18 +1279,35 @@ footer#sharedFooter {
 }
 
 .copy-value::after {
-  content: "  ⧉";
-  color: var(--secondary);
-  font-size: .85em;
-  opacity: .8;
+  content: "";
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  margin-left: 6px;
+  vertical-align: -0.1em;
+  background-color: var(--secondary);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='14' height='14' x='8' y='8' rx='2' ry='2'/%3E%3Cpath d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='14' height='14' x='8' y='8' rx='2' ry='2'/%3E%3Cpath d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 .copy-value.is-copied {
   color: #86efac;
 }
 
+.copy-value.is-copied::before {
+  content: "";
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  margin-right: 6px;
+  vertical-align: -0.1em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
 .copy-value.is-copied::after {
-  content: "  ✓ Đã sao chép";
+  content: "Đã sao chép";
 }
 
 .footer-info-item b,
@@ -3467,3 +3497,26 @@ footer#sharedFooter::before {
   .track { animation: none; }
   .js-reveal .reveal { opacity: 1; transform: none; }
 }
+
+/* --- Icon SVG thay thế emoji ---
+   Icon stroke "currentColor" nên tự ăn theo màu chữ của ngữ cảnh đang đứng
+   (badge, tiêu đề card, nút bấm...), kích thước 1em để luôn khớp cỡ chữ. */
+.icon-svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.14em;
+  flex-shrink: 0;
+}
+
+/* Ngữ cảnh riêng: icon mang màu nhấn thương hiệu của CLB */
+.event-title .icon-svg,
+.section-title .icon-svg,
+.info-card .info-label .icon-svg,
+.avatar-cta-card .icon-svg,
+.gen5-overlay-timeline .icon-svg,
+.reg-closed-badge .icon-svg {
+  color: var(--primary);
+}
+.contact-tile-icon { color: var(--primary); }
+.achievement-icon { color: var(--primary); }
