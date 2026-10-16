@@ -124,6 +124,81 @@ a:hover {
   text-align: center;
 }
 
+.recognition-page {
+  padding-bottom: 40px;
+}
+
+.recognition-hero {
+  max-width: 1200px;
+  margin: 24px auto 32px;
+  padding: 36px;
+  color: #fff;
+  background: var(--hero-gradient);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.recognition-hero h1 {
+  margin: 14px 0;
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
+  line-height: 1.2;
+}
+
+.recognition-hero p {
+  max-width: 620px;
+  line-height: 1.7;
+  opacity: 0.94;
+}
+
+.recognition-hero .section-tag {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.recognition-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.recognition-gallery-card {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.recognition-gallery .gallery-item {
+  height: auto;
+  aspect-ratio: auto;
+}
+
+.recognition-gallery .gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.recognition-gallery-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 4px 4px;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.recognition-gallery-card figcaption span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
 .recognition-table-controls {
   display: flex;
   justify-content: center;
@@ -334,6 +409,27 @@ a:hover {
 .recognition-profile-link:hover::after,
 .recognition-profile-link:focus-visible::after {
   transform: translateX(3px);
+}
+
+.recognition-annual-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 20px;
+  margin: 0 auto 28px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--gold-gradient);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.recognition-annual-card h3 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 1.05rem;
 }
 
 @media (max-width: 640px) {
@@ -1355,6 +1451,12 @@ footer#sharedFooter {
 }
 
 @media (max-width: 897px) {
+  .recognition-hero {
+    margin-right: 12px;
+    margin-left: 12px;
+    padding: 28px;
+  }
+
   .main-nav {
     display: flex;
     flex-direction: column;
@@ -1454,6 +1556,12 @@ footer#sharedFooter {
 }
 
 @media (max-width: 480px) {
+  .recognition-hero {
+    margin-right: 8px;
+    margin-left: 8px;
+    padding: 22px 18px;
+  }
+
   .main-nav .menu li a {
     font-size: 0.8rem;
     padding: 6px 10px;
@@ -2308,6 +2416,10 @@ a.achievement-card p {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
+  }
+
+  .recognition-gallery {
+    grid-template-columns: 1fr;
   }
 
   .lightbox-nav {

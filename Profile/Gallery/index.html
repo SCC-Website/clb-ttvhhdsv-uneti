@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trái Tim dành cho CLB Tuyên truyền Văn hoá học đường Sinh viên</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one full-bleed canvas stage; the heart sits centered in the space above a bottom caption. Single deliberate dark look (plum night, rose light). */
+:root {
+  color-scheme: dark;
+  --plum-950: #12030a;
+  --plum-850: #2b0818;
+  --plum-700: #3c0c24;
+  --rose: #ff5c8a;
+  --crimson: #e0123f;
+  --blush: #ffc7d7;
+  --ink: #fff1f5;
+  --font-display: 'Dancing Script', 'Segoe Script', 'Brush Script MT', cursive;
+  --font-body: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+html { box-sizing: border-box; height: 100%; overflow: hidden; }
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--plum-950);
+  background-image: radial-gradient(120% 90% at 50% 38%, var(--plum-700) 0%, var(--plum-850) 38%, var(--plum-950) 82%);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+#stage {
+  position: fixed;
+  inset: 0;
+  display: block;
+  touch-action: none;
+}
+.caption {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px calc(18px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  pointer-events: none;
+}
+.caption h1 {
+  margin: 0;
+  font: 600 clamp(2.1rem, 7vw, 3.6rem) / 1.05 var(--font-display);
+  color: var(--ink);
+  text-shadow: 0 0 28px rgba(255, 92, 138, 0.55);
+  text-wrap: balance;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 16px;
+}
+.meta {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--blush);
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+#burst {
+  pointer-events: auto;
+  font: 500 0.9rem var(--font-body);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: rgba(255, 92, 138, 0.18);
+  border: 1px solid rgba(255, 199, 215, 0.5);
+  border-radius: 999px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.12s;
+}
+#burst:hover { background: rgba(255, 92, 138, 0.34); }
+#burst:active { transform: scale(0.96); }
+#burst:focus-visible { outline: 2px solid var(--blush); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  #burst { transition: none; }
+}
+</style>
+
+</head>
+<body>
+<main>
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <header class="caption" id="caption">
+    <h1>Hôm nay thấy mọi người làm việc rất mệt mỏi nên em dành tặng cho tất cả mọi người!!</h1>
+    <div class="row">
+      <p class="meta">Đã đập <span id="beats">0</span> nhịp</p>
+      <button id="burst" type="button">Thả tim</button>
+    </div>
+  </header>
+</main>
+
+<script>
+(() => {
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+  const beatsEl = document.getElementById('beats');
+  const caption = document.getElementById('caption');
+  const burstBtn = document.getElementById('burst');
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const TAU = Math.PI * 2;
+  const PALETTE = ['#ff5c8a', '#ff8fb1', '#ffc2d4', '#ff3d71', '#ffb3c7', '#fff0f4'];
+  const DUST = ['#ff9db8', '#ffc2d4', '#fff0f4', '#ff5c8a', '#ffd9e3'];
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const pick = (arr) => arr[(Math.random() * arr.length) | 0];
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  // Classic heart curve. Units: x in [-16,16], y in [-17,12] (y up). Visual centre at y = -2.5.
+  const hp = (t) => [
+    16 * Math.pow(Math.sin(t), 3),
+    13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)
+  ];
+
+  const heartPath = new Path2D();
+  for (let i = 0; i <= 180; i++) {
+    const [x, y] = hp((i / 180) * TAU);
+    if (i) heartPath.lineTo(x, y); else heartPath.moveTo(x, y);
+  }
+  heartPath.closePath();
+
+  // Small heart, radius ~1, y down, for floating hearts.
+  const miniPath = new Path2D();
+  for (let i = 0; i <= 72; i++) {
+    const [x, y] = hp((i / 72) * TAU);
+    const px = x / 17, py = -(y + 2.5) / 17;
+    if (i) miniPath.lineTo(px, py); else miniPath.moveTo(px, py);
+  }
+  miniPath.closePath();
+
+  // Twinkles living inside the heart.
+  const inner = [];
+  for (let i = 0; i < 110; i++) {
+    const [x, y] = hp(rand(0, TAU));
+    const r = Math.sqrt(Math.random()) * 0.97;
+    inner.push({ x: x * r, y: y * r, ph: rand(0, TAU), sp: rand(1.2, 3.4), size: rand(0.08, 0.3) });
+  }
+
+  let W = 0, H = 0, dpr = 1, s = 10, cx = 0, cy = 0;
+  let sc = 1, offX = 0, offY = 0, tilt = 0;
+  const ptr = { x: 0, y: 0, has: false, lx: -999, ly: -999 };
+  let beats = 0, lastIdx = -1, T = 0;
+  const ambient = [], bursts = [], dust = [], echoes = [];
+  let ambientAcc = 0;
+
+  function layout() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    const reserve = caption.offsetHeight + 12;
+    const availH = Math.max(120, H - reserve - 20);
+    s = Math.max(4, Math.min((W - 32) / 32 / 1.1, availH / 29 / 1.1));
+    cx = W / 2;
+    cy = 20 + availH / 2 - 2.5 * s;
+  }
+
+  function spawnAmbient(initial) {
+    const size = rand(5, 15) * (W < 520 ? 0.8 : 1);
+    const vy = -rand(26, 70);
+    const y0 = initial ? rand(H * 0.08, H) : H + 20;
+    ambient.push({
+      x: rand(0, W), y: y0, vx: 0, vy, drag: 0, buoy: 0,
+      sway: rand(6, 22), sf: rand(0.6, 1.4), ph: rand(0, TAU),
+      age: 0, max: (y0 + 40) / -vy, size, rot: rand(-0.5, 0.5), vr: rand(-0.4, 0.4),
+      col: pick(PALETTE), al: rand(0.28, 0.6)
+    });
+  }
+
+  function dustFromHeart(n) {
+    if (dust.length > 420) return;
+    const ox = cx + offX, oy = cy + offY;
+    const ccx = ox, ccy = oy + 2.5 * s * sc;
+    for (let i = 0; i < n; i++) {
+      const [hx, hy] = hp(rand(0, TAU));
+      const k = rand(0.97, 1.06);
+      const x = ox + hx * k * s * sc, y = oy - hy * k * s * sc;
+      let dx = x - ccx, dy = y - ccy;
+      const L = Math.hypot(dx, dy) || 1;
+      dx /= L; dy /= L;
+      const sp = rand(18, 80) * (s / 12);
+      dust.push({ x, y, vx: dx * sp, vy: dy * sp - 10, age: 0, max: rand(0.9, 2.1), size: rand(0.8, 2.8), col: pick(DUST), star: Math.random() < 0.22 });
+    }
+  }
+
+  function sprinkle(x, y) {
+    for (let i = 0; i < 2 && dust.length < 520; i++) {
+      dust.push({ x, y, vx: rand(-30, 30), vy: rand(-50, -5), age: 0, max: rand(0.6, 1.3), size: rand(0.8, 2.2), col: pick(DUST), star: Math.random() < 0.3 });
+    }
+  }
+
+  function burst(x, y, n) {
+    const small = W < 520 ? 0.8 : 1;
+    for (let i = 0; i < n && bursts.length < 240; i++) {
+      const a = rand(-Math.PI * 0.96, -Math.PI * 0.04);
+      const sp = rand(110, 380) * small;
+      bursts.push({
+        x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, drag: 1.5, buoy: -34,
+        sway: 0, sf: 0, ph: 0, age: 0, max: rand(1.8, 3.2),
+        size: rand(9, 26) * small, rot: rand(-0.6, 0.6), vr: rand(-1.6, 1.6),
+        col: pick(PALETTE), al: rand(0.8, 1)
+      });
+    }
+    for (let i = 0; i < n * 2 && dust.length < 520; i++) {
+      const a = rand(0, TAU), sp = rand(30, 200);
+      dust.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, age: 0, max: rand(0.6, 1.5), size: rand(0.8, 2.6), col: pick(DUST), star: Math.random() < 0.3 });
+    }
+  }
+
+  function stepHearts(arr, dt) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+      const p = arr[i];
+      p.age += dt;
+      if (p.age >= p.max) { arr.splice(i, 1); continue; }
+      if (p.drag) { const d = Math.exp(-p.drag * dt); p.vx *= d; p.vy *= d; }
+      p.vy += p.buoy * dt;
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.rot += p.vr * dt;
+    }
+  }
+
+  function drawHearts(arr) {
+    for (const p of arr) {
+      const fin = Math.min(1, p.age / 0.25);
+      const fout = Math.min(1, (p.max - p.age) / (p.max * 0.35));
+      const a = p.al * fin * fout;
+      if (a <= 0.01) continue;
+      const x = p.x + (p.sway ? Math.sin(p.ph + p.age * p.sf) * p.sway : 0);
+      ctx.save();
+      ctx.translate(x, p.y);
+      ctx.rotate(p.rot);
+      ctx.scale(p.size, p.size);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = p.col;
+      ctx.fill(miniPath);
+      ctx.globalAlpha = a * 0.55;
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.ellipse(-0.46, -0.5, 0.17, 0.1, -0.7, 0, TAU);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  function stepDust(dt) {
+    for (let i = dust.length - 1; i >= 0; i--) {
+      const d = dust[i];
+      d.age += dt;
+      if (d.age >= d.max) { dust.splice(i, 1); continue; }
+      const k = Math.exp(-0.8 * dt);
+      d.vx *= k; d.vy = d.vy * k - 8 * dt;
+      d.x += d.vx * dt; d.y += d.vy * dt;
+    }
+  }
+
+  function drawDust() {
+    ctx.globalCompositeOperation = 'lighter';
+    for (const d of dust) {
+      const a = 1 - d.age / d.max;
+      ctx.globalAlpha = Math.min(1, a * 1.2) * 0.9;
+      ctx.fillStyle = d.col;
+      if (d.star) {
+        const L = d.size * 3.2 * a + 1;
+        ctx.fillRect(d.x - L, d.y - 0.4, L * 2, 0.8);
+        ctx.fillRect(d.x - 0.4, d.y - L, 0.8, L * 2);
+      }
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.size * (0.4 + 0.6 * a), 0, TAU);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  const g = (p, c, w) => Math.exp(-Math.pow((p - c) / w, 2));
+  const PERIOD = 1.15;
+
+  function drawHeart(pulse) {
+    ctx.save();
+    ctx.translate(cx + offX, cy + offY);
+    ctx.rotate(tilt);
+    ctx.scale(s * sc, -s * sc);
+
+    // body with glow
+    const body = ctx.createLinearGradient(-14, 12, 12, -17);
+    body.addColorStop(0, '#ff9db8');
+    body.addColorStop(0.42, '#f2275f');
+    body.addColorStop(1, '#7d0a2c');
+    ctx.save();
+    ctx.shadowColor = 'rgba(255, 45, 110, 0.85)';
+    ctx.shadowBlur = (22 + 22 * pulse) * dpr;
+    ctx.fillStyle = body;
+    ctx.fill(heartPath);
+    ctx.restore();
+
+    // shading, gloss and twinkles clipped to the heart
+    ctx.save();
+    ctx.clip(heartPath);
+
+    const hi = ctx.createRadialGradient(-6, 7, 0, -6, 7, 15);
+    hi.addColorStop(0, 'rgba(255,255,255,0.55)');
+    hi.addColorStop(0.35, 'rgba(255,190,210,0.18)');
+    hi.addColorStop(1, 'rgba(255,120,160,0)');
+    ctx.fillStyle = hi;
+    ctx.fillRect(-20, -20, 40, 40);
+
+    const warm = ctx.createRadialGradient(2, -9, 0, 2, -9, 14);
+    warm.addColorStop(0, 'rgba(255,60,110,0.4)');
+    warm.addColorStop(1, 'rgba(255,60,110,0)');
+    ctx.fillStyle = warm;
+    ctx.fillRect(-20, -20, 40, 40);
+
+    const rim = ctx.createRadialGradient(0, -2, 0, 0, -2, 20);
+    rim.addColorStop(0.6, 'rgba(60,0,20,0)');
+    rim.addColorStop(1, 'rgba(60,0,20,0.38)');
+    ctx.fillStyle = rim;
+    ctx.fillRect(-20, -20, 40, 40);
+
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of inner) {
+      const a = Math.pow(Math.max(0, Math.sin(T * p.sp + p.ph)), 3);
+      if (a < 0.03) continue;
+      ctx.fillStyle = 'rgba(255,235,242,' + (a * 0.85).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, TAU);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 0.9;
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath();
+    ctx.arc(-8, 4.6, 6.2, 1.75, 2.9);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.beginPath();
+    ctx.arc(-10.6, 8.6, 0.55, 0, TAU);
+    ctx.fill();
+    ctx.restore();
+
+    // rim line
+    ctx.lineWidth = 0.28;
+    ctx.strokeStyle = 'rgba(255,205,220,0.55)';
+    ctx.stroke(heartPath);
+
+    // echo rings that leave the heart on every beat
+    for (let i = echoes.length - 1; i >= 0; i--) {
+      const age = T - echoes[i];
+      if (age > 1.8) { echoes.splice(i, 1); continue; }
+      const k = 1 + (age / 1.8) * 0.45;
+      const a = (1 - age / 1.8) * 0.55;
+      ctx.save();
+      ctx.translate(0, -2.5);
+      ctx.scale(k, k);
+      ctx.translate(0, 2.5);
+      ctx.lineWidth = 0.22 / k;
+      ctx.strokeStyle = 'rgba(255,130,170,' + a.toFixed(3) + ')';
+      ctx.stroke(heartPath);
+      ctx.restore();
+    }
+    ctx.restore();
+  }
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    T += dt;
+
+    const p = (T % PERIOD) / PERIOD;
+    const pulse = g(p, 0.06, 0.05) + 0.65 * g(p, 0.3, 0.06);
+    sc = 1 + (reduce ? 0.012 : 0.055) * pulse;
+
+    const idx = Math.floor(T / PERIOD);
+    if (idx !== lastIdx) {
+      lastIdx = idx;
+      beats++;
+      beatsEl.textContent = beats;
+      echoes.push(T);
+      dustFromHeart(reduce ? 4 : 16);
+    }
+
+    const tx = ptr.has && !reduce ? (ptr.x - W / 2) / W : 0;
+    const ty = ptr.has && !reduce ? (ptr.y - H / 2) / H : 0;
+    const k = 1 - Math.exp(-4 * dt);
+    tilt += (tx * 0.12 - tilt) * k;
+    offX += (tx * 18 - offX) * k;
+    offY += (ty * 12 - offY) * k;
+
+    ambientAcc += dt * (reduce ? 0.5 : 1.6) * clamp(W / 900, 0.6, 1.5);
+    while (ambientAcc >= 1) {
+      ambientAcc -= 1;
+      if (ambient.length < 90) spawnAmbient(false);
+    }
+    stepHearts(ambient, dt);
+    stepHearts(bursts, dt);
+    stepDust(dt);
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // soft light behind the heart
+    const gx = cx + offX, gy = cy + offY + 2.5 * s;
+    const glow = ctx.createRadialGradient(gx, gy, 0, gx, gy, s * 30);
+    glow.addColorStop(0, 'rgba(255,40,100,' + (0.3 + 0.22 * pulse).toFixed(3) + ')');
+    glow.addColorStop(0.5, 'rgba(180,20,70,0.12)');
+    glow.addColorStop(1, 'rgba(180,20,70,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    drawHearts(ambient);
+    drawHeart(pulse);
+    drawDust();
+    drawHearts(bursts);
+
+    requestAnimationFrame(frame);
+  }
+
+  canvas.addEventListener('pointerdown', (e) => burst(e.clientX, e.clientY, reduce ? 8 : 16));
+  canvas.addEventListener('pointermove', (e) => {
+    ptr.x = e.clientX; ptr.y = e.clientY; ptr.has = true;
+    if (Math.hypot(e.clientX - ptr.lx, e.clientY - ptr.ly) > 16) {
+      ptr.lx = e.clientX; ptr.ly = e.clientY;
+      if (!reduce) sprinkle(e.clientX, e.clientY);
+    }
+  });
+  canvas.addEventListener('pointerleave', () => { ptr.has = false; });
+  burstBtn.addEventListener('click', () => {
+    burst(cx + offX, cy + offY + 2.5 * s * sc, reduce ? 10 : 22);
+    echoes.push(T);
+  });
+
+  window.addEventListener('resize', layout);
+  layout();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  const startCount = clamp(Math.round((W * H) / 45000), 14, 36);
+  for (let i = 0; i < startCount; i++) spawnAmbient(true);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

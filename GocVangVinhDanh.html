@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Góc vinh danh thành viên CLB SCC UNETI có thành tích xuất sắc trong năm học 2025-2026.">
+  <title>Góc vinh danh | CLB Tuyên truyền Văn hoá học đường Sinh viên UNETI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link id="siteFavicon" rel="icon" type="image/png" sizes="192x192" href="Image/SCC-Logo.png?v=2">
+</head>
+<body>
+  <div class="top-banner">
+    <img src="Image/Header.png" alt="CLB SCC UNETI">
+  </div>
+
+  <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính"></nav>
+
+  <header class="recognition-hero">
+    <div>
+      <span class="section-tag">Góc vinh danh sinh viên</span>
+      <h1>Thành viên SCC có thành tích xuất sắc trong năm học 2025-2026</h1>
+      <p>Trân trọng ghi nhận những nỗ lực, thành tích và đóng góp nổi bật của các thành viên SCC.</p>
+    </div>
+  </header>
+
+  <main class="container recognition-page">
+    <section class="culture-section" aria-labelledby="recognition-title">
+      <div class="section-header">
+        <span class="section-tag">Năm học 2025-2026</span>
+        <h2 class="section-title" id="recognition-title">Thành viên được vinh danh</h2>
+        <p class="section-desc">Sinh viên có thành tích xuất sắc năm học 2025-2026. [Đang cập nhật!]</p>
+      </div>
+      <div class="gallery-grid recognition-gallery" id="profileGallery">
+        <figure class="recognition-gallery-card">
+          <button type="button" class="gallery-item" data-caption="Trần Thế Phú (DHTD17A2HN) - Chủ nhiệm">
+            <img src="VinhDanh/GocVD/TranThePhuDHTD17A2HN.jpg" alt="Trần Thế Phú (DHTD17A2HN) - Chủ nhiệm" loading="lazy">
+          </button>
+          <figcaption>Trần Thế Phú <span>DHTD17A2HN · Chủ nhiệm</span><a class="recognition-profile-link" href="Profile/TranThePhu_DHTD17A2HN.html">Xem profile</a></figcaption>
+        </figure>
+        <figure class="recognition-gallery-card">
+          <button type="button" class="gallery-item" data-caption="Dương Thị Kim Anh (DHTN17A3HN) - Phó chủ nhiệm">
+            <img src="VinhDanh/GocVD/DuongThiKimAnhDHTN17A3HN.jpg" alt="Dương Thị Kim Anh (DHTN17A3HN) - Phó chủ nhiệm" loading="lazy">
+          </button>
+          <figcaption>Dương Thị Kim Anh <span>DHTN17A3HN · Phó chủ nhiệm</span><a class="recognition-profile-link" href="Profile/DuongThiKimAnh_DHTN17A3HN.html">Xem profile</a></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Xem ảnh vinh danh">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Đóng (Esc)"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Ảnh trước"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImage">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <p class="lightbox-counter" id="lightboxCounter"></p>
+    </div>
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Ảnh tiếp theo"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

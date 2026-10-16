@@ -65,6 +65,7 @@ const navigationItems = [
   { path: 'index.html', label: 'Trang chủ' },
   { path: 'VHHD.html', label: 'Văn hoá học đường sinh viên' },
   { path: 'News.html', label: 'Tin tức' },
+  { path: 'GocVangVinhDanh.html', label: 'Góc vinh danh' },
   { path: 'Member.html', label: 'Thành viên' },
   { path: 'Contact.html', label: 'Liên hệ' },
   { path: 'SignUpToSCC.html', label: 'Đăng kí tham gia' }
