@@ -294,10 +294,111 @@ function bindCopyButtons() {
   });
 }
 
+function initFilterChips() {
+  document.querySelectorAll('[data-filter-chip-group]').forEach(group => {
+    const filterGroup = group.dataset.filterChipGroup;
+    if (!filterGroup) {
+      return;
+    }
+
+    const buttons = Array.from(group.querySelectorAll('[data-filter-chip]'));
+    const itemSelector = `[data-filter-${filterGroup}-item]`;
+    const headingSelector = `[data-filter-${filterGroup}-heading]`;
+    const filterSelector = `${itemSelector}, ${headingSelector}`;
+    const items = Array.from(document.querySelectorAll(itemSelector));
+    const headings = Array.from(document.querySelectorAll(headingSelector));
+    const cap = filterGroup[0].toUpperCase() + filterGroup.slice(1);
+    const itemKey = `filter${cap}Item`;
+    const headingKey = `filter${cap}Heading`;
+
+    if (!buttons.length || !items.length) {
+      return;
+    }
+
+    // Các khối bọc ngoài (section/div) không có data-filter nhưng chứa nội dung được lọc.
+    // Khi toàn bộ nội dung bên trong bị ẩn thì ẩn luôn khối bọc để không còn khoảng trống (padding) thừa.
+    const wrappers = Array.from(document.querySelectorAll('main section, main div')).filter(el =>
+      !el.matches(filterSelector) &&
+      !group.contains(el) &&
+      el.querySelector(filterSelector)
+    );
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeFilter = buttons.some(button => button.dataset.filterChip === 'all') ? 'all' : null;
+
+    // CSS như .member-grid { display: grid } ghi đè thuộc tính [hidden] của trình duyệt,
+    // nên phải đặt display trực tiếp thì phần tử mới thực sự bị ẩn.
+    function setHidden(el, hide) {
+      el.hidden = hide;
+      el.style.display = hide ? 'none' : '';
+    }
+
+    function render() {
+      buttons.forEach(button => {
+        const isActive = button.dataset.filterChip === activeFilter;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+
+      items.forEach(item => {
+        setHidden(item, activeFilter !== null && activeFilter !== 'all' && item.dataset[itemKey] !== activeFilter);
+      });
+
+      headings.forEach(heading => {
+        setHidden(heading, activeFilter !== null && activeFilter !== 'all' && heading.dataset[headingKey] !== activeFilter);
+      });
+
+      wrappers.forEach(wrapper => {
+        const hasVisibleContent = Array.from(wrapper.querySelectorAll(filterSelector)).some(el => !el.hidden);
+        setHidden(wrapper, !hasVisibleContent);
+      });
+    }
+
+    function applyFilter(value) {
+      if (value === activeFilter) {
+        return;
+      }
+
+      // Neo vị trí: ghi nhớ vị trí thanh chip trên màn hình trước khi đổi nội dung,
+      // sau đó bù lại phần lệch để trang không bị "nhảy" khi chiều cao thay đổi.
+      const topBefore = group.getBoundingClientRect().top;
+
+      activeFilter = value;
+      render();
+
+      const delta = group.getBoundingClientRect().top - topBefore;
+      if (delta !== 0) {
+        const root = document.documentElement;
+        const previousBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto'; // tắt cuộn mượt toàn trang để bù vị trí tức thì
+        window.scrollBy(0, delta);
+        root.style.scrollBehavior = previousBehavior;
+      }
+
+      if (activeFilter !== null && activeFilter !== 'all') {
+        const target = headings.find(heading => heading.dataset[headingKey] === activeFilter)
+          || items.find(item => item.dataset[itemKey] === activeFilter);
+        if (target) {
+          window.requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+          });
+        }
+      }
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => applyFilter(button.dataset.filterChip));
+    });
+
+    render();
+  });
+}
+
 renderFavicon();
 renderNavigation();
 renderFooter();
 bindCopyButtons();
+initFilterChips();
 
 function initGalleryLightbox() {
   const gallery = document.getElementById('profileGallery');

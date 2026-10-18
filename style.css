@@ -739,6 +739,51 @@ header.hero-header::before {
   margin: 0 auto;
 }
 
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 28px;
+}
+
+.filter-chip {
+  padding: 9px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.filter-chip:hover {
+  border-color: var(--border-accent);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.filter-chip.is-active {
+  border-color: transparent;
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.25);
+}
+
+.filter-chip:focus-visible {
+  outline: 3px solid rgba(242, 81, 31, 0.35);
+  outline-offset: 3px;
+}
+
+.section-padding[data-filter-member-item],
+.section-header[data-filter-member-heading],
+h2[data-filter-member-heading] {
+  scroll-margin-top: 100px;
+}
+
 /* --- Overview Section --- */
 .overview-card {
   background: var(--surface);

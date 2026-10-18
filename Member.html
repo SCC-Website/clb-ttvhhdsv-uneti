@@ -58,8 +58,18 @@
       </div>
     </section>
 
+    <div class="filter-chips" role="group" aria-label="Lọc nội dung thành viên" data-filter-chip-group="member">
+      <button class="filter-chip is-active" type="button" data-filter-chip="all" aria-pressed="true">Tất cả</button>
+      <button class="filter-chip" type="button" data-filter-chip="roles" aria-pressed="false">Ban hoạt động</button>
+      <button class="filter-chip" type="button" data-filter-chip="gen5-board" aria-pressed="false">Ban Chủ nhiệm Gen 5</button>
+      <button class="filter-chip" type="button" data-filter-chip="gen5-specialist" aria-pressed="false">Ban Chuyên môn Gen 5</button>
+      <button class="filter-chip" type="button" data-filter-chip="gen4-board" aria-pressed="false">Ban Chủ nhiệm Gen 4</button>
+      <button class="filter-chip" type="button" data-filter-chip="staff" aria-pressed="false">Thầy cô & Cán bộ</button>
+      <button class="filter-chip" type="button" data-filter-chip="recognition" aria-pressed="false">Góc vinh danh</button>
+    </div>
+
     <!-- Ban & Hoạt động Section -->
-    <section id="roles" class="section-padding">
+    <section id="roles" class="section-padding" data-filter-member-item="roles">
       <div class="section-header">
         <span class="section-tag">Cơ cấu tổ chức</span>
         <h2 class="section-title">Các Ban & Hoạt động</h2>
@@ -121,13 +131,13 @@
 
     <!-- Thành viên Ban Chủ nhiệm Gen 5 Section -->
     <section id="ban-chu-nhiem-gen5" class="section-padding">
-      <div class="section-header">
+      <div class="section-header" data-filter-member-heading="gen5-board">
         <span class="section-tag">Nhiệm kỳ 2026 - 2027</span>
         <h2 class="section-title">Thành viên Ban Chủ nhiệm Gen 5</h2>
         <p class="section-desc">Đội ngũ nòng cốt dẫn dắt CLB SCC bước vào chặng đường mới cùng thế hệ Gen 5</p>
       </div>
 
-      <div class="member-grid">
+      <div class="member-grid" data-filter-member-item="gen5-board">
         <a class="member-card" href="Profile/TranThePhu_DHTD17A2HN.html">
           <div class="member-image-wrapper">
             <img src="Image/BCN 5/TranThePhu.jpg" alt="Trần Thế Phú">
@@ -218,10 +228,10 @@
           </ul>
         </article>
       </div>
-      <div class="section-header">
+      <div class="section-header" data-filter-member-heading="gen5-specialist">
       <h2 class="section-title">Thành viên Chuyên môn Gen 5</h2>
       </div>
-      <div class="member-grid">
+      <div class="member-grid" data-filter-member-item="gen5-specialist">
         <a class="member-card" href="Profile/TrinhNgocCong_DHDI17A1CL.html">
           <div class="member-image-wrapper">
             <img src="Image/BCN 5/TrinhNgocCong.jpg" alt="Trịnh Ngọc Công">
@@ -413,15 +423,16 @@
           </div>
       </a>
       </div>
+    </section>
 
-    <!-- Thành viên Ban Chủ nhiệm Gen 5 Section -->
-    <section id="ban-chu-nhiem-gen5" class="section-padding">
-      <div class="section-header">
+    <!-- Thành viên Ban Chủ nhiệm Gen 4 Section -->
+    <section id="ban-chu-nhiem-gen4" class="section-padding">
+      <div class="section-header" data-filter-member-heading="gen4-board">
         <span class="section-tag">Nhiệm kỳ 2025 - 2026</span>
         <h2 class="section-title">Thành viên Ban Chủ nhiệm Gen 4</h2>
       </div>
 
-      <div class="member-grid">
+      <div class="member-grid" data-filter-member-item="gen4-board">
         <a class="member-card" href="Profile/TranThePhu_DHTD17A2HN.html">
           <div class="member-image-wrapper">
             <img src="Image/BCN 4/TranThePhu.jpg" alt="Trần Thế Phú">
@@ -533,9 +544,12 @@
           </ul>
         </a>
       </div>
+    </section>
 
-      <h2>Thầy Cô & Cán bộ Phụ trách</h2>
-        <div class="member-grid">
+    <!-- Thầy cô & Cán bộ Section -->
+    <section id="thay-co-can-bo" class="section-padding">
+      <h2 data-filter-member-heading="staff">Thầy Cô & Cán bộ Phụ trách</h2>
+        <div class="member-grid" data-filter-member-item="staff">
         <article class="member-card">
           <h3>Cô Nguyễn Thị Thảo Mai</h3>
           <p class="class-name">Ủy viên Ban Thường Vụ Đoàn TN Trường</p>
@@ -585,10 +599,9 @@
           <p class="class-name">Trưởng phòng CT&CTSV</p>
         </article>
         </div>
-      </div>
     </section>
 
-    <section id="vinh-danh" class="section-padding">
+    <section id="vinh-danh" class="section-padding" data-filter-member-item="recognition">
       <div class="section-header">
         <span class="section-tag">Góc vàng vinh danh</span><br>
         <h2 class="section-title">Vinh danh năm học 2025-2026</h2>
