@@ -297,7 +297,7 @@ function bindCopyButtons() {
 function initFilterChips() {
   document.querySelectorAll('[data-filter-chip-group]').forEach(group => {
     const filterGroup = group.dataset.filterChipGroup;
-    if (!filterGroup) {
+    if (!filterGroup || filterGroup === 'news') {
       return;
     }
 
@@ -399,6 +399,8 @@ renderNavigation();
 renderFooter();
 bindCopyButtons();
 initFilterChips();
+initNewsPagination();
+initContestToggles();
 
 function initGalleryLightbox() {
   const gallery = document.getElementById('profileGallery');
@@ -867,3 +869,169 @@ function initRecognitionTableDetails() {
 
 initRecognitionTableDetails();
 initScrollEnhancements();
+
+function initNewsPagination() {
+  const newsGrid = document.getElementById('newsGrid') || document.querySelector('.events-featured-grid');
+  if (!newsGrid) {
+    return;
+  }
+
+  const articles = Array.from(newsGrid.querySelectorAll('.event-card'));
+  if (!articles.length) {
+    return;
+  }
+
+  const paginationNav = document.getElementById('newsPagination');
+  const prevBtn = document.getElementById('newsPrevBtn');
+  const nextBtn = document.getElementById('newsNextBtn');
+  const pagesContainer = document.getElementById('newsPaginationPages');
+  const statusEl = document.getElementById('newsPaginationStatus');
+  const filterGroup = document.querySelector('[data-filter-chip-group="news"]');
+  const filterButtons = filterGroup ? Array.from(filterGroup.querySelectorAll('[data-filter-chip]')) : [];
+
+  const ITEMS_PER_PAGE = 9;
+  let currentPage = 1;
+  let currentFilter = 'all';
+
+  function getMatchingArticles() {
+    return articles.filter(article => {
+      if (currentFilter === 'all') return true;
+      return article.dataset.filterNewsItem === currentFilter;
+    });
+  }
+
+  function updatePagination() {
+    const matching = getMatchingArticles();
+    const totalPages = Math.ceil(matching.length / ITEMS_PER_PAGE) || 1;
+
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+    if (currentPage < 1) {
+      currentPage = 1;
+    }
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const currentBatch = new Set(matching.slice(startIndex, endIndex));
+
+    articles.forEach(article => {
+      const isVisible = currentBatch.has(article);
+      article.hidden = !isVisible;
+      article.style.display = isVisible ? '' : 'none';
+    });
+
+    if (paginationNav) {
+      paginationNav.style.display = matching.length > 0 ? 'flex' : 'none';
+
+      if (prevBtn) {
+        prevBtn.disabled = currentPage <= 1;
+        prevBtn.setAttribute('aria-disabled', String(currentPage <= 1));
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentPage >= totalPages;
+        nextBtn.setAttribute('aria-disabled', String(currentPage >= totalPages));
+      }
+
+      if (pagesContainer) {
+        pagesContainer.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+          const pageBtn = document.createElement('button');
+          pageBtn.type = 'button';
+          pageBtn.className = 'pagination-btn pagination-page-btn' + (i === currentPage ? ' is-active' : '');
+          pageBtn.textContent = String(i);
+          pageBtn.setAttribute('aria-label', 'Trang ' + i);
+          if (i === currentPage) {
+            pageBtn.setAttribute('aria-current', 'page');
+          }
+          pageBtn.addEventListener('click', () => {
+            if (currentPage !== i) {
+              goToPage(i);
+            }
+          });
+          pagesContainer.appendChild(pageBtn);
+        }
+      }
+    }
+
+    if (statusEl) {
+      if (matching.length === 0) {
+        statusEl.textContent = 'Không có tin tức nào trong danh mục này.';
+      } else {
+        const fromItem = startIndex + 1;
+        const toItem = Math.min(endIndex, matching.length);
+        statusEl.innerHTML = 'Hiển thị <strong>' + fromItem + '–' + toItem + '</strong> trên tổng số <strong>' + matching.length + '</strong> tin tức (Trang <strong>' + currentPage + '</strong> / <strong>' + totalPages + '</strong>)';
+      }
+    }
+  }
+
+  function goToPage(targetPage, shouldScroll = true) {
+    currentPage = targetPage;
+    updatePagination();
+
+    if (shouldScroll) {
+      const scrollTarget = filterGroup || newsGrid;
+      if (scrollTarget) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        scrollTarget.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        goToPage(currentPage - 1);
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const matching = getMatchingArticles();
+      const totalPages = Math.ceil(matching.length / ITEMS_PER_PAGE) || 1;
+      if (currentPage < totalPages) {
+        goToPage(currentPage + 1);
+      }
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filterChip;
+      if (filter === currentFilter) return;
+
+      currentFilter = filter;
+      filterButtons.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('is-active', isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+
+      goToPage(1, false);
+    });
+  });
+
+  updatePagination();
+}
+
+
+function initContestToggles() {
+  document.querySelectorAll('[data-toggle-results]').forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.contest-card');
+      if (!card) return;
+      const resultsWrapper = card.querySelector('.contest-results-wrapper');
+      if (!resultsWrapper) return;
+
+      const isOpen = resultsWrapper.classList.toggle('is-open');
+      button.classList.toggle('is-active', isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+
+      const btnText = button.querySelector('.btn-text');
+      if (btnText) {
+        btnText.textContent = isOpen ? 'Ẩn kết quả' : 'Xem kết quả';
+      }
+    });
+  });
+}

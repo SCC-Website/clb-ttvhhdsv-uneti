@@ -19,81 +19,107 @@
     <h1>Tin tức</h1>
   </header>
   <main class="container">
-    <!-- Events Section -->
+    <!-- Events & News Section -->
     <section id="events" class="section-padding">
       <div class="section-header">
         <span class="section-tag">Bản tin & Sự kiện</span>
-        <h2 class="section-title">Sự kiện tiêu biểu</h2>
-        <p class="section-desc">Cập nhật những hoạt động nổi bật vừa diễn ra. Xem thêm tại trang <a href="News.html">Tin tức</a></p>
+        <h2 class="section-title">Tin tức & Sự kiện tiêu biểu</h2>
+        <p class="section-desc">Cập nhật toàn bộ hoạt động, sự kiện và tiêu điểm tuyên truyền văn hoá học đường mới nhất của CLB SCC UNETI</p>
       </div>
 
       <div class="filter-chips" role="group" aria-label="Lọc tin tức" data-filter-chip-group="news">
         <button class="filter-chip is-active" type="button" data-filter-chip="all" aria-pressed="true">Tất cả</button>
         <button class="filter-chip" type="button" data-filter-chip="events" aria-pressed="false">Sự kiện</button>
         <button class="filter-chip" type="button" data-filter-chip="vhhd" aria-pressed="false">Tuyên truyền VHHĐ</button>
-        <button class="filter-chip" type="button" data-filter-chip="other" aria-pressed="false">Tin tức khác</button>
       </div>
 
-      <div class="events-section" data-filter-news-item="events">
-        <div class="events-featured-grid">
-
-          <article class="event-card">
+      <div class="events-section">
+        <div class="events-featured-grid" id="newsGrid">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">HỖ TRỢ SỰ KIỆN</span>
               <img src="Image/News/ChuongTrinhTuyenDungFoxconn2026.jpg" alt="RECAP SCC HỖ TRỢ CHƯƠNG TRÌNH TUYỂN DỤNG LỚP CÁN BỘ NGUỒN FOXCONN" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"/><path d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14z"/><path d="m5 2 .8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8L5 2z"/></svg> RECAP SCC HỖ TRỢ CHƯƠNG TRÌNH TUYỂN DỤNG LỚP CÁN BỘ NGUỒN FOXCONN <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"/><path d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14z"/><path d="m5 2 .8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8L5 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/18enedQZng/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/18enedQZng/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
-          </article> 
-          
-          <article class="event-card">
+          </article>
+
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">19-24/10/2026</span>
+              <img src="Image/VHHD/Truc_dau_gio_T10_2026_3.jpg" alt="KHỞI ĐẦU NGÀY MỚI CỰC MƯỢT CÙNG SCC" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg> KHỞI ĐẦU NGÀY MỚI CỰC MƯỢT CÙNG SCC <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1CBDNBgGRT/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">19-24/10/2026</span>
+              <img src="Image/VHHD/VHHD_19-24_10_2026.jpg" alt="TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/18awF2Z4KK/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">HỖ TRỢ SỰ KIỆN</span>
               <img src="Image/News/Treo_co_T10_2026.jpg" alt="SCC NHUỘM ĐỎ CƠ SỞ MINH KHAI: KHI NHIỆT HUYẾT THANH XUÂN CÒN RỰC RỠ HƠN NẮNG!" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.5l2.5 5.1 5.6.8-4.05 3.95 0.95 5.6L12 15.3l-5 2.65.95-5.6L3.9 8.4l5.6-.8L12 2.5z"/><path d="M5 21h14"/></svg> SCC NHUỘM ĐỎ CƠ SỞ MINH KHAI: KHI NHIỆT HUYẾT THANH XUÂN CÒN RỰC RỠ HƠN NẮNG! <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.5l2.5 5.1 5.6.8-4.05 3.95 0.95 5.6L12 15.3l-5 2.65.95-5.6L3.9 8.4l5.6-.8L12 2.5z"/><path d="M5 21h14"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1EE1c34d5B/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1EE1c34d5B/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
-          </article> 
+          </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">RECAP SỰ KIỆN</span>
               <img src="Image/News/PhatDongCuocThiPLVSDNLTKVHQ.jpg" alt="RECAP | SCC HỖ TRỢ LỄ PHÁT ĐỘNG CUỘC THI TÌM HIỂU PHÁP LUẬT VỀ SỬ DỤNG NĂNG LƯỢNG TIẾT KIỆM VÀ HIỆU QUẢ NĂM 2026" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 20A7 7 0 0 1 4 13c0-5 8-10 8-10s8 5 8 10a7 7 0 0 1-7 7"/><path d="M12 22V12"/><path d="M12 16c0-3 2-5 5-5"/></svg> RECAP | SCC HỖ TRỢ LỄ PHÁT ĐỘNG CUỘC THI TÌM HIỂU PHÁP LUẬT VỀ SỬ DỤNG NĂNG LƯỢNG TIẾT KIỆM VÀ HIỆU QUẢ NĂM 2026 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 20A7 7 0 0 1 4 13c0-5 8-10 8-10s8 5 8 10a7 7 0 0 1-7 7"/><path d="M12 22V12"/><path d="M12 16c0-3 2-5 5-5"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1FVoRVDX5N/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1FVoRVDX5N/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
-          </article> 
+          </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">RECAP SỰ KIỆN</span>
               <img src="Image/News/20_10_2026.jpg" alt="SCC • 20.10: GỬI TRỌN YÊU THƯƠNG TỚI NHỮNG BÔNG HỒNG RỰC RỠ" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> SCC • 20.10: GỬI TRỌN YÊU THƯƠNG TỚI NHỮNG BÔNG HỒNG RỰC RỠ <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1CZkM5nJXE/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1CZkM5nJXE/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
-          </article>   
+          </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">HỖ TRỢ HOẠT ĐỘNG & RECAP SỰ KIỆN</span>
               <img src="Image/News/VinhDanhSinhVienXuatSacNamHoc2025_2026.jpg" alt="RECAP | SCC HỖ TRỢ LỄ VINH DANH VÀ KHEN THƯỞNG SINH VIÊN KHOÁ K17, K18 VÀ K19 TIÊU BIỂU, XUẤT SẮC NHÂN DỊP LỄ KHAI GIẢNG NĂM HỌC 2026 - 2027" loading="lazy">
@@ -107,7 +133,7 @@
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">HỖ TRỢ HOẠT ĐỘNG</span>
               <img src="Image/News/NangCaoNangLucSoTrenKhongGianMang.jpg" alt="RECAP | SCC HỖ TRỢ CHƯƠNG TRÌNH: NÂNG CAO NĂNG LỰC SỐ NHẬN DIỆN, CẢNH BÁO LỪA ĐẢO TRÊN KHÔNG GIAN SỐ" loading="lazy">
@@ -121,113 +147,204 @@
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">12-16/10/2026</span>
+              <img src="Image/VHHD/Truc_dau_gio_T10_2026_2.jpg" alt="KHỞI ĐẦU NGÀY MỚI – LAN TỎA VĂN HÓA CÙNG SCC" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> KHỞI ĐẦU NGÀY MỚI – LAN TỎA VĂN HÓA CÙNG SCC <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1AzrtNJdQS/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">12-16/10/2026</span>
+              <img src="Image/VHHD/VHHD_12-16_10_2026.jpg" alt="TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1FA1zx1fF4/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">RECAP SỰ KIỆN</span>
               <img src="Image/News/Gap_mat_Gen_5_1.jpg" alt="SCC | HỌP BAN THÁNG 10 & CHÀO ĐÓN TÂN BINH GEN 5 - GẮN KẾT VÀ BỨT PHÁ" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> SCC | HỌP BAN THÁNG 10 & CHÀO ĐÓN TÂN BINH GEN 5 - GẮN KẾT VÀ BỨT PHÁ <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1BoDXehYDu/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1BoDXehYDu/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
-          
-          <article class="event-card">
+
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">RECAP SỰ KIỆN</span>
               <img src="Image/News/LeTraoThuongDauNamHoc_2026_2027.jpg" alt="RECAP | LỄ VINH DANH VÀ TRAO THƯỞNG SINH VIÊN CÓ THÀNH TÍCH XUẤT SẮC TRONG CHUỖI CHƯƠNG TRÌNH CHÀO ĐÓN TÂN SINH VIÊN K20" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> RECAP | LỄ VINH DANH VÀ TRAO THƯỞNG SINH VIÊN CÓ THÀNH TÍCH XUẤT SẮC TRONG CHUỖI CHƯƠNG TRÌNH CHÀO ĐÓN TÂN SINH VIÊN K20 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1Cb1xts5Do/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1Cb1xts5Do/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">RECAP SỰ KIỆN</span>
               <img src="Image/News/RecapPhongVanGen5_1.jpg" alt="RECAP | KHÉP LẠI CHIẾN DỊCH TÌM KIẾM MẢNH GHÉP GEN 5: CHÀO ĐÓN NHỮNG TÂN BINH ĐẦY TIỀM NĂNG!" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> RECAP | KHÉP LẠI CHIẾN DỊCH TÌM KIẾM MẢNH GHÉP GEN 5: CHÀO ĐÓN NHỮNG TÂN BINH ĐẦY TIỀM NĂNG! <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1GK3wSKLvL/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1GK3wSKLvL/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">5-10/10/2026</span>
+              <img src="Image/VHHD/Truc_dau_gio_T10_2026_1.jpg" alt="BẮT ĐẦU NGÀY MỚI THẬT NHẸ NHÀNG CÙNG NỤ CƯỜI NƠI HÀNH LANG THANG MÁY" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> BẮT ĐẦU NGÀY MỚI THẬT NHẸ NHÀNG CÙNG NỤ CƯỜI NƠI HÀNH LANG THANG MÁY <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1BYzphies6/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">5-10/10/2026</span>
+              <img src="Image/VHHD/VHHD_5-10_10_2026.jpg" alt="TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1EZVvJWJHg/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">28/9-2/10/2026</span>
+              <img src="Image/VHHD/Truc_dau_gio_T10_2026.jpg" alt="KHỞI ĐẦU TRỌN VẸN TỪ NHỮNG ĐIỀU NHỎ NHẤT!" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> KHỞI ĐẦU TRỌN VẸN TỪ NHỮNG ĐIỀU NHỎ NHẤT! <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1DJT6FptML/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="vhhd">
+            <div class="event-img-wrap">
+              <span class="event-badge">28/9-2/10/2026</span>
+              <img src="Image/VHHD/VHHD_29_9_2026.jpg" alt="TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/19Qst2VcTR/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">RECAP SỰ KIỆN</span>
               <img src="Image/News/TrungThuDoan2026_1.jpg" alt="TRUNG THU ẤM ÁP - SCC GỬI LỜI CẢM ƠN TRÂN QUÝ ĐẾN NHÀ TRƯỜNG" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="14.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15.2" cy="8.6" r="0.8" fill="currentColor" stroke="none"/></svg> TRUNG THU ẤM ÁP - SCC GỬI LỜI CẢM ƠN TRÂN QUÝ ĐẾN NHÀ TRƯỜNG <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="14.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15.2" cy="8.6" r="0.8" fill="currentColor" stroke="none"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1HR4vrUcwE/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ĐẠI SỨ TRUYỀN THÔNG VĂN HOÁ HỌC ĐƯỜNG 2026: DẤU ẤN ĐÃ GHI, HÀNH TRÌNH CÒN TIẾP BƯỚC! <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/19RwJyHR3o/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1HR4vrUcwE/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
+            <div class="event-img-wrap">
+              <span class="event-badge">RECAP SỰ KIỆN</span>
+              <img src="Image/News/TrungThuDoan2026.jpg" alt="ĐẠI SỨ TRUYỀN THÔNG VĂN HOÁ HỌC ĐƯỜNG 2026: DẤU ẤN ĐÃ GHI, HÀNH TRÌNH CÒN TIẾP BƯỚC!" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ĐẠI SỨ TRUYỀN THÔNG VĂN HOÁ HỌC ĐƯỜNG 2026: DẤU ẤN ĐÃ GHI, HÀNH TRÌNH CÒN TIẾP BƯỚC! <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/19RwJyHR3o/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">HỖ TRỢ HOẠT ĐỘNG</span>
               <img src="Image/News/HoTroHoSoK20.jpg" alt="TỪNG TẬP HỒ SƠ – MỘT HÀNH TRÌNH MỚI BẮT ĐẦU CÙNG K20" loading="lazy">
             </div>
             <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>TỪNG TẬP HỒ SƠ – MỘT HÀNH TRÌNH MỚI BẮT ĐẦU CÙNG K20 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1SswasXiKW/" target="_blank" class="event-link-btn">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> TỪNG TẬP HỒ SƠ – MỘT HÀNH TRÌNH MỚI BẮT ĐẦU CÙNG K20 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1SswasXiKW/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
               <span class="event-badge">HỖ TRỢ HOẠT ĐỘNG</span>
-              <img src="Image/News/ThuHoSo_K20.jpg" alt="">
+              <img src="Image/News/ThuHoSo_K20.jpg" alt="SCC ĐỒNG HÀNH CÙNG TÂN SINH VIÊN K20 TRONG NHỮNG NGÀY NHẬP HỌC" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> SCC ĐỒNG HÀNH CÙNG TÂN SINH VIÊN K20 TRONG NHỮNG NGÀY NHẬP HỌC <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/19hzom8GC8/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/19hzom8GC8/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P1)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://www.facebook.com/share/p/19ZDiD9sx9/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/19ZDiD9sx9/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P2)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://www.facebook.com/share/p/1D4exEFi5h/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1D4exEFi5h/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P3)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://www.facebook.com/share/p/14pEPaKQh4Z/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/14pEPaKQh4Z/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P4)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="events">
             <div class="event-img-wrap">
-              <span class="event-badge">Mở đơn thành viên</span>
-              <img src="Image/Event/MoDon_Gen5_1.jpg" alt="Thông báo tuyển thành viên SCC Gen 5" fetchpriority="high">
+              <span class="event-badge">MỞ ĐƠN THÀNH VIÊN</span>
+              <img src="Image/Event/MoDon_Gen5_1.jpg" alt="Thông báo tuyển thành viên SCC Gen 5" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg> THÔNG BÁO: SCC CHÍNH THỨC TUYỂN THÀNH VIÊN GEN 5 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></h3>
@@ -235,247 +352,376 @@
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://forms.gle/EKuACz3QAQyaH42K8" target="_blank" class="event-link-btn">
-              <a href="https://forms.gle/EKuACz3QAQyaH42K8" target="_blank" class="event-link-btn" data-register-btn>
+              <a href="https://forms.gle/EKuACz3QAQyaH42K8" target="_blank" rel="noopener noreferrer" class="event-link-btn" data-register-btn>
                 <span><b>ĐĂNG KÝ</b></span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-          </a>
-          </div>
-        </article>
-
-        </div>
-        </div>
-
-      <div class="section-header" data-filter-news-heading="vhhd">
-      <h2 class="section-title">Tiêu điểm tuyên truyền VHHĐ</h2>
-      </div>
-
-      <div class="events-section" data-filter-news-item="vhhd">
-        <div class="events-featured-grid">
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">19-24/10/2026</span>
-              <img src="Image/VHHD/Truc_dau_gio_T10_2026_3.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg> KHỞI ĐẦU NGÀY MỚI CỰC MƯỢT CÙNG SCC <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1CBDNBgGRT/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
             </div>
           </article>
 
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">19-24/10/2026</span>
-              <img src="Image/VHHD/VHHD_19-24_10_2026.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/18awF2Z4KK/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">12-16/10/2026</span>
-              <img src="Image/VHHD/Truc_dau_gio_T10_2026_2.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> KHỞI ĐẦU NGÀY MỚI – LAN TỎA VĂN HÓA CÙNG SCC <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1AzrtNJdQS/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">12-16/10/2026</span>
-              <img src="Image/VHHD/VHHD_12-16_10_2026.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1FA1zx1fF4/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">5-10/10/2026</span>
-              <img src="Image/VHHD/Truc_dau_gio_T10_2026_1.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> BẮT ĐẦU NGÀY MỚI THẬT NHẸ NHÀNG CÙNG NỤ CƯỜI NƠI HÀNH LANG THANG MÁY <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1BYzphies6/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">5-10/10/2026</span>
-              <img src="Image/VHHD/VHHD_5-10_10_2026.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1EZVvJWJHg/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">28/9-2/10/2026</span>
-              <img src="Image/VHHD/Truc_dau_gio_T10_2026.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> KHỞI ĐẦU TRỌN VẸN TỪ NHỮNG ĐIỀU NHỎ NHẤT! <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1DJT6FptML/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-img-wrap">
-              <span class="event-badge">28/9-2/10/2026</span>
-              <img src="Image/VHHD/VHHD_29_9_2026.jpg" alt="">
-            </div>
-            <div class="event-body">
-              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/19Qst2VcTR/" target="_blank" class="event-link-btn">
-                <span>Xem chi tiết bài viết</span>
-                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-              </a>
-            </div>
-          </article>
-          
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="vhhd">
             <div class="event-img-wrap">
               <span class="event-badge">21-26/9/2026</span>
-              <img src="Image/VHHD/VHHD_21-26_9_2026.jpg" alt="">
+              <img src="Image/VHHD/VHHD_21-26_9_2026.jpg" alt="TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> TIÊU ĐIỂM TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1CEZS9fcLy/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1CEZS9fcLy/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="vhhd">
             <div class="event-img-wrap">
               <span class="event-badge">15/9/2026</span>
-              <img src="Image/VHHD/VHHD_15_9_2026.jpg" alt="">
+              <img src="Image/VHHD/VHHD_15_9_2026.jpg" alt="SCC CHÍNH THỨC RA QUÂN LAN TỎA VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI ĐẦU NĂM HỌC 2026-2027" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg> SCC CHÍNH THỨC RA QUÂN LAN TỎA VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI ĐẦU NĂM HỌC 2026-2027 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/19YDZSZRPg/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/19YDZSZRPg/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
 
-          <article class="event-card">
+          <article class="event-card" data-filter-news-item="vhhd">
             <div class="event-img-wrap">
               <span class="event-badge">ĐẠI SỨ TRUYỀN THÔNG VĂN HÓA HỌC ĐƯỜNG</span>
-              <img src="Image/Event/DaiSuTruyenThongVHHD2026.jpg" alt="">
+              <img src="Image/Event/DaiSuTruyenThongVHHD2026.jpg" alt="GIỚI THIỆU ĐẠI SỨ TRUYỀN THÔNG VĂN HÓA HỌC ĐƯỜNG 2026" loading="lazy">
             </div>
             <div class="event-body">
               <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> GIỚI THIỆU ĐẠI SỨ TRUYỀN THÔNG VĂN HÓA HỌC ĐƯỜNG 2026 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></h3>
-              <a href="https://www.facebook.com/share/p/1C3c4LTy8W/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1C3c4LTy8W/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P4)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://www.facebook.com/share/p/1BqzcQe6ke/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1BqzcQe6ke/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P3)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://www.facebook.com/share/p/1KKMF9HzpB/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1KKMF9HzpB/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P2)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
-              <a href="https://www.facebook.com/share/p/1CAcwBUFfM/" target="_blank" class="event-link-btn">
+              <a href="https://www.facebook.com/share/p/1CAcwBUFfM/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
                 <span>Xem chi tiết bài viết (P1)</span>
                 <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
               </a>
             </div>
           </article>
+
+          <article class="event-card" data-filter-news-item="events">
+            <div class="event-img-wrap">
+              <span class="event-badge">HỖ TRỢ HOẠT ĐỘNG</span>
+              <img src="Image/News/HoiNghiDaiHoiDBCBVC2026_2027.jpg" alt="HỖ TRỢ ĐÓN TIẾP HỘI NGHỊ CÁN BỘ, VIÊN CHỨC VÀ NGƯỜI LAO ĐỘNG NĂM HỌC 2026 - 2027" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg> HỖ TRỢ ĐÓN TIẾP HỘI NGHỊ CÁN BỘ, VIÊN CHỨC VÀ NGƯỜI LAO ĐỘNG NĂM HỌC 2026 - 2027 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1DvoJEY4cV/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
+            <div class="event-img-wrap">
+              <span class="event-badge">HOẠT ĐỘNG TÌNH NGUYỆN</span>
+              <img src="Image/News/ChuNhatXanhUVNB.jpg" alt="CHỦ NHẬT XANH - LAN TỎA TINH THẦN TÌNH NGUYỆN" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/></svg> CHỦ NHẬT XANH - LAN TỎA TINH THẦN TÌNH NGUYỆN <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1LGBuK5NiY/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
+            <div class="event-img-wrap">
+              <span class="event-badge">HỖ TRỢ SỰ KIỆN</span>
+              <img src="Image/News/HoTroBeGiang2026NB.jpg" alt="HỖ TRỢ CHƯƠNG TRÌNH LỄ BẾ GIẢNG 2026 TẠI CƠ SỞ NINH BÌNH" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> HỖ TRỢ CHƯƠNG TRÌNH LỄ BẾ GIẢNG 2026 TẠI CƠ SỞ NINH BÌNH</h3>
+              <a href="https://www.facebook.com/share/p/19nvEd6cjj/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card" data-filter-news-item="events">
+            <div class="event-img-wrap">
+              <span class="event-badge">HOẠT ĐỘNG TRI ÂN</span>
+              <img src="Image/News/27_07_2026.jpg" alt="SCC THẮP NẾN TRI ÂN – GỬI TRỌN LÒNG BIẾT ƠN ĐẾN CÁC ANH HÙNG LIỆT SĨ" loading="lazy">
+            </div>
+            <div class="event-body">
+              <h3 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg> SCC THẮP NẾN TRI ÂN – GỬI TRỌN LÒNG BIẾT ƠN ĐẾN CÁC ANH HÙNG LIỆT SĨ <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></h3>
+              <a href="https://www.facebook.com/share/p/1DUC5PmWwG/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
+                <span>Xem chi tiết bài viết</span>
+                <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </a>
+            </div>
+          </article>
         </div>
-      </div>
 
-      <div class="section-header" data-filter-news-heading="other">
-      <h2 class="section-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1z"/></svg> Các tin tức nổi bật khác</h2>
-      </div>
+        <nav class="news-pagination" id="newsPagination" aria-label="Phân trang tin tức">
+          <button class="pagination-btn pagination-nav-btn pagination-prev" id="newsPrevBtn" type="button" aria-label="Trang trước">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Trước</span>
+          </button>
 
-        <!-- Other News -->
-        <div class="other-events-block" data-filter-news-item="other">
-          <div class="news-list-grid">
+          <div class="pagination-pages" id="newsPaginationPages" role="group" aria-label="Danh sách trang"></div>
 
-            <article class="event-card compact-event-card">
-              <div class="event-body">
-                <h4 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg> HỖ TRỢ ĐÓN TIẾP HỘI NGHỊ CÁN BỘ, VIÊN CHỨC VÀ NGƯỜI LAO ĐỘNG NĂM HỌC 2026 - 2027 <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></h4>
-                <a href="https://www.facebook.com/share/p/1DvoJEY4cV/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
-                  <span>Xem chi tiết bài viết</span>
-                  <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-                </a>
-              </div>
-            </article>
-
-            <article class="event-card compact-event-card">
-              <div class="event-body">
-                <h4 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/></svg> CHỦ NHẬT XANH - LAN TỎA TINH THẦN TÌNH NGUYỆN <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/></svg></h4>
-                <a href="https://www.facebook.com/share/p/1LGBuK5NiY/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
-                  <span>Xem chi tiết bài viết</span>
-                  <span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-                </a>
-              </div>
-            </article>
-
-
-            <article class="event-card compact-event-card">
-              <div class="event-body">
-                <h4 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> HỖ TRỢ CHƯƠNG TRÌNH LỄ BẾ GIẢNG 2026 TẠI CƠ SỞ NINH BÌNH</h4>
-                <a href="https://www.facebook.com/share/p/19nvEd6cjj/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
-                  <span>Xem chi tiết bài viết</span><span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-                </a>
-              </div>
-            </article>
-
-            <article class="event-card compact-event-card">
-              <div class="event-body">
-                <h4 class="event-title"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg> SCC THẮP NẾN TRI ÂN – GỬI TRỌN LÒNG BIẾT ƠN ĐẾN CÁC ANH HÙNG LIỆT SĨ <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></h4>
-                <a href="https://www.facebook.com/share/p/1DUC5PmWwG/" target="_blank" rel="noopener noreferrer" class="event-link-btn">
-                  <span>Xem chi tiết bài viết</span><span><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-                </a>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-    
+          <button class="pagination-btn pagination-nav-btn pagination-next" id="newsNextBtn" type="button" aria-label="Trang sau">
+            <span>Sau</span>
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </nav>
+        <div class="pagination-status" id="newsPaginationStatus" aria-live="polite"></div>
       </div>
     </section>
-    </main>
+            <section id="contests" class="section-padding">
+      <div class="section-header">
+        <span class="section-tag">Cuộc thi</span>
+        <h2 class="section-title">Cuộc thi & Sân chơi hấp dẫn</h2>
+        <p class="section-desc">Mang lại niềm tự hào và lan toả nét đẹp văn hoá học đường sinh viên UNETI</p>
+      </div>
+
+      <div class="contest-grid">
+        <!-- Cuộc thi 1: NÉT HOẠ MÙA XUÂN 2026 -->
+        <article class="contest-card contest-card--result-wide">
+          <div class="contest-img-wrap">
+            <span class="contest-badge">XUÂN 2026</span>
+            <img src="Image/Contest/NetHoaMuaXuan2026.jpg" alt="Cuộc thi Nét Hoạ Mùa Xuân 2026" loading="lazy">
+          </div>
+          <div class="contest-body">
+            <h3 class="contest-title">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"/><path d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14z"/><path d="m5 2 .8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8L5 2z"/></svg>
+              CUỘC THI: "NÉT HOẠ MÙA XUÂN 2026"
+            </h3>
+
+            <div class="contest-actions">
+              <button type="button" class="contest-btn contest-btn-results" aria-expanded="false" data-toggle-results>
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                <span class="btn-text">Xem kết quả</span>
+              </button>
+            </div>
+
+            <div class="contest-results-wrapper">
+              <div class="prize-list">
+                <div class="prize-item">
+                  <span class="prize-badge rank-1">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                    GIẢI NHẤT
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Nhóm Liên Minh Đào Mai</span>
+                    <span class="prize-work">Tác phẩm: Sắc Họa Xuân Non Sông</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-2">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    GIẢI NHÌ
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Nhóm Sắc Xuân 2</span>
+                    <span class="prize-work">Tác phẩm: Mở Trang Xuân</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-3">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    GIẢI BA
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Nhóm Phúc Lộc</span>
+                    <span class="prize-work">Tác phẩm: Xuân yêu thương - Tết sum vầy</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-encourage">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m9 12-3.5 9 6.5-3 6.5 3-3.5-9"/></svg>
+                    KHUYẾN KHÍCH
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Nhóm Sắc Xuân</span>
+                    <span class="prize-work">Tác phẩm: Cá Chép Hoá Rồng</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cuộc thi 2: Ý TƯỞNG SÁNG TẠO LAN TOẢ VĂN HOÁ HỌC ĐƯỜNG SINH VIÊN 2026 -->
+        <article class="contest-card contest-card--result-wide">
+          <div class="contest-img-wrap">
+            <span class="contest-badge">LAN TỎA VHHĐ</span>
+            <img src="Image/Contest/LanToaNetDepVHHD2025.jpg" alt="Cuộc thi Ý tưởng sáng tạo lan toả văn hoá học đường sinh viên 2026" loading="lazy">
+          </div>
+          <div class="contest-body">
+            <h3 class="contest-title">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              CUỘC THI: "Ý TƯỞNG SÁNG TẠO LAN TOẢ VĂN HOÁ HỌC ĐƯỜNG SINH VIÊN 2025"
+            </h3>
+
+            <div class="contest-actions">
+              <button type="button" class="contest-btn contest-btn-results" aria-expanded="false" data-toggle-results>
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                <span class="btn-text">Xem kết quả</span>
+              </button>
+              <a href="Contest/LanToaNetDepVHHD2025.html" class="contest-btn contest-btn-detail">Xem thông tin cuộc thi
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <div class="contest-results-wrapper">
+              <div class="prize-list">
+                <div class="prize-item">
+                  <span class="prize-badge rank-1">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                    GIẢI NHẤT
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Nhóm Ngũ Sắc Cầu Vồng</span>
+                    <span class="prize-work">Tác phẩm: UNETI, KHÔNG THỜ Ơ, CÙNG HÀNH ĐỘNG</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-2">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    GIẢI NHÌ
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Lê Kim Chi - DHQT18A3HN</span>
+                    <span class="prize-work">Tác phẩm: VĂN HOÁ HÔM NAY - THÀNH CÔNG NGÀY MAI</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-2">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    GIẢI NHÌ
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Cao Kiều Yến Nhi - DHMK19A1HN</span>
+                    <span class="prize-work">Tác phẩm: CÙNG 5S LAN TOẢ VĂN HOÁ HỌC ĐƯỜNG SINH VIÊN UNETI</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-3">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    GIẢI BA
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Phan Thanh Thư - DHTN18A3HN</span>
+                    <span class="prize-work">Tác phẩm: UNETI SẼ LÀ NƠI TRI THỨC TOẢ SÁNG CÙNG NHÂN CÁCH</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-3">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    GIẢI BA
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Phạm Thanh Thái - DHMK19A1ND</span>
+                    <span class="prize-work">Tác phẩm: 5S UNETI CHẮP CÁNH VĂN MINH NÂNG TẦM TRI THỨC</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-encourage">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m9 12-3.5 9 6.5-3 6.5 3-3.5-9"/></svg>
+                    KHUYẾN KHÍCH
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Phạm Thanh Thái - DHMK19A1ND</span>
+                    <span class="prize-work">Tác phẩm: NGUỒN LỤC TRẺ VĂN HOÁ ĐẸP</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-encourage">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m9 12-3.5 9 6.5-3 6.5 3-3.5-9"/></svg>
+                    KHUYẾN KHÍCH
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Võ Thị Linh Nhi - DHQT19A4HN</span>
+                    <span class="prize-work">Tác phẩm: QR VĂN HOÁ HỌC ĐƯỜNG</span>
+                  </div>
+                </div>
+
+                <div class="prize-item">
+                  <span class="prize-badge rank-favorite">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    YÊU THÍCH NHẤT
+                  </span>
+                  <div class="prize-info">
+                    <span class="prize-winner">Nguyễn Hồng Thanh - DHMK18A1HN</span>
+                    <span class="prize-work">Tác phẩm: CÙNG 5S PHÒNG CHỐNG BẠO LỰC HỌC ĐƯỜNG</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Công bố kết quả: Sinh viên tương tác tích cực, lan tỏa hình ảnh UNETI -->
+        <article class="contest-card contest-card--result-wide">
+          <div class="contest-img-wrap">
+            <span class="contest-badge">VINH DANH SINH VIÊN</span>
+            <img src="Image/Contest/SinhVienTuongTacTichCucMXH2025.jpg" alt="Công bố kết quả sinh viên tương tác tích cực, lan tỏa hình ảnh UNETI trên mạng xã hội năm 2025" loading="lazy">
+          </div>
+          <div class="contest-body">
+            <h3 class="contest-title">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"/><path d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14z"/></svg>
+              CÔNG BỐ KẾT QUẢ SINH VIÊN TƯƠNG TÁC TÍCH CỰC, LAN TỎA HÌNH ẢNH UNETI TRÊN MẠNG XÃ HỘI
+            </h3>
+
+            <div class="contest-actions">
+              <button type="button" class="contest-btn contest-btn-results" aria-expanded="false" data-toggle-results>
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                <span class="btn-text">Xem kết quả</span>
+              </button>
+            </div>
+
+            <div class="contest-results-wrapper">
+              <div class="prize-list">
+                <div class="prize-item"><span class="prize-badge rank-1">GIẢI ĐẶC BIỆT</span><div class="prize-info"><span class="prize-winner">Dương Thị Kim Anh</span><span class="prize-work">DHTN17A1HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-1">GIẢI NHẤT</span><div class="prize-info"><span class="prize-winner">Nguyễn Thị Yến Nhi</span><span class="prize-work">DHQT17A1CL</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-2">GIẢI NHÌ</span><div class="prize-info"><span class="prize-winner">Phạm Thị Ngọc Lan</span><span class="prize-work">DHMA16A2ND</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-2">GIẢI NHÌ</span><div class="prize-info"><span class="prize-winner">Hồ Thị Huyền Thu</span><span class="prize-work">DHQT18A4HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-3">GIẢI BA</span><div class="prize-info"><span class="prize-winner">Trần Thị Phương Anh</span><span class="prize-work">DHTI16A2HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-3">GIẢI BA</span><div class="prize-info"><span class="prize-winner">Nguyễn Văn Duy</span><span class="prize-work">DHTI19A4HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-3">GIẢI BA</span><div class="prize-info"><span class="prize-winner">Nguyễn Việt Hoàng</span><span class="prize-work">DHOT17A2HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Ngô Hạnh Nguyên</span><span class="prize-work">DHLQ18A3HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Lê Huyền Đoan Trang</span><span class="prize-work">DHLQ18A3HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Võ Thị Linh Nhi</span><span class="prize-work">DHQT19A4HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Mai Bảo Ngọc</span><span class="prize-work">DHKT19A6HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Lưu Đức Huy</span><span class="prize-work">DHTI17A1ND</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Phan Thị Minh Anh</span><span class="prize-work">DHQT18A2HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Trần Bảo Uyên</span><span class="prize-work">DHKT16A1HN</span></div></div>
+                <div class="prize-item"><span class="prize-badge rank-encourage">GIẢI KHUYẾN KHÍCH</span><div class="prize-info"><span class="prize-winner">Đỗ Thị Ngọc Mai</span><span class="prize-work">DHKT17A9HN</span></div></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
     
 <script src="script.js"></script>
 </body>
