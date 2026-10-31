@@ -136,7 +136,7 @@
     {id:'vu-thi-thu',name:'Vũ Thị Thu',ability:'Trả lời càng nhanh, điểm câu đúng càng cao.',icon:'<img class="companion-svg-icon" src="Image/bolt.svg" alt="">'},
     {id:'duong-thi-kim-anh',name:'Dương Thị Kim Anh',ability:'Mỗi câu đúng tung đồng xu: mặt ngửa nhân tổng điểm hiện có ×1.1.',icon:'◉'},
     {id:'nguyen-thu-hien',name:'Nguyễn Thu Hiền',ability:'Thời gian trả lời tăng lên 25 giây; chọn vị trí có 18 giây.',icon:'◷'},
-    {id:'dong-ngoc-han',name:'Đồng Ngọc Hân',ability:'Sau mỗi câu lý thuyết là một câu tương tự lấy từ ngân hàng cùng ngày.',icon:'↔'},
+    {id:'dong-ngoc-han',name:'Đồng Ngọc Hân',ability:'Có thể lặp câu tương tự từ ngân hàng cùng ngày; tổng số câu vẫn theo đúng giới hạn của ngày.',icon:'↔'},
     {id:'to-thi-ha-vy',name:'Tô Thị Hà Vy',ability:'Sau khi trả lời sai, câu kế tiếp được ×3 điểm nếu trả lời đúng.',icon:'×3'},
     {id:'nguyen-phuong-thao',name:'Nguyễn Phương Thảo',ability:'Một ngày hoàn hảo được nhân đôi điểm trong ngày (chỉ một lần).',icon:'✦'},
     {id:'vu-quang-viet',name:'Vũ Quang Việt',ability:'Mỗi câu đúng liên tiếp tăng thêm 20% điểm câu, tối đa +200%; trả lời sai thì streak về 0.',icon:'↗'}
@@ -147,7 +147,25 @@
   function shuffleTasks(tasks){const shuffled=[...tasks];for(let i=shuffled.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]}return shuffled}
   function pickRandomTasks(tasks,count){return shuffleTasks(tasks).slice(0,count)}
   function randomLocationTask(pool,prompt){const spot=pickRandomTasks(pool,1)[0];return place(prompt(spot),spot.campus,spot.target)}
-  function withSimilarQuestions(tasks,bank){if(state.companionId!=='dong-ngoc-han')return tasks;const paired=[];for(const task of tasks){paired.push(task);if(task.kind==='quiz'){const similar=pickRandomTasks(bank.filter(item=>item.text!==task.text),1)[0]||task;paired.push({...similar})}}return paired}
+  function withSimilarQuestions(tasks,bank){
+    if(state.companionId!=='dong-ngoc-han')return tasks;
+    const questionLimit=tasks.filter(task=>task.kind!=='branch').length;
+    const paired=[];
+    let questionCount=0;
+    for(const task of tasks){
+      if(task.kind==='branch'){paired.push(task);continue}
+      if(questionCount>=questionLimit)break;
+      paired.push(task);
+      questionCount++;
+      if(task.kind==='quiz'&&questionCount<questionLimit){
+        const candidates=bank.filter(item=>item.text!==task.text);
+        const similar=pickRandomTasks(candidates.length?candidates:bank,1)[0]||task;
+        paired.push({...similar});
+        questionCount++;
+      }
+    }
+    return paired;
+  }
   function prepareRandomQuestionSets(){
     days[0].tasks=withSimilarQuestions(pickRandomTasks(day1QuestionBank,3),day1QuestionBank);
     const directLocation=randomLocationTask(day2DirectLocations,spot=>'Bạn có lịch trực đầu giờ ở chỗ '+spot.target+'. Hãy chọn vị trí hoàn thành nhiệm vụ.');
@@ -513,7 +531,6 @@
   initTilt();
   initClickSparks();
 })();
-
 
 
 
