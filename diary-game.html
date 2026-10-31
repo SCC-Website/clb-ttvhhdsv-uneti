@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b92720">
+  <meta name="description" content="Nhật ký 7 ngày đồng hành cùng CLB SCC và Văn hoá học đường sinh viên UNETI.">
+  <title>School Culture Diary · Nhật ký Văn hoá Học đường</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="diary-game.css">
+  <script src="diary-game.js" defer></script>
+</head>
+<body>
+  <div class="loading-screen" id="loading-screen" role="status" aria-live="polite" aria-label="Đang tải game Nhật ký Văn hoá Học đường">
+    <div class="loading-content">
+      <span class="loading-ornament" aria-hidden="true">✦</span>
+      <img class="loading-logo" src="Image/SCC-Logo.png" alt="SCC">
+      <p class="loading-brand-label">CLB TUYÊN TRUYỀN VĂN HOÁ HỌC ĐƯỜNG SINH VIÊN</p>
+      <h1>Nhật ký Văn hoá<br>Học đường</h1>
+      <div class="loading-spinner" aria-hidden="true"><span></span></div>
+      <div class="loading-progress" aria-hidden="true"><span></span></div>
+      <p class="loading-caption">Đang chuẩn bị hành trình của bạn…</p>
+    </div>
+  </div>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand-lockup">
+      <a class="brand" href="#home" aria-label="SCC — về trang đầu">
+        <img class="brand-logo" src="Image/SCC-Logo.png" alt="Logo SCC UNETI">
+      </a>
+      <span class="brand-title">CLB TUYÊN TRUYỀN VĂN HOÁ HỌC ĐƯỜNG SINH VIÊN - SCC</span>
+    </div>
+    <div class="top-note"><span class="live-dot"></span> NHẬT KÝ VĂN HOÁ HỌC ĐƯỜNG</div>
+    <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Bật hoặc tắt âm thanh" title="Bật/tắt âm thanh">♫ <span>Âm thanh</span></button>
+  </header>
+
+  <main class="shell">
+    <section class="screen home-screen active" id="home-screen" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> SCHOOL CULTURE DIARY <span class="eyebrow-line"></span></div>
+        <h1 id="hero-title">Một tuần<br>thật <em>đáng nhớ.</em></h1>
+        <p class="hero-intro">Bảy ngày làm thành viên SCC — mỗi lựa chọn nhỏ góp nên một ngôi trường thân thiện, chuyên nghiệp và đồng hành.</p>
+        <div class="hero-stats"><div><strong>07</strong><span>ngày trải nghiệm</span></div><i></i><div><strong>15 giây</strong><span>mỗi câu hỏi</span></div><i></i><div><strong>5S</strong><span>chuẩn UNETI</span></div></div>
+        <div class="start-form">
+          <label for="player-name">Tên của bạn</label>
+          <div class="name-row"><input id="player-name" maxlength="24" autocomplete="nickname" placeholder="Nhập tên để bắt đầu…"><button id="start-btn" class="primary-btn" type="button">Mở nhật ký <span>↗</span></button></div>
+          <small>Điểm cao được ghi vào bảng xếp hạng trên thiết bị này.</small>
+        </div>
+        <details class="how-to">
+          <summary>Hướng dẫn chơi <span>+</span></summary>
+          <ol>
+            <li>Nhập tên, nhấn <strong>Mở nhật ký</strong>, chọn một người đồng hành rồi trải nghiệm hành trình SCC trong 7 ngày.</li>
+            <li>Trả lời mỗi câu hỏi trong <strong>15 giây</strong>; câu chọn địa điểm có <strong>10 giây</strong>.</li>
+            <li>Trả lời đúng để nhận điểm; hoàn thành một ngày được thưởng thêm <strong>25 điểm</strong>, hoàn thành cả tuần thêm <strong>50 điểm</strong>.</li>
+            <li>Chọn sai địa điểm sẽ kết thúc nhiệm vụ của ngày đó, nhưng bạn vẫn tiếp tục sang ngày kế tiếp.</li>
+            <li>Mỗi người đồng hành có một năng lực riêng áp dụng trong cả lượt chơi. Điểm cao được lưu trên thiết bị này.</li>
+          </ol>
+        </details>
+      </div>
+      <div class="hero-art" aria-label="Minh hoạ cuốn nhật ký và hoa hướng dương">
+        <div class="sunburst"></div><div class="art-caption">NHỮNG ĐIỀU<br>NHỎ BÉ TẠO NÊN<br><b>NÉT ĐẸP UNETI</b></div>
+        <div class="diary-book"><div class="book-spine"></div><div class="book-stamp">SCC<br><span>5S · UNETI</span></div><div class="book-title">School<br>Culture<br><em>Diary</em></div><div class="book-date">Một tuần cùng SCC <span>✳</span></div><div class="book-flower">✿</div></div>
+        <div class="spark spark-a">✦</div><div class="spark spark-b">✳</div><div class="floating-note">điều tốt<br>bắt đầu từ bạn <span>↙</span></div>
+      </div>
+      <section class="companion-showcase" aria-labelledby="companions-title">
+        <div class="companion-showcase-heading"><div><span class="section-kicker">CHỌN ĐỒNG ĐỘI CHO HÀNH TRÌNH</span><h2 id="companions-title">Tám người đồng hành, tám năng lực riêng</h2><p>Mỗi lượt chơi chọn một người. Xem trước năng lực rồi chọn người phù hợp trước khi countdown bắt đầu.</p></div><span class="companion-pick-badge">CHỌN 1 / 8</span></div>
+        <div class="companion-showcase-grid">
+          <article class="companion-info-card"><span class="companion-info-icon">↺</span><h3>Trần Thế Phú</h3><p>Mỗi câu sai được thêm một lần trả lời lại, kể cả câu chọn vị trí.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon"><img class="companion-svg-icon" src="Image/bolt.svg" alt=""></span><h3>Vũ Thị Thu</h3><p>Trả lời đúng càng nhanh, điểm câu đó càng cao.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon">◉</span><h3>Dương Thị Kim Anh</h3><p>Mỗi câu đúng tung đồng xu: mặt ngửa thì tổng điểm hiện có ×1.1.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon">◷</span><h3>Nguyễn Thu Hiền</h3><p>Tăng thời gian trả lời lên 25 giây; chọn vị trí có 18 giây.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon">↔</span><h3>Đồng Ngọc Hân</h3><p>Sau mỗi câu lý thuyết là một câu tương tự từ ngân hàng câu hỏi cùng ngày.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon">×3</span><h3>Tô Thị Hà Vy</h3><p>Sau khi trả lời sai, câu kế tiếp được ×3 điểm nếu trả lời đúng.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon">✦</span><h3>Nguyễn Phương Thảo</h3><p>Một ngày hoàn hảo được nhân đôi toàn bộ điểm trong ngày, chỉ một lần.</p></article>
+          <article class="companion-info-card"><span class="companion-info-icon">↗</span><h3>Vũ Quang Việt</h3><p>Mỗi câu đúng liên tiếp tăng thêm 20% điểm câu, tối đa +200%; trả lời sai thì streak về 0.</p></article>
+        </div>
+      </section>
+      <section class="leaderboard home-leaderboard" aria-labelledby="leader-title"><div class="leader-heading"><div><span class="section-kicker">NHỮNG DẤU ẤN ĐẸP</span><h2 id="leader-title">Bảng xếp hạng</h2></div><span class="local-badge">THIẾT BỊ NÀY</span></div><div id="leaderboard-list" class="leader-list"></div></section>
+      <footer class="home-footer"><span>CLB Tuyên truyền Văn hoá học đường Sinh viên</span><a href="https://scc-website.github.io/clb-ttvhhdsv-uneti/" target="_blank" rel="noopener">Tìm hiểu về SCC ↗</a></footer>
+    </section>
+
+    <section class="screen game-screen" id="game-screen" aria-live="polite">
+      <div class="game-topline"><button class="text-button" id="quit-btn" type="button">← Thoát nhật ký</button><div class="player-chip"><span class="avatar" id="player-avatar">S</span><span id="player-label">Thành viên SCC</span><span class="companion-chip" id="companion-label"></span></div></div>
+      <div class="game-overlay" id="game-overlay" hidden role="dialog" aria-modal="true" aria-live="assertive">
+        <div class="overlay-card"><span class="overlay-kicker" id="overlay-kicker"></span><div class="overlay-count" id="overlay-count" hidden></div><h2 id="overlay-title"></h2><p id="overlay-text"></p></div>
+      </div>
+      <div class="game-layout">
+        <aside class="diary-sidebar"><div class="sidebar-label">HÀNH TRÌNH CỦA BẠN</div><div class="day-list" id="day-list"></div><div class="score-card"><span>ĐIỂM HIỆN TẠI</span><strong id="score-value">0</strong><small>✦ điểm nhật ký</small></div><div class="sidebar-quote">“Thân thiện — Chuyên nghiệp — Đồng hành và Chia sẻ”</div></aside>
+        <div class="play-column">
+          <div class="day-heading"><div><div class="day-overline" id="day-overline">NGÀY 01 · KHỞI ĐẦU</div><h1 id="day-title">Làm quen với SCC</h1></div><div class="day-progress"><span id="progress-label">01 / 07</span><div class="progress-track"><i id="progress-bar"></i></div></div></div>
+          <div class="story-card" id="story-card"><div class="story-icon" id="story-icon">✦</div><p id="story-text"></p></div>
+          <div class="question-card" id="question-card">
+            <div class="question-meta"><span id="question-type">CÂU HỎI</span><div class="timer-wrap"><span class="timer-icon">◷</span><span id="timer-value">15</span><span>GIÂY</span></div></div>
+            <div class="timer-track"><i id="timer-bar"></i></div>
+            <h2 id="question-text"></h2>
+            <div class="answer-area" id="answer-area"></div>
+            <div class="question-footer"><span id="question-counter">CÂU 1</span><span>Trả lời thật nhanh nhé <b>✦</b></span></div>
+          </div>
+          <div class="feedback" id="feedback" role="status"></div>
+          <div class="feedback-actions" id="feedback-actions" hidden><button class="primary-btn" id="continue-btn" type="button">Tiếp tục <span>→</span></button></div>
+          <div class="game-bottom"><span>NHẬT KÝ SCC <b>✳</b> TUẦN TRẢI NGHIỆM</span><span id="day-points">+0 điểm hôm nay</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen result-screen" id="result-screen" aria-labelledby="result-title">
+      <div class="result-confetti" aria-hidden="true">✦　✳　　 ✦　　　✿</div>
+      <div class="result-content"><div class="result-seal">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> NHẬT KÝ ĐÃ KHÉP LẠI <span class="eyebrow-line"></span></div><h1 id="result-title">Một tuần <em>rực rỡ!</em></h1><p class="result-subtitle" id="result-subtitle"></p><div class="rank-stamp" id="rank-stamp">SINH VIÊN 5S</div><div class="final-score"><strong id="final-score">0</strong><span>ĐIỂM</span></div><p class="result-message" id="result-message"></p><div class="result-days" id="result-days"></div><div class="result-actions"><button class="primary-btn" id="play-again-btn" type="button">Viết nhật ký mới <span>↗</span></button><button class="secondary-btn" id="back-home-btn" type="button">Về trang đầu</button></div><div class="result-leaderboard"><h2>Những dấu ấn đẹp</h2><div id="result-leaderboard-list" class="leader-list"></div></div></div>
+    </section>
+  </main>
+  <div class="companion-modal" id="companion-modal" hidden role="dialog" aria-modal="true" aria-labelledby="companion-modal-title">
+    <div class="companion-panel">
+      <span class="companion-kicker">CHỌN NGƯỜI ĐỒNG HÀNH</span>
+      <h2 id="companion-modal-title">Ai sẽ cùng bạn viết nhật ký?</h2>
+      <p class="companion-intro">Chọn một người trước khi bắt đầu. Mỗi người có một năng lực riêng trong suốt hành trình.</p>
+      <div class="companion-grid" id="companion-grid"></div>
+      <div class="companion-confirm-row"><span id="companion-selected-label">Hãy chọn một người đồng hành</span><button class="primary-btn" id="confirm-companion-btn" type="button" disabled>Bắt đầu viết <span>→</span></button></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
