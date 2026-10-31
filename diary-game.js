@@ -114,7 +114,7 @@
   ];
   const day6QuestionBank=[
     quiz('Khi nghe tin hôm nay CLB họp có quà, phản ứng nào vui nhất?',['Giả vờ không quan tâm nhưng hóng tin rất kỹ','Bình thường thôi, có gì đâu','Xin nghỉ vì cảm thấy ngại','Thôi xủi một hôm vậy'],0),
-    quiz('Khi nghe tin hôm nay CLB chuẩn bị đi picnic, bạn sẽ…',['Đóng điền và lên xe!','Ở nhà chờ ảnh','Để mọi người đi trước','Quên mất lịch hẹn'],0),
+    quiz('Khi nghe tin hôm nay CLB chuẩn bị đi picnic, bạn sẽ…',['Đóng tiền và lên xe!','Ở nhà chờ ảnh','Để mọi người đi trước','Quên mất lịch hẹn'],0),
     quiz('Tiêu đề sinh nhật 3 tuổi của CLB SCC là gì?',['Khúc giao thời','Chuyến xe kỷ niệm','Tiệc nhà S','Mùa xuân rộn ràng'],0),
     quiz('Tiêu đề lễ tri ân K16 và lễ chuyển giao thành viên Chủ nhiệm & Chuyên môn Gen 5 của CLB SCC là gì?',['Nhìn lại những kỷ niệm','Những ngày đáng nhớ','Trạm tri ân','Màu nắng hạ'],3)
   ];

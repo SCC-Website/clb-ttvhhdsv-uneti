@@ -642,7 +642,7 @@ h1 em{
   .feedback{overflow-wrap:anywhere;line-height:1.5}
   .feedback-actions .primary-btn,.result-actions .primary-btn,.result-actions .secondary-btn{width:100%;min-height:46px}
   .game-bottom{gap:5px;flex-direction:column;line-height:1.4;overflow-wrap:anywhere}
-  .game-overlay{align-items:start;overflow-y:auto;padding: max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
+  .game-overlay{align-items:center;overflow-y:auto;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
   .overlay-card{width:100%;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain}
   .companion-modal{align-items:start;overflow-y:auto;padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom))}
   .companion-panel{width:100%;max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);overflow-y:auto;overscroll-behavior:contain}
