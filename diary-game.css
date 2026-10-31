@@ -670,6 +670,8 @@ h1 em{
   .result-content{padding-right:12px;padding-left:12px}
 }
 
+.art-caption{padding:10px 12px;border:1px solid #eadbc8;border-radius:12px;background:#fffdf8;box-shadow:0 8px 24px rgba(69,30,18,.14)}
+
 @media(max-height:560px) and (orientation:landscape){
   .topbar{min-height:52px;height:auto}
   .home-screen.active{padding-top:16px}
