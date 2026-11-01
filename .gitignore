@@ -1,0 +1,13 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Node dependencies and logs
+.work/
+node_modules/
+backend/node_modules/
+npm-debug.log*
