@@ -12,17 +12,40 @@
   let historyTotal = 0;
   let historyLoading = false;
 
+  function apiRequestUrl(path) {
+    const configuredBase = String(window.SCC_API_BASE_URL || '').trim();
+    if (!configuredBase) return path;
+
+    let base;
+    try {
+      base = new URL(configuredBase);
+    } catch {
+      throw new Error('Địa chỉ API trong diary-api-config.js không hợp lệ.');
+    }
+    if (!['https:', 'http:'].includes(base.protocol) || base.username || base.password || base.pathname !== '/' || base.search || base.hash) {
+      throw new Error('Hãy nhập địa chỉ gốc HTTP(S) của API vào diary-api-config.js.');
+    }
+    if (window.location.protocol === 'https:' && base.protocol !== 'https:') {
+      throw new Error('Trang HTTPS chỉ có thể kết nối API qua HTTPS.');
+    }
+    return new URL(path, `${base.origin}/`).toString();
+  }
+
   function errorText(error) {
-    if (error?.status === 503 || error instanceof TypeError) {
-      return 'Máy chủ chưa sẵn sàng. Hãy chạy backend local và cấu hình MongoDB Atlas trong backend/.env.';
+    if (error?.status === 503) {
+      return 'API chưa sẵn sàng. Kiểm tra kết nối MongoDB Atlas và trạng thái /api/health.';
+    }
+    if (error instanceof TypeError) {
+      return 'Không kết nối được API. Kiểm tra URL trong diary-api-config.js, CORS_ORIGINS và trạng thái máy chủ.';
     }
     return error?.message || 'Có lỗi xảy ra. Vui lòng thử lại.';
   }
 
   async function request(url, options = {}) {
+    const requestUrl = apiRequestUrl(url);
     let response;
     try {
-      response = await fetch(url, {
+      response = await fetch(requestUrl, {
         credentials: 'include',
         ...options,
         headers: { ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...(options.headers || {}) }

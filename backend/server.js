@@ -49,7 +49,7 @@ function asyncRoute(handler) {
 }
 
 function apiUnavailable(_req, res, next) {
-  if (!collections) return res.status(503).json({ error: 'Backend chưa kết nối MongoDB Atlas. Kiểm tra cấu hình local trong backend/.env.' });
+  if (!collections) return res.status(503).json({ error: 'API chưa kết nối MongoDB Atlas. Kiểm tra MONGODB_URI trong cấu hình máy chủ.' });
   next();
 }
 
@@ -141,7 +141,10 @@ const loginLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 12, standardHead
 const registerLimiter = rateLimit({ windowMs: 60 * 60 * 1000, max: 5, standardHeaders: true, legacyHeaders: false, message: { error: 'Đã tạo quá nhiều tài khoản từ kết nối này. Vui lòng thử lại sau.' } });
 
 const api = express.Router();
-api.get('/health', (_req, res) => res.json({ ready: Boolean(collections) }));
+api.get('/health', (_req, res) => {
+  const ready = Boolean(collections);
+  res.status(ready ? 200 : 503).json({ ready });
+});
 
 api.post('/auth/register', registerLimiter, apiUnavailable, asyncRoute(async (req, res) => {
   const name = normalizeName(req.body?.name);
@@ -225,12 +228,14 @@ api.get('/leaderboard', apiUnavailable, asyncRoute(async (req, res) => {
 }));
 
 app.use('/api', api);
-app.use(['/backend', '/node_modules', '/.git'], (_req, res) => res.sendStatus(404));
-app.get('/diary-game.html', (_req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'");
-  next();
-});
-app.use(express.static(projectRoot, { dotfiles: 'deny', index: 'index.html', fallthrough: true }));
+if (process.env.NODE_ENV !== 'production') {
+  app.use(['/backend', '/node_modules', '/.git'], (_req, res) => res.sendStatus(404));
+  app.get('/diary-game.html', (_req, res, next) => {
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'");
+    next();
+  });
+  app.use(express.static(projectRoot, { dotfiles: 'deny', index: 'index.html', fallthrough: true }));
+}
 app.use((_req, res) => res.status(404).send('Không tìm thấy trang.'));
 app.use((err, _req, res, _next) => {
   if (res.headersSent) return;
@@ -271,4 +276,4 @@ try {
   console.error(`MongoDB connection unavailable (${error?.name || 'Error'}); credential details omitted.`);
 }
 
-app.listen(port, host, () => console.log(`SCC local service listening on http://${host}:${port}`));
+app.listen(port, host, () => console.log(`SCC API listening on http://${host}:${port}`));

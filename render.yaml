@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: scc-diary-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --prefix backend
+    startCommand: npm --prefix backend start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: "0.0.0.0"
+      - key: MONGODB_DB
+        value: scc_diary
+      - key: CORS_ORIGINS
+        value: https://scc-website.github.io
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: MONGODB_URI
+        sync: false
