@@ -65,10 +65,17 @@ const navigationItems = [
   { path: 'index.html', label: 'Trang chủ' },
   { path: 'VHHD.html', label: 'Văn hoá học đường sinh viên' },
   { path: 'News.html', label: 'Tin tức' },
-  { path: 'GocVangVinhDanh.html', label: 'Góc vinh danh' },
-  { path: 'Member.html', label: 'Thành viên' },
-  { path: 'Contact.html', label: 'Liên hệ' },
-  { path: 'SignUpToSCC.html', label: 'Đăng kí tham gia' }
+  {
+    path: 'Member.html',
+    label: 'Thành viên',
+    children: [{ path: 'GocVangVinhDanh.html', label: 'Góc vinh danh' }]
+  },
+  { path: 'diary-game.html', label: 'Minigame' },
+  {
+    path: 'SignUpToSCC.html',
+    label: 'Đăng kí tham gia',
+    children: [{ path: 'Contact.html', label: 'Liên hệ' }]
+  }
 ];
 
 function renderFavicon() {
@@ -105,20 +112,45 @@ function renderNavigation() {
 
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/index.html';
 
-  navigationItems.forEach(({ path, label }) => {
+  navigationItems.forEach(({ path, label, children = [] }) => {
     const item = document.createElement('li');
     const link = document.createElement('a');
     const linkUrl = new URL(path, BASE_URL);
+    const targetPath = linkUrl.pathname.replace(/\/+$/, '');
+    const isCurrent = targetPath === currentPath ||
+      (currentPath.endsWith('/') && path === 'index.html') ||
+      currentPath.endsWith(path) ||
+      children.some(child => currentPath.endsWith(child.path));
+
+    if (children.length) {
+      item.className = 'has-submenu';
+      link.setAttribute('aria-haspopup', 'true');
+    }
 
     link.href = linkUrl.href;
     link.textContent = label;
-
-    const targetPath = linkUrl.pathname.replace(/\/+$/, '');
-    if (targetPath === currentPath || (currentPath.endsWith('/') && path === 'index.html') || currentPath.endsWith(path)) {
+    if (isCurrent) {
       link.setAttribute('aria-current', 'page');
     }
 
     item.appendChild(link);
+    if (children.length) {
+      const submenu = document.createElement('ul');
+      submenu.className = 'submenu';
+      children.forEach(child => {
+        const childItem = document.createElement('li');
+        const childLink = document.createElement('a');
+        const childUrl = new URL(child.path, BASE_URL);
+        childLink.href = childUrl.href;
+        childLink.textContent = child.label;
+        if (currentPath.endsWith(child.path)) {
+          childLink.setAttribute('aria-current', 'page');
+        }
+        childItem.appendChild(childLink);
+        submenu.appendChild(childItem);
+      });
+      item.appendChild(submenu);
+    }
     menu.appendChild(item);
   });
 

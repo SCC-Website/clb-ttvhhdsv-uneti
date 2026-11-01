@@ -484,9 +484,7 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   transition: all var(--transition-normal);
-  overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) transparent;
+  overflow: visible;
   min-width: 0;
 }
 
@@ -519,7 +517,7 @@ a:hover {
   gap: 8px;
   padding: 0;
   margin: 0;
-  min-width: max-content;
+  min-width: 0;
 }
 
 .main-nav .menu li a {
@@ -544,6 +542,61 @@ a:hover {
   background: var(--primary-gradient);
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(255, 87, 34, 0.35);
+}
+.main-nav .menu > li {
+  position: relative;
+}
+.main-nav .menu > li.has-submenu > a::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+.main-nav .menu > li.has-submenu:hover > a::after,
+.main-nav .menu > li.has-submenu:focus-within > a::after {
+  transform: rotate(225deg);
+}
+.main-nav .submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 20;
+  min-width: 190px;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: 0 14px 32px rgba(60, 30, 15, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+}
+.main-nav .has-submenu:hover > .submenu,
+.main-nav .has-submenu:focus-within > .submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.main-nav .submenu a {
+  display: flex;
+  width: 100%;
+  padding: 10px 12px;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+.main-nav .submenu a:hover,
+.main-nav .submenu a[aria-current="page"] {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  box-shadow: none;
 }
 
 .main-nav .menu li a:focus-visible,
@@ -1654,6 +1707,26 @@ footer#sharedFooter {
     justify-content: flex-start;
     font-size: 0.85rem;
     padding: 8px 12px;
+  }
+  .main-nav .menu > li.has-submenu > a::after {
+    margin-left: auto;
+  }
+  .main-nav .submenu {
+    position: static;
+    min-width: 0;
+    padding: 0 0 4px 16px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+  .main-nav .submenu a {
+    padding: 7px 12px;
+    font-size: 0.82rem;
   }
   
   .marquee-container {
