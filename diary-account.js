@@ -97,7 +97,7 @@
     const note = byId('home-account-note');
     if (note) note.textContent = account
       ? 'Lượt chơi sẽ được lưu vào hồ sơ và bảng xếp hạng toàn hệ thống.'
-      : 'Nhập tên để tạo tài khoản mới, hoặc đăng nhập bằng ID qua nút Hồ sơ.';
+      : 'Nhập tên để tạo tài khoản mới, hoặc đăng nhập bằng ID SCC / mã sinh viên qua nút Hồ sơ.';
     if (!byId('profile-modal')?.hidden) renderProfileView();
   }
 

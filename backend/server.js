@@ -171,9 +171,13 @@ api.post('/auth/register', registerLimiter, apiUnavailable, asyncRoute(async (re
 }));
 
 api.post('/auth/login', loginLimiter, apiUnavailable, asyncRoute(async (req, res) => {
-  const loginId = typeof req.body?.id === 'string' ? req.body.id.trim() : '';
-  if (!/^SCC-[A-Za-z0-9_-]{43}$/u.test(loginId)) return res.status(401).json({ error: 'ID không hợp lệ hoặc không tìm thấy tài khoản.' });
-  const user = await collections.users.findOne({ loginIdHash: sha256(loginId) });
+  const credential = typeof req.body?.id === 'string' ? req.body.id.normalize('NFC').trim() : '';
+  const isLoginId = /^SCC-[A-Za-z0-9_-]{43}$/u.test(credential);
+  const isStudentId = /^\d{11}$/u.test(credential);
+  if (!isLoginId && !isStudentId) return res.status(401).json({ error: 'ID SCC hoặc mã sinh viên không hợp lệ.' });
+  const user = await collections.users.findOne(isLoginId
+    ? { loginIdHash: sha256(credential) }
+    : { studentId: credential });
   if (!user) return res.status(401).json({ error: 'ID không hợp lệ hoặc không tìm thấy tài khoản.' });
   await issueSession(user, res);
   res.json({ account: publicAccount(user) });
