@@ -80,7 +80,7 @@
   }
 
   function setAccount(value) {
-    account = value ? { name: value.name, createdAt: value.createdAt } : null;
+    account = value ? { name: value.name, studentId: value.studentId || '', createdAt: value.createdAt } : null;
     const profileButton = byId('profile-btn');
     const profileLabel = profileButton?.querySelector('span');
     if (profileButton) {
@@ -102,7 +102,7 @@
   }
 
   function currentAccount() {
-    return account ? { name: account.name, createdAt: account.createdAt } : null;
+    return account ? { name: account.name, studentId: account.studentId || '', createdAt: account.createdAt } : null;
   }
 
   function isAuthenticated() {
@@ -240,6 +240,7 @@
     if (loggedIn) {
       renderIdCard();
       byId('profile-name').value = account.name;
+      byId('profile-student-id').value = account.studentId || '';
       byId('profile-history').innerHTML = '<p class="profile-history-empty">Đang tải lịch sử…</p>';
       byId('history-more').hidden = true;
     } else {
@@ -282,6 +283,11 @@
   async function initialize() {
     byId('profile-btn')?.addEventListener('click', openProfile);
     byId('profile-close')?.addEventListener('click', closeProfile);
+    for (const id of ['profile-student-id', 'result-student-id']) {
+      byId(id)?.addEventListener('input', event => {
+        event.currentTarget.value = event.currentTarget.value.replace(/\D/g, '').slice(0, 11);
+      });
+    }
     byId('profile-modal')?.addEventListener('click', event => { if (event.target === byId('profile-modal')) closeProfile(); });
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && !byId('profile-modal')?.hidden) closeProfile(); });
 
@@ -334,6 +340,24 @@
         loadHistory(true);
         setStatus('Đã cập nhật tên tài khoản.', 'success');
         refreshLeaderboard();
+      } catch (error) {
+        setStatus(errorText(error), 'error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    byId('profile-student-id-form')?.addEventListener('submit', async event => {
+      event.preventDefault();
+      const button = event.currentTarget.querySelector('button[type="submit"]');
+      button.disabled = true;
+      setStatus('Đang cập nhật mã sinh viên…');
+      try {
+        const data = await request('/api/me/student-id', { method: 'PATCH', body: JSON.stringify({ studentId: byId('profile-student-id').value }) });
+        setAccount(data.account);
+        if (byId('result-student-id')) byId('result-student-id').value = account.studentId || '';
+        setStatus(account.studentId ? 'Đã lưu mã sinh viên.' : 'Đã xoá mã sinh viên.', 'success');
+        setTimeout(() => setStatus(''), 1400);
       } catch (error) {
         setStatus(errorText(error), 'error');
       } finally {
@@ -409,6 +433,11 @@
     getAccount: currentAccount,
     isAuthenticated,
     refreshLeaderboard,
+    updateStudentId: async (studentId) => {
+      const data = await request('/api/me/student-id', { method: 'PATCH', body: JSON.stringify({ studentId }) });
+      setAccount(data.account);
+      return currentAccount();
+    },
     recordPlay,
     openProfile
   };

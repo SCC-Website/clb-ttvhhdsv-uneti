@@ -91,7 +91,7 @@ const requireSession = asyncRoute(async (req, res, next) => {
 });
 
 function publicAccount(user) {
-  return { name: user.name, createdAt: user.createdAt };
+  return { name: user.name, studentId: user.studentId || '', createdAt: user.createdAt };
 }
 
 async function issueSession(user, res) {
@@ -106,6 +106,14 @@ function normalizeName(value) {
   const name = value.normalize('NFC').trim();
   if (!name || Array.from(name).length > 24 || /[\u0000-\u001f\u007f]/u.test(name)) return null;
   return name;
+}
+
+function normalizeStudentId(value) {
+  if (typeof value !== 'string') return null;
+  const studentId = value.normalize('NFC').trim();
+  if (!studentId) return '';
+  if (!/^\d{11}$/u.test(studentId)) return null;
+  return studentId;
 }
 
 function parsePageValue(value, fallback, max) {
@@ -191,6 +199,15 @@ api.patch('/me/name', apiUnavailable, requireSession, asyncRoute(async (req, res
   res.json({ account: publicAccount(req.account) });
 }));
 
+api.patch('/me/student-id', apiUnavailable, requireSession, asyncRoute(async (req, res) => {
+  const studentId = normalizeStudentId(req.body?.studentId);
+  if (studentId === null) return res.status(400).json({ error: 'Mã sinh viên phải gồm đúng 11 chữ số.' });
+  const updatedAt = new Date();
+  await collections.users.updateOne({ _id: req.account._id }, { $set: { studentId, updatedAt } });
+  req.account.studentId = studentId;
+  res.json({ account: publicAccount(req.account) });
+}));
+
 api.get('/me/history', apiUnavailable, requireSession, asyncRoute(async (req, res) => {
   const limit = parsePageValue(req.query.limit, 8, 20);
   const offset = parsePageValue(req.query.offset, 0, 10000);
@@ -215,8 +232,11 @@ api.post('/plays', apiUnavailable, requireSession, asyncRoute(async (req, res) =
 api.get('/leaderboard', apiUnavailable, asyncRoute(async (req, res) => {
   const limit = Math.max(1, parsePageValue(req.query.limit, 20, 100));
   const offset = parsePageValue(req.query.offset, 0, 100000);
-  const total = await collections.plays.countDocuments({});
+  const eligibleUsers = await collections.users.find({ studentId: { $regex: '^[0-9]{11}$' } }, { projection: { _id: 1 } }).toArray();
+  const eligibleUserIds = eligibleUsers.map(user => user._id);
+  const total = eligibleUserIds.length ? await collections.plays.countDocuments({ userId: { $in: eligibleUserIds } }) : 0;
   const rows = await collections.plays.aggregate([
+    { $match: { userId: { $in: eligibleUserIds } } },
     { $sort: { score: -1, createdAt: -1, _id: 1 } },
     { $skip: offset },
     { $limit: limit },

@@ -87,7 +87,7 @@
           <article class="companion-info-card"><span class="companion-info-icon">↗</span><h3>Vũ Quang Việt</h3><p>Mỗi câu đúng liên tiếp tăng thêm 20% điểm câu, tối đa +200%; trả lời sai thì streak về 0.</p></article>
         </div>
       </section>
-      <section class="leaderboard home-leaderboard" aria-labelledby="leader-title"><div class="leader-heading"><div><span class="section-kicker">NHỮNG DẤU ẤN ĐẸP</span><h2 id="leader-title">Bảng xếp hạng</h2></div><span class="local-badge">MỌI LƯỢT CHƠI</span></div><div id="leaderboard-list" class="leader-list"></div></section>
+      <section class="leaderboard home-leaderboard" aria-labelledby="leader-title"><div class="leader-heading"><div><span class="section-kicker">NHỮNG DẤU ẤN ĐẸP</span><h2 id="leader-title">Bảng xếp hạng</h2></div><span class="local-badge">ĐÃ TÍCH HỢP MÃ SV</span></div><div id="leaderboard-list" class="leader-list"></div></section>
       <footer class="home-footer"><span>CLB Tuyên truyền Văn hoá học đường Sinh viên</span><a href="https://scc-website.github.io/clb-ttvhhdsv-uneti/" target="_blank" rel="noopener">Trở về trang chủ ↗</a></footer>
     </section>
 
@@ -117,7 +117,7 @@
 
     <section class="screen result-screen" id="result-screen" aria-labelledby="result-title">
       <div class="result-confetti" aria-hidden="true">✦　✳　　 ✦　　　✿</div>
-      <div class="result-content"><div class="result-seal">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> NHẬT KÝ ĐÃ KHÉP LẠI <span class="eyebrow-line"></span></div><h1 id="result-title">Một tuần <em>rực rỡ!</em></h1><p class="result-subtitle" id="result-subtitle"></p><div class="rank-stamp" id="rank-stamp">SINH VIÊN 5S</div><div class="final-score"><strong id="final-score">0</strong><span>ĐIỂM</span></div><p class="result-message" id="result-message"></p><div class="result-days" id="result-days"></div><div class="result-actions"><button class="primary-btn" id="play-again-btn" type="button">Viết nhật ký mới <span>↗</span></button><button class="secondary-btn" id="back-home-btn" type="button">Về trang đầu</button></div><div class="result-leaderboard"><h2>Top điểm của mọi lượt chơi</h2><div id="result-leaderboard-list" class="leader-list"></div></div></div>
+      <div class="result-content"><div class="result-seal">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> NHẬT KÝ ĐÃ KHÉP LẠI <span class="eyebrow-line"></span></div><h1 id="result-title">Một tuần <em>rực rỡ!</em></h1><p class="result-subtitle" id="result-subtitle"></p><div class="rank-stamp" id="rank-stamp">SINH VIÊN 5S</div><div class="final-score"><strong id="final-score">0</strong><span>ĐIỂM</span></div><p class="result-message" id="result-message"></p><div class="result-days" id="result-days"></div><form class="result-student-form" id="result-student-id-form"><label for="result-student-id">Mã sinh viên <span>(tuỳ chọn, có thể cập nhật trong Hồ sơ)</span></label><div class="profile-input-row"><input id="result-student-id" name="studentId" minlength="11" maxlength="11" pattern="[0-9]{11}" inputmode="numeric" autocomplete="off" placeholder="Nhập 11 chữ số mã sinh viên"><button class="secondary-btn" type="submit">Lưu mã</button></div><small id="result-student-note">Thêm mã để hồ sơ được nhận diện thuận tiện hơn.</small></form><div class="result-actions"><button class="primary-btn" id="play-again-btn" type="button">Viết nhật ký mới <span>↗</span></button><button class="secondary-btn" id="back-home-btn" type="button">Về trang đầu</button></div><div class="result-leaderboard"><h2>Top điểm của tài khoản đã tích hợp mã sinh viên</h2><div id="result-leaderboard-list" class="leader-list"></div></div></div>
     </section>
   </main>
   <div class="companion-modal" id="companion-modal" hidden role="dialog" aria-modal="true" aria-labelledby="companion-modal-title">
@@ -153,6 +153,10 @@
         <form class="profile-form" id="profile-name-form">
           <label for="profile-name">Tên hiển thị</label>
           <div class="profile-input-row"><input id="profile-name" name="name" maxlength="24" autocomplete="nickname"><button class="primary-btn" type="submit">Lưu tên</button></div>
+        </form>
+        <form class="profile-form" id="profile-student-id-form">
+          <label for="profile-student-id">Mã sinh viên <span>(tuỳ chọn)</span></label>
+          <div class="profile-input-row"><input id="profile-student-id" name="studentId" minlength="11" maxlength="11" pattern="[0-9]{11}" inputmode="numeric" autocomplete="off" placeholder="Nhập 11 chữ số mã sinh viên"><button class="secondary-btn" type="submit">Lưu mã</button></div>
         </form>
         <div class="profile-history-heading"><h3>Lịch sử viết nhật ký</h3><span id="history-count">0 lượt</span></div>
         <div class="profile-history" id="profile-history"></div>
