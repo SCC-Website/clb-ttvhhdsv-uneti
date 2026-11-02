@@ -238,13 +238,23 @@ api.get('/leaderboard', apiUnavailable, asyncRoute(async (req, res) => {
   const offset = parsePageValue(req.query.offset, 0, 100000);
   const eligibleUsers = await collections.users.find({ studentId: { $regex: '^[0-9]{11}$' } }, { projection: { _id: 1 } }).toArray();
   const eligibleUserIds = eligibleUsers.map(user => user._id);
-  const total = eligibleUserIds.length ? await collections.plays.countDocuments({ userId: { $in: eligibleUserIds } }) : 0;
+  const bestPlayMatch = { userId: { $in: eligibleUserIds } };
+  const totalRows = eligibleUserIds.length
+    ? await collections.plays.aggregate([
+      { $match: bestPlayMatch },
+      { $group: { _id: '$userId' } },
+      { $count: 'total' }
+    ]).toArray()
+    : [];
+  const total = totalRows[0]?.total || 0;
   const rows = await collections.plays.aggregate([
-    { $match: { userId: { $in: eligibleUserIds } } },
+    { $match: bestPlayMatch },
+    { $sort: { score: -1, createdAt: -1, _id: 1 } },
+    { $group: { _id: '$userId', score: { $first: '$score' }, completedDays: { $first: '$completedDays' }, companionId: { $first: '$companionId' }, createdAt: { $first: '$createdAt' } } },
     { $sort: { score: -1, createdAt: -1, _id: 1 } },
     { $skip: offset },
     { $limit: limit },
-    { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'owner' } },
+    { $lookup: { from: 'users', localField: '_id', foreignField: '_id', as: 'owner' } },
     { $unwind: { path: '$owner', preserveNullAndEmptyArrays: true } },
     { $project: { _id: { $toString: '$_id' }, name: { $ifNull: ['$owner.name', 'Thành viên SCC'] }, score: 1, completedDays: 1, companionId: 1, createdAt: 1 } }
   ]).toArray();
