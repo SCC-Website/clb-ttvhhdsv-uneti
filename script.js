@@ -1067,3 +1067,25 @@ function initContestToggles() {
     });
   });
 }
+
+function bindProfileLinkButtons() {
+  document.querySelectorAll('.copy-profile-link').forEach(button => {
+    button.addEventListener('click', async () => {
+      const label = button.querySelector('.copy-profile-link-label');
+      const originalLabel = label ? label.textContent : 'Sao chép link profile';
+
+      try {
+        await copyValue(window.location.href, button);
+        if (label) label.textContent = 'Đã sao chép link';
+      } catch (error) {
+        if (label) label.textContent = 'Sao chép không thành công';
+      }
+
+      window.setTimeout(() => {
+        if (label) label.textContent = originalLabel;
+      }, 1800);
+    });
+  });
+}
+
+bindProfileLinkButtons();
