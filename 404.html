@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/">
+  <script>
+    // Support both a GitHub Pages project URL and a root/custom-domain URL.
+    const siteBase = window.location.pathname.startsWith("/clb-ttvhhdsv-uneti/")
+      ? "/clb-ttvhhdsv-uneti"
+      : "";
+    document.write(`<base href="${siteBase}/">`);
+  </script>
   <meta name="robots" content="noindex, follow">
   <title>Không tìm thấy trang | CLB Tuyên truyền Văn hoá học đường Sinh viên UNETI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
