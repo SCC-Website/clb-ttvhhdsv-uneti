@@ -918,18 +918,54 @@ function initNewsPagination() {
   const nextBtn = document.getElementById('newsNextBtn');
   const pagesContainer = document.getElementById('newsPaginationPages');
   const statusEl = document.getElementById('newsPaginationStatus');
+  const searchInput = document.getElementById('newsSearchInput');
+  const searchClear = document.getElementById('newsSearchClear');
+  const searchStatus = document.getElementById('newsSearchStatus');
   const filterGroup = document.querySelector('[data-filter-chip-group="news"]');
   const filterButtons = filterGroup ? Array.from(filterGroup.querySelectorAll('[data-filter-chip]')) : [];
 
   const ITEMS_PER_PAGE = 9;
   let currentPage = 1;
   let currentFilter = 'all';
+  let currentQuery = '';
+
+  function normalizeText(str) {
+    return str
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function getArticleText(article) {
+    const title = article.querySelector('.event-title');
+    const badge = article.querySelector('.event-badge');
+    return [
+      title ? title.textContent : '',
+      badge ? badge.textContent : ''
+    ].join(' ');
+  }
 
   function getMatchingArticles() {
+    const normQuery = normalizeText(currentQuery);
     return articles.filter(article => {
-      if (currentFilter === 'all') return true;
-      return article.dataset.filterNewsItem === currentFilter;
+      const matchFilter = currentFilter === 'all' || article.dataset.filterNewsItem === currentFilter;
+      if (!matchFilter) return false;
+      if (!normQuery) return true;
+      return normalizeText(getArticleText(article)).includes(normQuery);
     });
+  }
+
+  function updateSearchStatus(matching) {
+    if (!searchStatus) return;
+    if (currentQuery && matching.length === 0) {
+      searchStatus.innerHTML = 'Không tìm thấy kết quả nào cho "<strong>' + currentQuery + '</strong>"';
+    } else if (currentQuery && matching.length > 0) {
+      searchStatus.innerHTML = 'Tìm thấy <strong>' + matching.length + '</strong> kết quả cho "<strong>' + currentQuery + '</strong>"';
+    } else {
+      searchStatus.textContent = '';
+    }
   }
 
   function updatePagination() {
@@ -988,13 +1024,15 @@ function initNewsPagination() {
 
     if (statusEl) {
       if (matching.length === 0) {
-        statusEl.textContent = 'Không có tin tức nào trong danh mục này.';
+        statusEl.textContent = currentQuery ? '' : 'Không có tin tức nào trong danh mục này.';
       } else {
         const fromItem = startIndex + 1;
         const toItem = Math.min(endIndex, matching.length);
         statusEl.innerHTML = 'Hiển thị <strong>' + fromItem + '–' + toItem + '</strong> trên tổng số <strong>' + matching.length + '</strong> tin tức (Trang <strong>' + currentPage + '</strong> / <strong>' + totalPages + '</strong>)';
       }
     }
+
+    updateSearchStatus(matching);
   }
 
   function goToPage(targetPage, shouldScroll = true) {
@@ -1043,6 +1081,36 @@ function initNewsPagination() {
       goToPage(1, false);
     });
   });
+
+  if (searchInput) {
+    let searchTimer;
+    searchInput.addEventListener('input', () => {
+      currentQuery = searchInput.value.trim();
+      if (searchClear) searchClear.hidden = !currentQuery;
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => goToPage(1, false), 180);
+    });
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        currentQuery = '';
+        searchInput.value = '';
+        if (searchClear) searchClear.hidden = true;
+        goToPage(1, false);
+      }
+    });
+  }
+
+  if (searchClear) {
+    searchClear.addEventListener('click', () => {
+      currentQuery = '';
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      searchClear.hidden = true;
+      goToPage(1, false);
+    });
+  }
 
   updatePagination();
 }

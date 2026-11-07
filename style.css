@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lexend:wght@600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lexend:wght@600;700;800&display=swap');
 
 /* ==========================================================================
-   CLB TUYÊN TRUYỀN VĂN HÓA HỌC ĐƯỜNG SINH VIÊN UNETI (SCC)
+   CLB TUYÃŠN TRUYá»€N VÄ‚N HÃ“A Há»ŒC ÄÆ¯á»œNG SINH VIÃŠN UNETI (SCC)
    Modern Design System & Responsive Stylesheet
    ========================================================================== */
 
@@ -77,7 +77,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Cho phép bôi đen văn bản tiện lợi */
+/* Cho phÃ©p bÃ´i Ä‘en vÄƒn báº£n tiá»‡n lá»£i */
 ::selection {
   background: var(--primary);
   color: #ffffff;
@@ -113,7 +113,7 @@ a:hover {
   padding: 60px 0;
 }
 
-/* --- Góc vinh danh: bảng thành viên xuất sắc --- */
+/* --- GÃ³c vinh danh: báº£ng thÃ nh viÃªn xuáº¥t sáº¯c --- */
 #vinh-danh-thang-9-2026 {
   background: radial-gradient(640px 320px at 50% 0%, rgba(255, 193, 94, 0.14), transparent 70%);
 }
@@ -341,7 +341,7 @@ a:hover {
   background: var(--primary-light);
 }
 
-/* Huy hiệu chức vụ trong bảng vinh danh */
+/* Huy hiá»‡u chá»©c vá»¥ trong báº£ng vinh danh */
 .role-badge {
   display: inline-block;
   padding: 3px 12px;
@@ -829,6 +829,121 @@ header.hero-header::before {
 .filter-chip:focus-visible {
   outline: 3px solid rgba(242, 81, 31, 0.35);
   outline-offset: 3px;
+}
+/* --- News Search Bar --- */
+.news-search-wrap {
+  max-width: 540px;
+  margin: 0 auto 28px;
+}
+
+.news-search-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.news-search-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.news-search-input {
+  width: 100%;
+  padding: 11px 42px 11px 42px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.news-search-input::-webkit-search-cancel-button,
+.news-search-input::-webkit-search-decoration {
+  display: none;
+}
+
+.news-search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.news-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(242, 81, 31, 0.15);
+}
+
+.news-search-inner:focus-within .news-search-icon {
+  color: var(--primary);
+}
+
+.news-search-clear {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.news-search-clear:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.news-search-clear svg {
+  width: 13px;
+  height: 13px;
+}
+
+.news-search-status {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.news-no-result {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+}
+
+.news-no-result svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  display: block;
+  opacity: 0.4;
+}
+
+.news-no-result p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.news-no-result strong {
+  color: var(--text-primary);
 }
 
 .section-padding[data-filter-member-item],
@@ -1605,7 +1720,7 @@ footer#sharedFooter {
 }
 
 .copy-value.is-copied::after {
-  content: "Đã sao chép";
+  content: "ÄÃ£ sao chÃ©p";
 }
 
 .footer-info-item b,
@@ -2094,7 +2209,7 @@ footer#sharedFooter {
   }
 }
 
-/* --- Info Grid (thông tin cá nhân) --- */
+/* --- Info Grid (thÃ´ng tin cÃ¡ nhÃ¢n) --- */
 .info-grid-wrap {
   background: #f4fbff;
   border: 3px solid #10a3e9;
@@ -2180,7 +2295,7 @@ footer#sharedFooter {
 }
 
 
-/* --- Bio / Giới thiệu bản thân --- */
+/* --- Bio / Giá»›i thiá»‡u báº£n thÃ¢n --- */
 .profile-bio-card {
   background: var(--surface);
   border-radius: var(--radius-lg);
@@ -2211,7 +2326,7 @@ footer#sharedFooter {
   margin-bottom: 40px;
 }
 
-/* --- Timeline (dấu ấn hoạt động) --- */
+/* --- Timeline (dáº¥u áº¥n hoáº¡t Ä‘á»™ng) --- */
 .profile-timeline {
   position: relative;
   margin: 0 auto 40px;
@@ -2328,7 +2443,7 @@ footer#sharedFooter {
   text-align: justify;
 }
 
-/* --- Thành tích / Khen thưởng --- */
+/* --- ThÃ nh tÃ­ch / Khen thÆ°á»Ÿng --- */
 .achievement-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -2448,7 +2563,7 @@ a.achievement-card p {
     padding: 24px 20px;
   }
 }
-/* --- Thư viện ảnh (Gallery) --- */
+/* --- ThÆ° viá»‡n áº£nh (Gallery) --- */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -2520,7 +2635,7 @@ a.achievement-card p {
   outline-offset: 3px;
 }
 
-/* --- Lightbox (xem ảnh phóng to) --- */
+/* --- Lightbox (xem áº£nh phÃ³ng to) --- */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -3108,7 +3223,7 @@ a.achievement-card p {
   }
 }
 
-/* Trạng thái khi đóng đơn đăng ký */
+/* Tráº¡ng thÃ¡i khi Ä‘Ã³ng Ä‘Æ¡n Ä‘Äƒng kÃ½ */
 .reg-closed-badge {
   display: none;
   align-items: center;
@@ -3165,7 +3280,7 @@ body.registration-closed a[href*="forms.gle"] {
   }
 }
 
-/* --- Gen 5 Fullscreen Intro Overlay (mở khi bấm link điều hướng chính) --- */
+/* --- Gen 5 Fullscreen Intro Overlay (má»Ÿ khi báº¥m link Ä‘iá»u hÆ°á»›ng chÃ­nh) --- */
 .gen5-overlay {
   position: fixed;
   inset: 0;
@@ -3433,8 +3548,8 @@ body.registration-closed a[href*="forms.gle"] {
 }
 
 /* ==========================================================================
-   UPGRADE LAYER — giao diện tinh gọn & chuyển động mượt
-   (đặt cuối file để ghi đè có chủ đích, không đổi tên class nào trong HTML)
+   UPGRADE LAYER â€” giao diá»‡n tinh gá»n & chuyá»ƒn Ä‘á»™ng mÆ°á»£t
+   (Ä‘áº·t cuá»‘i file Ä‘á»ƒ ghi Ä‘Ã¨ cÃ³ chá»§ Ä‘Ã­ch, khÃ´ng Ä‘á»•i tÃªn class nÃ o trong HTML)
    ========================================================================== */
 
 html { scroll-padding-top: 96px; }
@@ -3455,7 +3570,7 @@ p, .section-desc { text-wrap: pretty; }
   border-radius: 6px;
 }
 
-/* --- Nhãn mục: bỏ chữ HOA giãn chữ, nhìn nhẹ & tự nhiên hơn --- */
+/* --- NhÃ£n má»¥c: bá» chá»¯ HOA giÃ£n chá»¯, nhÃ¬n nháº¹ & tá»± nhiÃªn hÆ¡n --- */
 .section-tag {
   text-transform: none;
   letter-spacing: 0;
@@ -3479,7 +3594,7 @@ p, .section-desc { text-wrap: pretty; }
 .section-desc { line-height: 1.75; }
 .section-padding { padding: 72px 0; }
 
-/* --- Banner & điều hướng --- */
+/* --- Banner & Ä‘iá»u hÆ°á»›ng --- */
 .top-banner {
   background:
     radial-gradient(ellipse at 20% 0%, rgba(255, 255, 255, 0.18), transparent 55%),
@@ -3538,7 +3653,7 @@ p, .section-desc { text-wrap: pretty; }
 }
 .track { will-change: transform; }
 
-/* --- Hero: một khoảnh khắc vào trang duy nhất --- */
+/* --- Hero: má»™t khoáº£nh kháº¯c vÃ o trang duy nháº¥t --- */
 header.hero-header,
 .profile-hero,
 .culture-hero {
@@ -3590,7 +3705,7 @@ header.hero-header { padding: 72px 24px 64px; margin-bottom: 24px; }
   background: var(--primary-gradient);
 }
 
-/* --- Thẻ: bề mặt thống nhất, nâng nhẹ khi hover --- */
+/* --- Tháº»: bá» máº·t thá»‘ng nháº¥t, nÃ¢ng nháº¹ khi hover --- */
 .overview-card,
 .events-section,
 .slogan-banner,
@@ -3638,7 +3753,7 @@ header.hero-header { padding: 72px 24px 64px; margin-bottom: 24px; }
 .role-card p.role-desc, .board-content p { text-align: left; hyphens: auto; }
 .role-members-box { background: #fff9f4; border-color: var(--border-accent); line-height: 1.6; }
 
-/* --- Sự kiện --- */
+/* --- Sá»± kiá»‡n --- */
 .event-badge {
   background: var(--primary-gradient);
   backdrop-filter: blur(8px);
@@ -3654,7 +3769,7 @@ header.hero-header { padding: 72px 24px 64px; margin-bottom: 24px; }
 .event-link-btn:hover { color: var(--primary-dark); }
 .event-link-btn:hover span:last-child { transform: translateX(5px); }
 
-/* --- Nút & liên kết hành động --- */
+/* --- NÃºt & liÃªn káº¿t hÃ nh Ä‘á»™ng --- */
 .overview-cta, .profile-back-cta {
   transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -3663,7 +3778,7 @@ header.hero-header { padding: 72px 24px 64px; margin-bottom: 24px; }
 .avatar-cta-btn, .hero-cta-btn { transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast); }
 a.achievement-card:hover { box-shadow: var(--shadow-hover); }
 
-/* --- Trang Văn hoá học đường: hero 3 ảnh gọn gàng --- */
+/* --- Trang VÄƒn hoÃ¡ há»c Ä‘Æ°á»ng: hero 3 áº£nh gá»n gÃ ng --- */
 .culture-hero {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px 22px;
@@ -3695,7 +3810,7 @@ a.achievement-card:hover { box-shadow: var(--shadow-hover); }
   border: 1px solid var(--border-accent);
 }
 
-/* --- Trang hồ sơ thành viên --- */
+/* --- Trang há»“ sÆ¡ thÃ nh viÃªn --- */
 .profile-hero { padding: 64px 28px 56px; }
 .profile-info { min-width: 0; }
 .profile-avatar-wrapper img {
@@ -3723,13 +3838,13 @@ a.achievement-card:hover { box-shadow: var(--shadow-hover); }
 .profile-social-links { justify-content: center; }
 .gallery-item { border-radius: var(--radius-md); }
 
-/* --- Thông báo / đăng ký --- */
+/* --- ThÃ´ng bÃ¡o / Ä‘Äƒng kÃ½ --- */
 .avatar-cta-card--signup {
   background: linear-gradient(145deg, #fff, #fff4ea);
 }
 .reg-closed-badge { background: rgba(255, 255, 255, 0.2); }
 
-/* --- Liên hệ & FAQ --- */
+/* --- LiÃªn há»‡ & FAQ --- */
 .contact-tile-icon { background: linear-gradient(145deg, #fff3e0, #ffe0cc); box-shadow: 0 0 0 1px var(--border-accent); }
 .faq-question { transition: color var(--transition-fast); }
 .faq-question:hover { color: var(--primary-dark); }
@@ -3768,7 +3883,7 @@ footer#sharedFooter::before {
 .footer-links li a { transition: color var(--transition-fast), transform var(--transition-fast); }
 .footer-icon { border-radius: 4px; }
 
-/* --- Cuộn mượt: hiện dần phần tử khi vào khung nhìn (JS thêm class) --- */
+/* --- Cuá»™n mÆ°á»£t: hiá»‡n dáº§n pháº§n tá»­ khi vÃ o khung nhÃ¬n (JS thÃªm class) --- */
 .js-reveal .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -3777,7 +3892,7 @@ footer#sharedFooter::before {
 }
 .js-reveal .reveal.is-visible { opacity: 1; transform: none; }
 
-/* --- Nút lên đầu trang --- */
+/* --- NÃºt lÃªn Ä‘áº§u trang --- */
 .back-to-top {
   position: fixed;
   right: 18px;
@@ -3802,7 +3917,7 @@ footer#sharedFooter::before {
 .back-to-top:hover { box-shadow: 0 14px 30px rgba(242, 81, 31, 0.5); transform: translateY(-3px); }
 .back-to-top svg { width: 20px; height: 20px; }
 
-/* --- Responsive bổ sung --- */
+/* --- Responsive bá»• sung --- */
 @media (max-width: 992px) {
   .culture-intro { grid-template-columns: 1fr; }
 }
@@ -3819,7 +3934,7 @@ footer#sharedFooter::before {
   .back-to-top { right: 12px; bottom: 12px; }
 }
 
-/* --- Tôn trọng người dùng giảm chuyển động --- */
+/* --- TÃ´n trá»ng ngÆ°á»i dÃ¹ng giáº£m chuyá»ƒn Ä‘á»™ng --- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -3832,9 +3947,9 @@ footer#sharedFooter::before {
   .js-reveal .reveal { opacity: 1; transform: none; }
 }
 
-/* --- Icon SVG thay thế emoji ---
-   Icon stroke "currentColor" nên tự ăn theo màu chữ của ngữ cảnh đang đứng
-   (badge, tiêu đề card, nút bấm...), kích thước 1em để luôn khớp cỡ chữ. */
+/* --- Icon SVG thay tháº¿ emoji ---
+   Icon stroke "currentColor" nÃªn tá»± Äƒn theo mÃ u chá»¯ cá»§a ngá»¯ cáº£nh Ä‘ang Ä‘á»©ng
+   (badge, tiÃªu Ä‘á» card, nÃºt báº¥m...), kÃ­ch thÆ°á»›c 1em Ä‘á»ƒ luÃ´n khá»›p cá»¡ chá»¯. */
 .icon-svg {
   display: inline-block;
   width: 1em;
@@ -3843,7 +3958,7 @@ footer#sharedFooter::before {
   flex-shrink: 0;
 }
 
-/* Ngữ cảnh riêng: icon mang màu nhấn thương hiệu của CLB */
+/* Ngá»¯ cáº£nh riÃªng: icon mang mÃ u nháº¥n thÆ°Æ¡ng hiá»‡u cá»§a CLB */
 .event-title .icon-svg,
 .section-title .icon-svg,
 .info-card .info-label .icon-svg,
@@ -4696,7 +4811,7 @@ footer#sharedFooter::before {
 }
 
 
-/* --- 404: cảnh minh hoạ SVG (con đường uốn lượn về phía chân trời) ---- */
+/* --- 404: cáº£nh minh hoáº¡ SVG (con Ä‘Æ°á»ng uá»‘n lÆ°á»£n vá» phÃ­a chÃ¢n trá»i) ---- */
 .not-found-visual {
   min-height: 0;
   aspect-ratio: 400 / 430;
