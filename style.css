@@ -4894,7 +4894,7 @@ footer#sharedFooter::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 8px 0 2px;
+  margin: 8px 0;
   padding: 7px 12px;
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
@@ -4910,6 +4910,14 @@ footer#sharedFooter::before {
 .profile-hit-badge svg { width: 17px; height: 17px; flex: 0 0 auto; opacity: 0.9; }
 .profile-hit-badge [data-hits-count] { font-variant-numeric: tabular-nums; }
 .profile-hit-badge--offline { opacity: 0.76; }
+.profile-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 10px;
+}
+.profile-actions-row .copy-profile-link { margin-top: 8px; }
 @media (max-width: 640px) {
+  .profile-actions-row { justify-content: center; }
   .profile-hit-badge { margin-top: 10px; }
 }
