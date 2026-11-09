@@ -212,6 +212,7 @@
   }
 
   function openProfile() {
+    if (document.body.classList.contains('game-is-active')) return;
     const modal = byId('profile-modal');
     if (!modal) return;
     loginIdVisible = false;

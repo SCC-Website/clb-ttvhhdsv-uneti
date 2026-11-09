@@ -183,7 +183,7 @@
   function rankFor(score){if(score<150)return'Hãy cố gắng lần sau nha!';if(score<300)return'Sinh viên lễ phép';if(score<450)return'Sinh viên tuyệt vời';if(score<600)return'Sinh viên 5S';return'Đại sứ Văn hoá học đường'}
   function saveBoard(){return window.SCCAccount.recordPlay({score:state.score,completedDays:state.completed.length,companionId:state.companionId}).catch(error=>{toast(error?.message==='Backend unavailable'?'Máy chủ chưa sẵn sàng. Hãy kiểm tra backend và MongoDB Atlas.':error?.message||'Không thể lưu lượt chơi lên máy chủ.');return null})}
   function renderBoard(){window.SCCAccount?.refreshLeaderboard()}
-  function showScreen(id){document.querySelectorAll('.screen').forEach(screen=>screen.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+  function showScreen(id){document.querySelectorAll('.screen').forEach(screen=>screen.classList.remove('active'));$(id).classList.add('active');const isPlaying=id==='game-screen';document.body.classList.toggle('game-is-active',isPlaying);if(isPlaying&&$('profile-modal'))$('profile-modal').hidden=true;window.scrollTo({top:0,behavior:'smooth'})}
   function clearTimers(){clearInterval(state.timer);clearTimeout(state.stageTimer);clearTimeout(state.typeTimer);clearTimeout(state.overlayTimer);state.timer=state.stageTimer=state.typeTimer=state.overlayTimer=null}
   function scheduleStage(callback,delay){clearTimeout(state.stageTimer);state.stageTimer=setTimeout(callback,delay)}
   function showOverlay(kicker,title,text,count){const overlay=$('game-overlay');clearTimeout(state.overlayTimer);state.overlayTimer=null;overlay.classList.remove('is-leaving');$('overlay-kicker').textContent=kicker||'';$('overlay-title').textContent=title||'';$('overlay-text').textContent=text||'';const counter=$('overlay-count');if(count===null||count===undefined){counter.hidden=true;counter.textContent=''}else{counter.hidden=false;counter.textContent=count}overlay.hidden=false}
@@ -531,7 +531,6 @@
   initTilt();
   initClickSparks();
 })();
-
 
 
 

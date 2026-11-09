@@ -799,5 +799,7 @@ h1 em{
 .profile-id-card[hidden]{display:none!important}
 
 .profile-id-actions{display:flex;align-items:center;gap:8px}
+
+body.game-is-active #profile-btn,body.game-is-active #profile-modal{display:none!important}
 .profile-id-actions .secondary-btn{min-height:40px;white-space:nowrap}
 @media(max-width:650px){.profile-id-actions{display:grid;grid-template-columns:1fr;width:100%}}
