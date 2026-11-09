@@ -4908,7 +4908,6 @@ footer#sharedFooter::before {
 }
 .profile-hit-badge[hidden] { display: none; }
 .profile-hit-badge svg { width: 17px; height: 17px; flex: 0 0 auto; opacity: 0.9; }
-.profile-hit-badge img { display: inline-block; width: auto; height: 20px; max-width: none; flex: 0 0 auto; }
 .profile-hit-badge [data-hits-count] { font-variant-numeric: tabular-nums; }
 .profile-hit-badge--offline { opacity: 0.76; }
 @media (max-width: 640px) {
