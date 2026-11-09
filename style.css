@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lexend:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lexend:wght@600;700;800&display=swap');
 
 /* ==========================================================================
    CLB TUYÃŠN TRUYá»€N VÄ‚N HÃ“A Há»ŒC ÄÆ¯á»œNG SINH VIÃŠN UNETI (SCC)
@@ -4887,4 +4887,30 @@ footer#sharedFooter::before {
   .copy-profile-link {
     margin-top: 12px;
   }
+}
+
+/* --- Profile view counter --- */
+.profile-hit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 2px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.96);
+  background: rgba(91, 28, 18, 0.25);
+  box-shadow: 0 4px 14px rgba(50, 10, 5, 0.12);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.25;
+  backdrop-filter: blur(8px);
+}
+.profile-hit-badge[hidden] { display: none; }
+.profile-hit-badge svg { width: 17px; height: 17px; flex: 0 0 auto; opacity: 0.9; }
+.profile-hit-badge img { display: inline-block; width: auto; height: 20px; max-width: none; flex: 0 0 auto; }
+.profile-hit-badge [data-hits-count] { font-variant-numeric: tabular-nums; }
+.profile-hit-badge--offline { opacity: 0.76; }
+@media (max-width: 640px) {
+  .profile-hit-badge { margin-top: 10px; }
 }

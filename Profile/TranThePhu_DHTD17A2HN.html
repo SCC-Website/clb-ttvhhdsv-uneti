@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="style.css?v=2">
   <link id="siteFavicon" rel="icon" type="image/png" sizes="192x192" href="Image/SCC-Logo.png?v=2">
 </head>
-<body>
+<body data-profile-id="TranThePhu_DHTD17A2HN">
 
   <!-- Top Banner -->
   <div class="top-banner">
@@ -34,6 +34,10 @@
       </div>
       <div class="profile-info">
         <h1 class="profile-name">Trần Thế Phú</h1>
+        <div class="profile-hit-badge" id="profileHits" role="status" aria-live="polite" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span><strong data-hits-count>—</strong> lượt xem</span>
+        </div>
         <p class="profile-position">Chủ nhiệm CLB SCC UNETI</p>
         <p class="profile-class">Lớp DHTD17A2HN &middot; Khoa Điện – Tự động hóa</p>
         <div class="profile-tags">
@@ -270,6 +274,7 @@
 
   </main>
 
+  <script src="profile-hits.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
