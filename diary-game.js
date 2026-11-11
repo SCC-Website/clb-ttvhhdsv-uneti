@@ -247,17 +247,16 @@
     const actions=$('feedback-actions'),continueButton=$('continue-btn');
     const claimButton=document.createElement('button');claimButton.type='button';claimButton.className='primary-btn';
     const saveButton=document.createElement('button');saveButton.type='button';saveButton.className='secondary-btn';
-    const claimDays=state.thaoSavedDays+1;claimButton.textContent='Có — nhận '+(claimDays*25)+' điểm';
-    const mustClaim=state.thaoSavedDays>=3;
-    saveButton.textContent='Không — để dành';saveButton.disabled=mustClaim;
-    $('feedback').textContent=mustClaim?'Bạn đã để dành tối đa 3 ngày. Hãy nhận điểm thưởng để tiếp tục.':'Bạn có thêm 25 điểm thưởng hoàn thành ngày. Nhận ngay hay để dành? Đang để dành '+state.thaoSavedDays+'/3 ngày.';
-    claimButton.addEventListener('click',()=>{award(claimDays*25);state.thaoSavedDays=0;finishThaoRewardChoice()},{once:true});
-    saveButton.addEventListener('click',()=>{state.thaoSavedDays++;$('feedback').textContent='Đã để dành điểm thưởng ngày này ('+state.thaoSavedDays+'/3 ngày).';finishThaoRewardChoice()},{once:true});
+    const canUseX3=state.thaoSavedDays<3;claimButton.textContent='Có — nhận x3 (75 điểm)';claimButton.disabled=!canUseX3;
+    saveButton.textContent='Không — nhận 25 điểm, để dành lượt x3';
+    $('feedback').textContent=canUseX3?'Bạn có thêm điểm cho ngày hoàn thành không? Chọn Có để nhận x3 (75 điểm); chọn Không để nhận 25 điểm và để dành lượt x3 cho ngày sau. Đã dùng x3 '+state.thaoSavedDays+'/3 ngày.':'Bạn đã dùng x3 tối đa 3 ngày. Chọn Không để nhận 25 điểm hoàn thành ngày.';
+    claimButton.addEventListener('click',()=>{award(75);state.thaoSavedDays++;finishThaoRewardChoice()},{once:true});
+    saveButton.addEventListener('click',()=>{award(25);$('feedback').textContent='Bạn nhận 25 điểm và đã để dành lượt x3 cho ngày sau. Đã dùng x3 '+state.thaoSavedDays+'/3 ngày.';finishThaoRewardChoice()},{once:true});
     actions.insertBefore(claimButton,continueButton);actions.insertBefore(saveButton,continueButton);continueButton.hidden=true;
     function finishThaoRewardChoice(){claimButton.remove();saveButton.remove();continueButton.hidden=false}
   }
   function showBadEnding(chosen,correct){clearTimers();state.dayFailed=true;state.locked=true;$('question-card').hidden=true;$('story-card').classList.add('bad-ending');$('story-icon').textContent='×';$('story-text').textContent='BAD ENDING — Nhiệm vụ hôm nay chưa hoàn thành. Một tình huống mới sẽ chờ bạn vào ngày mai.';$('feedback').textContent=`Bạn chọn: ${chosen||'không chọn kịp'}. Địa điểm được giao: ${correct}. Ngày này kết thúc tại đây.`;$('feedback').className='feedback show bad';$('feedback-actions').hidden=false;$('continue-btn').textContent=state.dayIndex===days.length-1?'Khép lại tuần →':'Sang ngày tiếp theo →';state.awaitingNextDay=true}
-  function advanceDay(){clearTimers();if(state.dayIndex>=days.length-1){finish();return}state.dayIndex++;state.taskIndex=0;state.dayPoints=0;state.dayFailed=false;state.dayPerfect=true;state.awaitingNextDay=false;renderDayShell();beginDayIntro()}
+  function advanceDay(){clearTimers();if(state.dayIndex>=days.length-1){state.thaoSavedDays=0;finish();return}state.dayIndex++;state.taskIndex=0;state.dayPoints=0;state.dayFailed=false;state.dayPerfect=true;state.awaitingNextDay=false;renderDayShell();beginDayIntro()}
   function renderDayShell(){const day=days[state.dayIndex];updateDayHeading();$('question-card').hidden=false;$('story-card').classList.remove('bad-ending');$('story-icon').textContent=day.icon;$('story-text').textContent=storyFor(day);$('score-value').textContent=state.score;$('day-points').textContent=`+${state.dayPoints} điểm hôm nay`}
   function award(points){state.score+=points;state.dayPoints+=points;$('score-value').textContent=state.score;$('day-points').textContent=`+${state.dayPoints} điểm hôm nay`}
   function finish(){soundCue('finish');clearTimers();hideOverlay();if(state.companionId==='nguyen-phuong-thao'&&state.thaoSavedDays){award(state.thaoSavedDays*25);state.thaoSavedDays=0}const fullWeek=state.completed.length===days.length;if(fullWeek)award(50);saveBoard();const account=window.SCCAccount.getAccount();$('result-student-id').value=account?.studentId||'';$('result-student-note').textContent=account?.studentId?'Mã sinh viên đã lưu trong hồ sơ. Bạn có thể cập nhật nếu cần.':'Bạn có thể nhập ngay tại đây hoặc cập nhật sau trong Hồ sơ.';$('result-subtitle').textContent=`${state.player}, cảm ơn bạn đã đồng hành cùng SCC suốt tuần qua.`;$('final-score').textContent=state.score;$('rank-stamp').textContent=rankFor(state.score).toLocaleUpperCase('vi');$('result-message').textContent=fullWeek?'Bảy ngày, bảy dấu ấn — bạn nhận thêm 50 điểm hoàn thành tuần. Hãy tiếp tục lan toả nét đẹp văn hoá học đường 5S!':'Mỗi trải nghiệm đều đáng quý. Những ngày chưa trọn vẹn sẽ là động lực để bạn viết tiếp hành trình cùng SCC.';$('result-days').innerHTML=days.map((_,i)=>`<span class="result-day ${state.completed.includes(i)?'completed':''}" title="Ngày ${i+1}">${state.completed.includes(i)?'✓':i+1}</span>`).join('');showScreen('result-screen')}
@@ -554,7 +553,5 @@
   initTilt();
   initClickSparks();
 })();
-
-
 
 
