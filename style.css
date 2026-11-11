@@ -1826,8 +1826,12 @@ footer#sharedFooter {
   .main-nav .menu > li.has-submenu > a::after {
     margin-left: auto;
   }
+  .main-nav .menu > li.has-submenu > a[aria-expanded="true"]::after {
+    transform: rotate(225deg);
+  }
   .main-nav .submenu {
     position: static;
+    display: none;
     min-width: 0;
     padding: 0 0 4px 16px;
     border: 0;
@@ -1838,6 +1842,9 @@ footer#sharedFooter {
     visibility: visible;
     pointer-events: auto;
     transform: none;
+  }
+  .main-nav .menu > li.has-submenu > a[aria-expanded="true"] + .submenu {
+    display: block;
   }
   .main-nav .submenu a {
     padding: 7px 12px;

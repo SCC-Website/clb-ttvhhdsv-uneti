@@ -125,6 +125,7 @@ function renderNavigation() {
     if (children.length) {
       item.className = 'has-submenu';
       link.setAttribute('aria-haspopup', 'true');
+      link.setAttribute('aria-expanded', 'false');
     }
 
     link.href = linkUrl.href;
@@ -135,6 +136,15 @@ function renderNavigation() {
 
     item.appendChild(link);
     if (children.length) {
+      link.addEventListener('click', event => {
+        if (!window.matchMedia('(max-width: 897px)').matches) {
+          return;
+        }
+        event.preventDefault();
+        const expanded = link.getAttribute('aria-expanded') === 'true';
+        link.setAttribute('aria-expanded', String(!expanded));
+      });
+
       const submenu = document.createElement('ul');
       submenu.className = 'submenu';
       children.forEach(child => {
@@ -885,17 +895,19 @@ function initScrollEnhancements() {
 }
 
 function initRecognitionTableDetails() {
-  const toggle = document.querySelector('.recognition-detail-toggle');
-  const tableWrapper = document.getElementById('recognition-table-wrapper');
-  if (!toggle || !tableWrapper) {
-    return;
-  }
+  document.querySelectorAll('.recognition-detail-toggle').forEach(toggle => {
+    const tableId = toggle.getAttribute('aria-controls');
+    const tableWrapper = tableId ? document.getElementById(tableId) : null;
+    if (!tableWrapper) {
+      return;
+    }
 
-  toggle.addEventListener('click', () => {
-    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isExpanded));
-    toggle.textContent = isExpanded ? 'Xem chi tiết' : 'Ẩn chi tiết';
-    tableWrapper.hidden = isExpanded;
+    toggle.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isExpanded));
+      toggle.textContent = isExpanded ? 'Xem chi tiết' : 'Ẩn chi tiết';
+      tableWrapper.hidden = isExpanded;
+    });
   });
 }
 

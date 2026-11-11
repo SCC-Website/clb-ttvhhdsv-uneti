@@ -65,7 +65,7 @@ body{background:radial-gradient(ellipse at 88% 8%,rgba(245,182,83,.11) 0%,transp
 .answer-waiting .answer-option{opacity:.45;pointer-events:none}
 .feedback{min-height:0;padding:0;line-height:1.7}
 .feedback.show{min-height:42px;padding:9px 12px}
-.feedback-actions{display:flex;justify-content:flex-end;margin:4px 0 10px}
+.feedback-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin:4px 0 10px}
 .feedback-actions .primary-btn{min-width:142px}
 .story-card.bad-ending{background:#fff0e9;border-left-color:#b92720}
 .story-card.bad-ending p,.story-card.bad-ending .story-icon{color:#a83c2c}
