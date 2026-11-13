@@ -102,7 +102,7 @@
   const day4QuestionBank=[
     quiz('Khi bất đồng ý kiến trong buổi sinh hoạt CLB, cách ứng xử tốt nhất là gì?',['Lắng nghe, trao đổi tôn trọng và cùng tìm giải pháp','Cố ý ngắt lời người khác và biện minh không có lý do','Tiếp tục tranh cãi đến cùng','Im lặng rồi nói xấu sau lưng'],0),
     quiz('Khi được góp ý về nhiệm vụ trong CLB, bạn nên làm gì?',['Lắng nghe, tiếp thu và điều chỉnh phù hợp','Tự ái và bỏ việc giữa chừng','Tranh luận để chứng minh mình luôn đúng','Đổ lỗi cho các thành viên khác'],0),
-    quiz('Nếu vô tình làm ảnh hưởng đến công việc chung, bạn nên làm gì?',['Tôn trọng mọi người, trao đổi rõ ràng và đúng mục đích','Nhắn tin xúc phạm khi tức giận, tự ái','Chia sẻ tin lên mạng xã hội khi chưa kiểm chứng','Spam tin nhắn liên tục với nhiều nhóm và người khác'],0),
+    quiz('Nếu có mâu thuẫn trong việc phân chia công việc, bạn nên làm gì?',['Tôn trọng mọi người, trao đổi rõ ràng và đúng mục đích','Nhắn tin xúc phạm khi tức giận, tự ái','Chia sẻ tin lên mạng xã hội khi chưa kiểm chứng','Spam tin nhắn liên tục với nhiều nhóm và người khác'],0),
     quiz('Nếu vô tình làm ảnh hưởng đến công việc chung, bạn nên làm gì?',['Chủ động nhận trách nhiệm và phối hợp khắc phục','Im lặng và chờ người khác giải quyết','Nhanh chóng xoá tin nhắn để tránh bị phát hiện','Đổ lỗi cho người đến sau'],0)
   ];
   const day5EventLocations=[
@@ -110,7 +110,7 @@
     {campus:'Lĩnh Nam',target:'Cổng vào C1'},{campus:'Lĩnh Nam',target:'Cổng vào C2'},{campus:'Lĩnh Nam',target:'Phòng hội thảo – toà HA8'},{campus:'Lĩnh Nam',target:'Phòng Chính trị & Công tác Sinh viên – toà HA8'},{campus:'Lĩnh Nam',target:'Sảnh Truyền thống'},{campus:'Lĩnh Nam',target:'Văn phòng Đoàn – toà HA11'},{campus:'Lĩnh Nam',target:'Thang máy – toà HA10'},{campus:'Lĩnh Nam',target:'Thang máy – toà HA11'},{campus:'Lĩnh Nam',target:'Cầu nối giữa toà HA9 và HA11'},{campus:'Lĩnh Nam',target:'Hội trường lớn'}
   ];
   const day5QuestionBank=[
-    quiz('Khi đi hỗ trợ sự kiện, bạn cần trang phục như thế nào?',['Áo 5S, quần lịch sự, giày hoặc dép sandal và đeo thẻ sinh viên','Trang phục tuỳ ý, không cần thẻ','Đồng phục thể thao và dép lê','Chỉ cần áo khoác CLB'],0),
+    quiz('Khi đi hỗ trợ sự kiện, bạn cần trang phục như thế nào?',['Áo 5S, quần lịch sự, giày hoặc dép sandal và đeo thẻ sinh viên','Trang phục tuỳ ý, không cần thẻ','Đồng phục thể thao và dép lê','Chỉ cần áo 5S'],0),
     quiz('Khi đi hỗ trợ, điều quan trọng nhất bạn cần thực hiện là gì?',['Hỗ trợ theo sự chỉ dẫn của Thầy/Cô, Cán bộ, thành viên đầu mối của CLB','Tự ý đổi nhiệm vụ theo ý mình','Chỉ hỗ trợ việc mình thích','Chờ người khác phân công lại nhiều lần'],0),
     quiz('Điều không nên làm khi bạn đi hỗ trợ là gì?',['Bỏ về giữa chừng khi có công việc','Hỏi đầu mối khi chưa rõ việc','Phối hợp với các thành viên','Có mặt đúng giờ'],0)
   ];
