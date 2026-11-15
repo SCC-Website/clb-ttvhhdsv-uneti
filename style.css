@@ -555,6 +555,9 @@ a:hover {
   transform: rotate(45deg);
   transition: transform var(--transition-fast);
 }
+.main-nav .submenu-toggle {
+  display: none;
+}
 .main-nav .menu > li.has-submenu:hover > a::after,
 .main-nav .menu > li.has-submenu:focus-within > a::after {
   transform: rotate(225deg);
@@ -1823,13 +1826,48 @@ footer#sharedFooter {
     font-size: 0.85rem;
     padding: 8px 12px;
   }
-  .main-nav .menu > li.has-submenu > a::after {
-    margin-left: auto;
+  .main-nav .menu > li.has-submenu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
   }
-  .main-nav .menu > li.has-submenu > a[aria-expanded="true"]::after {
+  .main-nav .menu > li.has-submenu > a {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .main-nav .menu > li.has-submenu > a::after {
+    display: none;
+  }
+  .main-nav .submenu-toggle {
+    display: inline-flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin-left: 4px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .main-nav .submenu-toggle::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform var(--transition-fast);
+  }
+  .main-nav .submenu-toggle[aria-expanded="true"]::before {
     transform: rotate(225deg);
   }
   .main-nav .submenu {
+    flex: 0 0 100%;
+    width: 100%;
     position: static;
     display: none;
     min-width: 0;
@@ -1843,8 +1881,12 @@ footer#sharedFooter {
     pointer-events: auto;
     transform: none;
   }
-  .main-nav .menu > li.has-submenu > a[aria-expanded="true"] + .submenu {
+  .main-nav .submenu-toggle[aria-expanded="true"] + .submenu {
     display: block;
+  }
+  .main-nav .submenu-toggle:focus-visible {
+    outline: 3px solid var(--secondary);
+    outline-offset: 2px;
   }
   .main-nav .submenu a {
     padding: 7px 12px;

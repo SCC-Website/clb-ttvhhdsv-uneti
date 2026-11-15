@@ -112,7 +112,7 @@ function renderNavigation() {
 
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/index.html';
 
-  navigationItems.forEach(({ path, label, children = [] }) => {
+  navigationItems.forEach(({ path, label, children = [] }, index) => {
     const item = document.createElement('li');
     const link = document.createElement('a');
     const linkUrl = new URL(path, BASE_URL);
@@ -125,7 +125,6 @@ function renderNavigation() {
     if (children.length) {
       item.className = 'has-submenu';
       link.setAttribute('aria-haspopup', 'true');
-      link.setAttribute('aria-expanded', 'false');
     }
 
     link.href = linkUrl.href;
@@ -136,17 +135,22 @@ function renderNavigation() {
 
     item.appendChild(link);
     if (children.length) {
-      link.addEventListener('click', event => {
-        if (!window.matchMedia('(max-width: 897px)').matches) {
-          return;
-        }
-        event.preventDefault();
-        const expanded = link.getAttribute('aria-expanded') === 'true';
-        link.setAttribute('aria-expanded', String(!expanded));
-      });
-
+      const submenuId = `siteSubmenu-${index}`;
+      const submenuToggle = document.createElement('button');
+      submenuToggle.className = 'submenu-toggle';
+      submenuToggle.type = 'button';
+      submenuToggle.setAttribute('aria-label', `Mở mục phụ: ${label}`);
+      submenuToggle.setAttribute('aria-expanded', 'false');
+      submenuToggle.setAttribute('aria-controls', submenuId);
       const submenu = document.createElement('ul');
       submenu.className = 'submenu';
+      submenu.id = submenuId;
+      submenuToggle.addEventListener('click', () => {
+        const expanded = submenuToggle.getAttribute('aria-expanded') === 'true';
+        submenuToggle.setAttribute('aria-expanded', String(!expanded));
+        submenuToggle.setAttribute('aria-label', `${expanded ? 'Mở' : 'Đóng'} mục phụ: ${label}`);
+        item.classList.toggle('submenu-open', !expanded);
+      });
       children.forEach(child => {
         const childItem = document.createElement('li');
         const childLink = document.createElement('a');
@@ -159,6 +163,7 @@ function renderNavigation() {
         childItem.appendChild(childLink);
         submenu.appendChild(childItem);
       });
+      item.appendChild(submenuToggle);
       item.appendChild(submenu);
     }
     menu.appendChild(item);
@@ -170,6 +175,11 @@ function renderNavigation() {
     navigation.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Mở menu điều hướng');
+    navigation.querySelectorAll('.submenu-toggle[aria-expanded="true"]').forEach(button => {
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', `Mở mục phụ: ${button.closest('.has-submenu')?.querySelector(':scope > a')?.textContent || ''}`);
+      button.closest('.has-submenu')?.classList.remove('submenu-open');
+    });
   };
 
   toggle.addEventListener('click', () => {
