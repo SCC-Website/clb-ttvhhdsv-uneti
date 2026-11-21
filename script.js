@@ -1,4 +1,4 @@
-document.addEventListener('contextmenu', event => {
+﻿document.addEventListener('contextmenu', event => {
   if (event.target.closest('img')) {
     event.preventDefault();
   }
@@ -1179,3 +1179,4 @@ function bindProfileLinkButtons() {
 }
 
 bindProfileLinkButtons();
+
