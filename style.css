@@ -4972,7 +4972,7 @@ footer#sharedFooter::before {
 :root{--primary:#c92b3b;--primary-hover:#a91f31;--primary-dark:#7f1728;--primary-light:#fff1f2;--primary-gradient:linear-gradient(135deg,#e34b50 0%,#c92b3b 52%,#8f1d35 100%);--hero-gradient:linear-gradient(135deg,#8f1d35 0%,#c92b3b 48%,#ef7b45 100%);--secondary:#e4a11b;--accent:#9f1239;--border-accent:rgba(201,43,59,.22);--shadow-lg:0 18px 48px rgba(127,23,40,.16);--shadow-hover:0 12px 34px rgba(127,23,40,.2)}
 body{background:linear-gradient(180deg,#fffaf8 0%,#fff7f2 44%,#f7f8fc 100%)}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;background-image:radial-gradient(circle at 15% 12%,rgba(239,123,69,.11) 0 1px,transparent 1.5px),radial-gradient(circle at 85% 20%,rgba(201,43,59,.08) 0 1px,transparent 1.5px);background-size:26px 26px,34px 34px}
-.top-banner{background: linear-gradient(90deg, #ff5722 0%, #ff3d00 50%, #d50000 100%);border-bottom:1px solid rgba(201,43,59,.12)}.top-banner::after{content:"";position:absolute;inset:auto 0 0;height:3px;background:var(--primary-gradient)}
+.top-banner{background: linear-gradient(90deg, #ff5722 0%, #ff3d00 50%, #d50000 100%);border-bottom:1px solid rgba(201,43,59,.12)}
 
 .hero-header,.culture-hero,.profile-hero,.recognition-hero{background:var(--hero-gradient);box-shadow:0 20px 55px rgba(127,23,40,.2)}
 .section-tag{border-color:rgba(201,43,59,.12);background:linear-gradient(135deg,#fff1f2,#fff8ed);color:var(--primary-dark)}
@@ -4980,7 +4980,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;op
 .overview-card:hover,.activites-card:hover,.role-card:hover,.event-card:hover,.contact-tile:hover{border-color:rgba(201,43,59,.3);box-shadow:var(--shadow-hover)}
 .card-img-wrapper img,.overview-img-box img,.activity-card img,.gallery-item img{transition:transform .65s cubic-bezier(.22,1,.36,1),filter .65s ease}.activites-card:hover .card-img-wrapper img,.overview-card:hover .overview-img-box img,.activity-card:hover img,.gallery-item:hover img{transform:scale(1.045);filter:saturate(1.08) contrast(1.02)}
 .scroll-progress{position:fixed;top:0;left:0;z-index:3000;width:0;height:4px;background:linear-gradient(90deg,#e4a11b,#ef7b45,#c92b3b);box-shadow:0 0 12px rgba(228,161,27,.55);transition:width .12s linear}
-
+
+
 @media(max-width:600px){.scroll-progress{height:3px}}
 
 /* Giữ top-banner luôn đỏ cam, không bị đổi màu khi cuộn */
