@@ -5473,3 +5473,15 @@ body::before {
     padding: 6px 21px 6px 8px;
   }
 }
+@media (min-width: 1101px) {
+  .main-nav .menu {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 4px;
+  }
+  .main-nav .menu li a {
+    padding: 8px 12px;
+    font-size: .9rem;
+    white-space: nowrap;
+  }
+}
