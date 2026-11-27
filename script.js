@@ -12,6 +12,13 @@ document.addEventListener('selectstart', event => {
 });
 
 const BASE_URL = new URL('.', document.baseURI);
+const COLOR_THEME_STORAGE_KEY = 'scc-color-theme-v1';
+const COLOR_THEME_OPTIONS = [
+  { value: 'red', label: 'Đỏ' },
+  { value: 'orange', label: 'Cam' },
+  { value: 'combined', label: 'Kết hợp' }
+];
+let colorThemeStorageUnavailable = false;
 
 // ----- SVG ICONS (thay thế toàn bộ emoji) -----
 // Icon dạng vector, dùng stroke="currentColor" nên tự đổi theo màu chữ xung quanh.
@@ -77,6 +84,95 @@ const navigationItems = [
     children: [{ path: 'Contact.html', label: 'Liên hệ' }]
   }
 ];
+
+function isColorTheme(value) {
+  return COLOR_THEME_OPTIONS.some(option => option.value === value);
+}
+
+function applyColorTheme(theme) {
+  document.documentElement.dataset.colorTheme = theme;
+  const selector = document.getElementById('colorThemeSelect');
+  if (selector) {
+    selector.value = theme;
+  }
+}
+
+function updateColorThemeStatus(message = '') {
+  const status = document.getElementById('colorThemeStatus');
+  if (!status) return;
+  status.textContent = message;
+  status.hidden = !message;
+}
+
+function setColorTheme(theme) {
+  if (!isColorTheme(theme)) {
+    throw new Error(`Tông màu không hợp lệ: ${theme}`);
+  }
+  applyColorTheme(theme);
+  try {
+    window.localStorage.setItem(COLOR_THEME_STORAGE_KEY, theme);
+    colorThemeStorageUnavailable = false;
+    updateColorThemeStatus('');
+  } catch {
+    colorThemeStorageUnavailable = true;
+    updateColorThemeStatus('Không thể lưu tùy chọn màu trên trình duyệt này.');
+  }
+}
+
+function initializeColorTheme() {
+  let theme = 'combined';
+  try {
+    const savedTheme = window.localStorage.getItem(COLOR_THEME_STORAGE_KEY);
+    if (isColorTheme(savedTheme)) {
+      theme = savedTheme;
+    }
+  } catch {
+    colorThemeStorageUnavailable = true;
+  }
+  applyColorTheme(theme);
+
+  window.addEventListener('storage', event => {
+    if (event.key !== COLOR_THEME_STORAGE_KEY && event.key !== null) return;
+    const nextTheme = isColorTheme(event.newValue) ? event.newValue : 'combined';
+    applyColorTheme(nextTheme);
+  });
+}
+
+function createColorThemeControl() {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'color-theme-control';
+
+  const label = document.createElement('label');
+  label.htmlFor = 'colorThemeSelect';
+  label.textContent = 'Tông màu';
+
+  const selector = document.createElement('select');
+  selector.id = 'colorThemeSelect';
+  selector.setAttribute('aria-label', 'Tông màu chính');
+  selector.title = 'Chọn tông màu chính';
+  COLOR_THEME_OPTIONS.forEach(({ value, label: optionLabel }) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = optionLabel;
+    selector.appendChild(option);
+  });
+  selector.value = document.documentElement.dataset.colorTheme || 'combined';
+  selector.addEventListener('change', () => setColorTheme(selector.value));
+
+  const status = document.createElement('span');
+  status.className = 'color-theme-status';
+  status.id = 'colorThemeStatus';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  status.hidden = true;
+
+  wrapper.append(label, selector, status);
+  if (colorThemeStorageUnavailable) {
+    status.textContent = 'Không thể lưu tùy chọn màu trên trình duyệt này.';
+    status.hidden = false;
+  }
+  return wrapper;
+}
 
 function renderFavicon() {
   const favicon = document.getElementById('siteFavicon') || document.createElement('link');
@@ -169,7 +265,7 @@ function renderNavigation() {
     menu.appendChild(item);
   });
 
-  navigation.append(toggle, menu);
+  navigation.append(toggle, menu, createColorThemeControl());
 
   const closeMenu = () => {
     navigation.classList.remove('is-open');
@@ -446,6 +542,7 @@ function initFilterChips() {
   });
 }
 
+initializeColorTheme();
 renderFavicon();
 renderNavigation();
 renderFooter();

@@ -28,6 +28,8 @@ const allowedCompanions = new Set([
   'tran-the-phu', 'vu-thi-thu', 'duong-thi-kim-anh', 'nguyen-thu-hien',
   'dong-ngoc-han', 'to-thi-ha-vy', 'nguyen-phuong-thao', 'vu-quang-viet'
 ]);
+const feedbackCategories = new Set(['elevator', 'cleanliness', 'noise', 'attire', 'communication', 'other']);
+const feedbackCampuses = new Set(['', 'Minh Khai', 'Lĩnh Nam', 'Ninh Bình', 'Khác']);
 
 let mongoClient = null;
 let collections = null;
@@ -116,6 +118,13 @@ function normalizeStudentId(value) {
   return studentId;
 }
 
+function normalizeFeedbackMessage(value) {
+  if (typeof value !== 'string') return null;
+  const message = value.normalize('NFC').replace(/\r\n?/gu, '\n').trim();
+  if (Array.from(message).length < 10 || Array.from(message).length > 1200 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/u.test(message)) return null;
+  return message;
+}
+
 function parsePageValue(value, fallback, max) {
   const parsed = Number.parseInt(value ?? '', 10);
   if (!Number.isFinite(parsed) || parsed < 0) return fallback;
@@ -147,12 +156,31 @@ app.use('/api', (_req, res, next) => { res.setHeader('Cache-Control', 'no-store'
 
 const loginLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 12, standardHeaders: true, legacyHeaders: false, message: { error: 'Thử đăng nhập quá nhiều lần. Vui lòng đợi 15 phút rồi thử lại.' } });
 const registerLimiter = rateLimit({ windowMs: 60 * 60 * 1000, max: 5, standardHeaders: true, legacyHeaders: false, message: { error: 'Đã tạo quá nhiều tài khoản từ kết nối này. Vui lòng thử lại sau.' } });
+const feedbackLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 3, standardHeaders: true, legacyHeaders: false, message: { error: 'Bạn đã gửi nhiều góp ý trong thời gian ngắn. Vui lòng thử lại sau 15 phút.' } });
 
 const api = express.Router();
 api.get('/health', (_req, res) => {
   const ready = Boolean(collections);
   res.status(ready ? 200 : 503).json({ ready });
 });
+
+api.post('/culture-feedback', feedbackLimiter, apiUnavailable, asyncRoute(async (req, res) => {
+  const category = req.body?.category;
+  const campus = req.body?.campus;
+  const message = normalizeFeedbackMessage(req.body?.message);
+  if (typeof category !== 'string' || !feedbackCategories.has(category)) {
+    return res.status(400).json({ error: 'Hãy chọn một chủ đề phản ánh hợp lệ.' });
+  }
+  if (typeof campus !== 'string' || !feedbackCampuses.has(campus)) {
+    return res.status(400).json({ error: 'Cơ sở được chọn không hợp lệ.' });
+  }
+  if (!message) {
+    return res.status(400).json({ error: 'Nội dung cần có từ 10 đến 1.200 ký tự và không chứa ký tự điều khiển.' });
+  }
+
+  await collections.cultureFeedback.insertOne({ category, campus, message, createdAt: new Date() });
+  res.status(201).json({ ok: true });
+}));
 
 api.post('/auth/register', registerLimiter, apiUnavailable, asyncRoute(async (req, res) => {
   const name = normalizeName(req.body?.name);
@@ -291,14 +319,16 @@ async function connectMongo() {
   collections = {
     users: database.collection('users'),
     sessions: database.collection('sessions'),
-    plays: database.collection('plays')
+    plays: database.collection('plays'),
+    cultureFeedback: database.collection('culture_feedback')
   };
   await Promise.all([
     collections.users.createIndex({ loginIdHash: 1 }, { unique: true, name: 'unique_login_id_hash' }),
     collections.sessions.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0, name: 'expire_sessions' }),
     collections.sessions.createIndex({ userId: 1 }, { name: 'sessions_by_user' }),
     collections.plays.createIndex({ score: -1, createdAt: -1 }, { name: 'leaderboard_score_date' }),
-    collections.plays.createIndex({ userId: 1, createdAt: -1 }, { name: 'history_by_user_date' })
+    collections.plays.createIndex({ userId: 1, createdAt: -1 }, { name: 'history_by_user_date' }),
+    collections.cultureFeedback.createIndex({ createdAt: -1 }, { name: 'culture_feedback_by_date' })
   ]);
   console.log('MongoDB Atlas connection is ready.');
 }

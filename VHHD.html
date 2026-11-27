@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=9">
   <link id="siteFavicon" rel="icon" type="image/png" sizes="192x192" href="Image/SCC-Logo.png">
 </head>
 <body>
@@ -23,7 +23,7 @@
       <span class="section-tag">Nếp sống 5S</span>
       <h1>Văn hoá học đường sinh viên UNETI</h1>
       <p>Chuẩn mực trong ứng xử, chuyên nghiệp trong hành chính và chủ động lan tỏa những điều tốt đẹp.</p>
-      <a class="culture-hero-cta" href="#nguyen-tac">Khám phá 8 nguyên tắc vàng <span aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span></a>
+      <a class="culture-hero-cta" href="#5s-tip">Khám phá 5S mỗi ngày <span aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span></a>
     </div>
     <img class="culture-hero-image" src="Image/VHHDMinhKhai.jpg" alt="Hoạt động tuyên truyền văn hóa học đường tại Cơ sở Minh Khai - Hà Nội">
     <img class="culture-hero-image" src="Image/VHHDLinhNam.jpg" alt="Hoạt động tuyên truyền văn hóa học đường tại Cơ sở Lĩnh Nam - Hà Nội">
@@ -61,6 +61,76 @@
         <article class="principle-card"><span>07</span><h3>Học tập đúng giờ</h3><p>Nghiêm túc trong giờ học và thực hiện đúng quy định.</p></article>
         <article class="principle-card"><span>08</span><h3>Trang phục lịch sự</h3><p>Gọn gàng, phù hợp và thể hiện thái độ tôn trọng.</p></article>
       </div>
+    </section>
+
+    <section id="5s-tip" class="culture-section" aria-labelledby="weekly-tip-title">
+      <div class="section-header">
+        <span class="section-tag">5S thực hành hàng ngày</span>
+        <h2 class="section-title" id="weekly-tip-title">Một hành động nhỏ, một UNETI văn minh</h2>
+        <p class="section-desc">Mỗi tuần cùng thử một thói quen đẹp trong lớp học và không gian chung.</p>
+      </div>
+      <article class="weekly-tip-card" aria-live="polite">
+        <img id="weekly-tip-image" src="Image/VHHDMinhKhai.jpg" alt="Hoạt động tuyên truyền văn hóa học đường tại Cơ sở Minh Khai">
+        <div class="weekly-tip-copy">
+          <span class="weekly-tip-label" id="weekly-tip-label">Tip của tuần</span>
+          <h3 id="weekly-tip-heading">Xếp hàng văn minh khi chờ thang máy</h3>
+          <p id="weekly-tip-description">Đứng gọn về một phía, nhường người bên trong ra trước và chờ lượt tiếp theo thay vì chen lấn.</p>
+          <p class="weekly-tip-prompt">Thử thực hiện ngay hôm nay nhé!</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="culture-section" aria-labelledby="checklist-title">
+      <div class="section-header">
+        <span class="section-tag">Tự đánh giá 5S</span>
+        <h2 class="section-title" id="checklist-title">Bạn đã văn minh chưa?</h2>
+        <p class="section-desc">Tích vào những việc bạn đang thực hiện. Mỗi lựa chọn đều góp phần làm trường học tốt hơn.</p>
+      </div>
+      <div class="culture-checklist" id="cultureChecklist">
+        <label class="culture-checklist-item"><input type="checkbox" name="culture-check"><span>Đeo thẻ sinh viên khi đến trường</span></label>
+        <label class="culture-checklist-item"><input type="checkbox" name="culture-check"><span>Xếp hàng và nhường lượt ở nơi đông người</span></label>
+        <label class="culture-checklist-item"><input type="checkbox" name="culture-check"><span>Bỏ rác đúng nơi quy định, giữ sạch không gian chung</span></label>
+        <label class="culture-checklist-item"><input type="checkbox" name="culture-check"><span>Nói lời lịch sự, giữ âm lượng phù hợp</span></label>
+        <label class="culture-checklist-item"><input type="checkbox" name="culture-check"><span>Đến lớp đúng giờ và tôn trọng giờ học</span></label>
+        <p class="culture-checklist-result" id="cultureChecklistResult" role="status" aria-live="polite">Bạn đã chọn 0/5 tiêu chí. Bắt đầu từ một việc nhỏ nhé!</p>
+      </div>
+    </section>
+
+    <section id="gop-y-van-hoa" class="culture-section" aria-labelledby="culture-feedback-title">
+      <div class="section-header">
+        <span class="section-tag">Cùng xây dựng UNETI văn minh</span>
+        <h2 class="section-title" id="culture-feedback-title">Phản ánh &amp; Góp ý</h2>
+        <p class="section-desc">Chia sẻ tình trạng hoặc đề xuất cải thiện văn hóa học đường để Ban Thông tin - Kết nối tiếp nhận.</p>
+      </div>
+      <form class="culture-feedback-form" id="cultureFeedbackForm">
+        <div class="culture-feedback-fields">
+          <label for="feedback-category">Nội dung phản ánh</label>
+          <select id="feedback-category" name="category" required>
+            <option value="">Chọn một chủ đề</option>
+            <option value="elevator">Thang máy, xếp hàng</option>
+            <option value="cleanliness">Vệ sinh, rác thải</option>
+            <option value="noise">Tiếng ồn, không gian học tập</option>
+            <option value="attire">Trang phục, tác phong</option>
+            <option value="communication">Giao tiếp, ứng xử</option>
+            <option value="other">Nội dung khác</option>
+          </select>
+
+          <label for="feedback-campus">Cơ sở (không bắt buộc)</label>
+          <select id="feedback-campus" name="campus">
+            <option value="">Không muốn nêu / không rõ</option>
+            <option value="Minh Khai">Minh Khai</option>
+            <option value="Lĩnh Nam">Lĩnh Nam</option>
+            <option value="Ninh Bình">Ninh Bình</option>
+            <option value="Khác">Khác</option>
+          </select>
+
+          <label for="feedback-message">Mô tả tình trạng hoặc góp ý</label>
+          <textarea id="feedback-message" name="message" rows="5" minlength="10" maxlength="1200" placeholder="Nêu sự việc và địa điểm cụ thể nếu thuận tiện (10–1.200 ký tự)." required></textarea>
+        </div>
+        <p class="culture-feedback-privacy">Không cần đăng nhập hoặc cung cấp tên, email hay mã sinh viên. Vui lòng không ghi thông tin nhận diện của bạn hoặc người khác; nội dung sẽ được chuyển tới Ban Thông tin - Kết nối.</p>
+        <button class="culture-feedback-submit" type="submit">Gửi góp ý</button>
+        <p class="culture-feedback-status" id="cultureFeedbackStatus" role="status" aria-live="polite" hidden></p>
+      </form>
     </section>
 
     <section class="culture-panel service-panel" aria-labelledby="mot-cua">
@@ -105,6 +175,8 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=1"></script>
+  <script src="diary-api-config.js"></script>
+  <script src="culture-page.js"></script>
 </body>
 </html>

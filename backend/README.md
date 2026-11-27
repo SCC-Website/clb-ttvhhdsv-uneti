@@ -1,6 +1,6 @@
 # SCC Diary backend
 
-This Node/Express service provides the `/api` endpoints for account login, profile/history, play records, and the global leaderboard. Locally it can also serve the static game page for same-origin testing. In the production split setup, GitHub Pages serves the frontend while Render runs this API; MongoDB Atlas stores account records, sessions, play history, and the all-runs leaderboard. No production credentials belong in this repository.
+This Node/Express service provides the `/api` endpoints for account login, profile/history, play records, the global leaderboard, and anonymous culture feedback. Locally it can also serve the static game page for same-origin testing. In the production split setup, GitHub Pages serves the frontend while Render runs this API; MongoDB Atlas stores account records, sessions, play history, leaderboard entries, and feedback. No production credentials belong in this repository.
 
 ## Run locally
 
@@ -11,6 +11,10 @@ This Node/Express service provides the `/api` endpoints for account login, profi
 5. Open `http://127.0.0.1:3000/diary-game.html` (not `file://`) for same-origin local testing. Leave `diary-api-config.js` blank in this setup.
 
 If `MONGODB_URI` is blank or unreachable, the static page still loads but API routes return 503 and `/api/health` reports not ready. Local development binds to `127.0.0.1`; it is not a public deployment.
+
+## Anonymous culture feedback
+
+`POST /api/culture-feedback` accepts a topic, an optional campus, and a 10–1,200 character message without requiring an account or session. Valid submissions are stored in the `culture_feedback` MongoDB collection with their creation time; no IP address or account identifier is included in the stored document. The in-memory rate limit allows up to three submissions per IP per 15 minutes. The collection is intended for the SCC Information & Connection Board to review in the database; it has no public listing endpoint.
 
 ## Deploy the API to Render while keeping GitHub Pages
 
